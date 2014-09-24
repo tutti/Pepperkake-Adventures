@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div#overskrift {
+    height: 80px;
+    line-height: 80px;
+    background-color: red;
+    text-align: center;
+}
+    div#overskrift h2 {
+        color: white;
+        font-size: 2em;
+    }
+
+div#meny {
+    height: 50px;
+    background-color: green;
+}
+    div#meny li {
+        line-height: 50px;
+        font-size: 1.2em;
+        display: inline-block;
+        color: white;
+        margin: 0 30px;
+    }
