@@ -3,15 +3,18 @@
     padding: 0;
 }
 
+.clearfloat {
+    clear: both;
+}
+
 div#overskrift {
     height: 80px;
     line-height: 80px;
     background-color: red;
     text-align: center;
 }
-    div#overskrift h2 {
+    div#overskrift h1 {
         color: white;
-        font-size: 2em;
     }
 
 div#meny {
@@ -25,3 +28,55 @@ div#meny {
         color: white;
         margin: 0 30px;
     }
+
+div#wrapper {
+    width: 1000px;
+    background-color: chocolate;
+    margin: auto;
+}
+
+/* Om oss */
+.omoss-person {
+    width: 450px;
+    margin: 25px;
+    float: left;
+}
+    .omoss-bilde {
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+        #bilde-pal {
+            background-image: url("bilder/pal.jpg");
+            background-size: 500px;
+            background-position: -150px -30px;
+        }
+        #bilde-martin {
+            background-image: url("bilder/bildet.jpg");
+            background-size: 250px;
+            background-position: -20px -30px;
+        }
+        #bilde-simen {
+            background-image: url("bilder/1082606_10200114425053474_1158363260_o.jpg");
+            background-size: 800px;
+            background-position: -320px -170px;
+        }
+        #bilde-stig {
+            background-image: url("bilder/154545_10150830658621239_617166705_n.jpg");
+            background-size: 250px;
+            background-position: 0 0;
+        }
+    .omoss-info {
+        width: 240px;
+        height: 200px;
+        margin-left: 10px;
+        float: left;
+    }
+        .omoss-infotable td {
+            width: 80px;
+            font-weight: bold;
+        }
+        .omoss-infotable td + td {
+            width: 150px;
+            font-weight: normal;
+        }
