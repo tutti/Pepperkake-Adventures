@@ -8,6 +8,8 @@
 }
 
 div#overskrift {
+    width: 1000px;
+    margin: auto;
     height: 80px;
     line-height: 80px;
     background-color: red;
@@ -18,6 +20,8 @@ div#overskrift {
     }
 
 div#meny {
+    width: 1000px;
+    margin: auto;
     height: 50px;
     background-color: green;
 }
