@@ -25,13 +25,43 @@ div#meny {
     height: 50px;
     background-color: green;
 }
-    div#meny li {
+    div#meny ul li {
+        display: block;
+        color: white;
+    }
+        div#meny ul li a {
+            display: block;
+            height: 50px;
+            width: 100px;
+            text-decoration: none;
+        }
+    div#meny > ul > li {
         line-height: 50px;
         font-size: 1.2em;
-        display: inline-block;
-        color: white;
-        margin: 0 30px;
+        float: left;
     }
+        div#meny > ul > li > a {
+            text-align: center;
+            color: white;
+        }
+    div#meny > ul ul {
+        position: absolute;
+        display: none;
+    }
+        div#meny > ul ul li {
+            line-height: 30px;
+            background-color: white;
+        }
+            div#meny > ul ul li a {
+                height: 30px;
+                width: 80px;
+                padding-left: 20px;
+                color: black;
+            }
+        div#meny > ul li:hover ul,
+        div#meny > ul ul:hover {
+            display: block;
+        }
 
 div#wrapper {
     width: 1000px;
