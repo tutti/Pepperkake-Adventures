@@ -70,51 +70,51 @@ div#wrapper {
 }
 
 /* Om oss */
-.omoss-link {
-    color: black;
-    text-decoration: none;
+.omoss-person {
+    width: 450px;
+    margin: 25px;
+    float: left;
 }
-    .omoss-person {
-        width: 450px;
-        margin: 25px;
+    .omoss-bilde {
+        width: 200px;
+        height: 200px;
         float: left;
     }
-        .omoss-bilde {
-            width: 200px;
-            height: 200px;
-            float: left;
+        #bilde-pal {
+            background-image: url("bilder/pal.jpg");
+            background-size: 500px;
+            background-position: -150px -30px;
         }
-            #bilde-pal {
-                background-image: url("bilder/pal.jpg");
-                background-size: 500px;
-                background-position: -150px -30px;
-            }
-            #bilde-martin {
-                background-image: url("bilder/bildet.jpg");
-                background-size: 250px;
-                background-position: -20px -30px;
-            }
-            #bilde-simen {
-                background-image: url("bilder/1082606_10200114425053474_1158363260_o.jpg");
-                background-size: 800px;
-                background-position: -320px -170px;
-            }
-            #bilde-stig {
-                background-image: url("bilder/stig.jpg");
-                background-size: 250px;
-                background-position: 0 0;
-            }
-        .omoss-info {
-            width: 240px;
-            height: 200px;
-            margin-left: 10px;
-            float: left;
+        #bilde-martin {
+            background-image: url("bilder/bildet.jpg");
+            background-size: 250px;
+            background-position: -20px -30px;
         }
-            .omoss-infotable td {
-                width: 70px;
-                font-weight: bold;
+        #bilde-simen {
+            background-image: url("bilder/1082606_10200114425053474_1158363260_o.jpg");
+            background-size: 800px;
+            background-position: -320px -170px;
+        }
+        #bilde-stig {
+            background-image: url("bilder/stig.jpg");
+            background-size: 250px;
+            background-position: 0 0;
+        }
+    .omoss-info {
+        width: 240px;
+        height: 200px;
+        margin-left: 10px;
+        float: left;
+    }
+        .omoss-infotable td {
+            width: 70px;
+            font-weight: bold;
+        }
+            .omoss-link {
+                color: black;
+                text-decoration: none;
             }
-            .omoss-infotable td + td {
-                width: 160px;
-                font-weight: normal;
-            }
+        .omoss-infotable td + td {
+            width: 160px;
+            font-weight: normal;
+        }
