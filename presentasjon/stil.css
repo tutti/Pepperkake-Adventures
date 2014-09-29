@@ -111,10 +111,10 @@ div#wrapper {
             float: left;
         }
             .omoss-infotable td {
-                width: 80px;
+                width: 70px;
                 font-weight: bold;
             }
             .omoss-infotable td + td {
-                width: 150px;
+                width: 160px;
                 font-weight: normal;
             }
