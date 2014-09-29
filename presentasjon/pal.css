@@ -24,7 +24,8 @@ h2 {
     float: left;
 }
     #wow-karakter,
-    #pikachu-bilde {
+    #pikachu-bilde,
+    #jmt-logo {
         height: 200px;
         display: block;
         margin: auto;
