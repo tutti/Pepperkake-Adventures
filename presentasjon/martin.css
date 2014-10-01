@@ -4,6 +4,12 @@ h2 {
 }
 
 #topp-venstre,
+#topp-midt {
+    width: 180px;
+    margin: 15px;
+    float: left;
+}
+
 #topp-hoyre {
     width: 470px;
     margin: 15px;
