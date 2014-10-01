@@ -11,6 +11,10 @@ p {
     margin-bottom: 10px;
 }
 
+li {
+    margin-left: 20px;
+}
+
 div#overskrift {
     width: 1040px;
     margin: auto;
