@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.center {
+    text-align: center;
+}
+
 .clearfloat {
     clear: both;
 }
@@ -40,7 +44,7 @@ div#meny {
         div#meny ul li a {
             display: block;
             height: 50px;
-            width: 100px;
+            min-width: 100px;
             text-decoration: none;
         }
     div#meny > ul > li {
@@ -55,6 +59,7 @@ div#meny {
     div#meny > ul ul {
         position: absolute;
         display: none;
+        margin-left: -20px;
     }
         div#meny > ul ul li {
             line-height: 30px;
@@ -62,7 +67,7 @@ div#meny {
         }
             div#meny > ul ul li a {
                 height: 30px;
-                width: 80px;
+                min-width: 80px;
                 padding-left: 20px;
                 color: black;
             }
@@ -76,11 +81,6 @@ div#wrapper {
     padding: 20px;
     background-color: chocolate;
     margin: auto;
-}
-
-/* Forside */
-.forside h2 {
-    text-align: center;
 }
 
 /* Om oss */
