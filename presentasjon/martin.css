@@ -1,0 +1,26 @@
+h2 {
+    padding: 10px 0;
+    text-align: center;
+}
+
+#topp-venstre,
+#topp-midt {
+    width: 180px;
+    margin: 15px;
+    float: left;
+}
+
+#topp-hoyre {
+    width: 470px;
+    margin: 15px;
+    float: left;
+}
+    
+
+#bunn-venstre,
+#bunn-hoyre {
+    width: 460px;
+    margin: 15px;
+    float: left;
+}
+    

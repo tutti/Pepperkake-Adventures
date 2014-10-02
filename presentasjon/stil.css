@@ -7,8 +7,16 @@
     clear: both;
 }
 
+p {
+    margin-bottom: 10px;
+}
+
+li {
+    margin-left: 20px;
+}
+
 div#overskrift {
-    width: 1000px;
+    width: 1040px;
     margin: auto;
     height: 80px;
     line-height: 80px;
@@ -20,7 +28,7 @@ div#overskrift {
     }
 
 div#meny {
-    width: 1000px;
+    width: 1040px;
     margin: auto;
     height: 50px;
     background-color: green;
@@ -65,8 +73,14 @@ div#meny {
 
 div#wrapper {
     width: 1000px;
+    padding: 20px;
     background-color: chocolate;
     margin: auto;
+}
+
+/* Forside */
+.forside h2 {
+    text-align: center;
 }
 
 /* Om oss */
