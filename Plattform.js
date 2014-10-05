@@ -1,5 +1,5 @@
-Plattform = function(type, x, y, bredde, hoyde) {
-    this.type = type;
+Plattform = function(x, y, bredde, hoyde) {
+    this.type = "vanlig";
     this.x = x;
     this.y = y;
     this.bredde = bredde;
@@ -7,7 +7,7 @@ Plattform = function(type, x, y, bredde, hoyde) {
     this.vises = true; // Plattformer som ikke vises, kan ikke stås på
     this.bilde = "bilder/plattform.png";
     
-    this.hent_element();
+    this.aktiv = false;
 }
 
 Plattform.prototype.hent_element = function() {
@@ -31,14 +31,28 @@ Plattform.prototype.sett_bilde = function(bilde) {
     elmt.attr('src', bilde);
 }
 
+Plattform.prototype.vis = function() {
+    var elmt = this.hent_element();
+    elmt.show();
+    this.vises = true;
+}
+
 Plattform.prototype.skjul = function() {
     var elmt = this.hent_element();
     elmt.hide();
     this.vises = false;
 }
 
-Plattform.prototype.vis = function() {
-    var elmt = this.hent_element();
-    elmt.show();
-    this.vises = true;
+Plattform.prototype.aktiver = function() {
+    this.aktiv = true;
+    this.vis();
+}
+
+Plattform.prototype.deaktiver = function() {
+    this.aktiv = false;
+    this.skjul();
+}
+
+Plattform.prototype.tick = function() {
+    
 }

@@ -1,0 +1,3 @@
+Spill = {
+    gravitasjon: 2
+}

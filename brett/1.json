@@ -1,31 +1,20 @@
 {
-    navn: "Testbrett",
-    bakgrunn: "bilder/bakgrunn.jpg",
-    skjermer: [
-        { // 0
-            plattformer: [
-                {
-                    type: "vanlig",
-                    x: 0,
-                    y: 550,
-                    bredde: 800,
-                    hoyde: 20
-                }
-            ]
+    "navn": "Testbrett",
+    "bakgrunn": "bilder/bakgrunn.jpg",
+    "plattformer": [
+        {
+            "type": "vanlig",
+            "x": 100,
+            "y": 550,
+            "bredde": 800,
+            "hoyde": 20
         },
-        { // 1
-            plattformer: [
-                {
-                    type: "vanlig",
-                    x: 0,
-                    y: 550,
-                    bredde: 400,
-                    hoyde: 20
-                }
-            ]
+        {
+            "type": "vanlig",
+            "x": 300,
+            "y": 350,
+            "bredde": 400,
+            "hoyde": 20
         }
-    ],
-    kart: [
-        [0, 1]
     ]
 }

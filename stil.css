@@ -3,8 +3,13 @@
     width: 800px;
     height: 600px;
     overflow: hidden;
+    position: relative;
 }
 
 .plattform {
+    position: absolute;
+}
+
+.enhet {
     position: absolute;
 }
