@@ -14,3 +14,10 @@ Spill.last_brett = function(brett_id) {
     this.brett = brett[brett_id];
     this.brett.last();
 }
+
+Spill.tick = function() {
+    Spiller.tick();
+    if (this.brett) {
+        this.brett.tick();
+    }
+}

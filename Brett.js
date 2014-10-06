@@ -7,10 +7,10 @@ Brett = function(data) {
         var p = data.plattformer[plattform_id];
         switch (p.type) {
             case "blink":
-                var plattform = new BlinkPlattform(p.x, p.y, p.bredde, p.hoyde);
+                var plattform = new BlinkPlattform(p.x, p.y, p.bredde, p.hoyde, p.ticktall);
                 break;
             case "heis":
-                var plattform = new HeisPlattform(p.x, p.y, p.bredde, p.hoyde);
+                var plattform = new HeisPlattform(p.x, p.y, p.bredde, p.hoyde, p.dx, p.dy, p.ticktall);
                 break;
             case "vanlig":
             default:
@@ -54,4 +54,10 @@ Brett.prototype.land = function(x1, y1, x2, y2) {
         }
     }
     return null;
+}
+
+Brett.prototype.tick = function() {
+    for (p_id in this.plattformer) {
+        this.plattformer[p_id].tick();
+    }
 }

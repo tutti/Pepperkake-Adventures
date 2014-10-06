@@ -6,6 +6,7 @@ Plattform = function(x, y, bredde, hoyde) {
     this.hoyde = hoyde;
     this.vises = true; // Plattformer som ikke vises, kan ikke stås på
     this.bilde = "bilder/plattform.png";
+    this.enheter = [];
     
     this.aktiv = false;
 }
@@ -41,6 +42,9 @@ Plattform.prototype.skjul = function() {
     var elmt = this.hent_element();
     elmt.hide();
     this.vises = false;
+    for (e_id in this.enheter) {
+        this.enheter[e_id].fall();
+    }
 }
 
 Plattform.prototype.aktiver = function() {
@@ -54,7 +58,6 @@ Plattform.prototype.deaktiver = function() {
 }
 
 Plattform.prototype.tick = function() {
-    
 }
 
 Plattform.prototype.lander = function(x1, y1, x2, y2) {
@@ -62,7 +65,9 @@ Plattform.prototype.lander = function(x1, y1, x2, y2) {
     // Enkel sjekk; objektet må gå fra over plattformen til under,
     // og x2 må lande på plattformen (en ordentlig sjekk ville ha
     // sjekket punktet der linjene krysser).
+    if (!this.vises) return false;
     if (y1 > this.y || y2 < this.y) {
+        if (this.type == "heis") console.log(y1 + " " + y2 + " " + this.y);
         return false;
     }
     if (x2 < this.x || x2 > this.x+this.bredde) {
@@ -75,4 +80,22 @@ Plattform.prototype.er_pa = function(x) {
     // Sjekker om et objekt fortsatt er på plattformen.
     // Dette antar an objektet er på plattformen i utgangspunktet,
     // og y-koordinaten er derfor unødvendig.
+    if (x < this.x || x > this.x+this.bredde) {
+        return false;
+    }
+    return true;
+}
+
+Plattform.prototype.legg_til = function(enhet) {
+    var i = this.enheter.indexOf(enhet);
+    if (i == -1) {
+        this.enheter.push(enhet);
+    }
+}
+
+Plattform.prototype.fjern = function(enhet) {
+    var i = this.enheter.indexOf(enhet);
+    if (i != -1) {
+        this.enheter.splice(i, 1);
+    }
 }

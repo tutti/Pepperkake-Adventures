@@ -24,7 +24,7 @@ BlinkPlattform.prototype.tick = function() {
     }
 }
 
-BlinkPlattform.aktiver = function() {
-    Plattform.aktiver.call(this);
+BlinkPlattform.prototype.aktiver = function() {
+    Plattform.prototype.aktiver.call(this);
     this.tickteller = this.ticktall;
 }

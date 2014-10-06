@@ -75,6 +75,7 @@ Enhet.prototype.beveg = function(retning) {
 }
 
 Enhet.prototype.hopp = function() {
+    this.plattform.fjern(this);
     this.plattform = null;
     this.momentum = this.hoppstyrke;
     this.status = "luft";
@@ -85,7 +86,10 @@ Enhet.prototype.angrip = function() {
 }
 
 Enhet.prototype.fall = function() {
+    if (!this.plattform) return;
+    this.plattform.fjern(this);
     this.flytt(0, 1);
+    this.plattform = null;
     this.status = "luft";
     this.momentum = 0;
 }

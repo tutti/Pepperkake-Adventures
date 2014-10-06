@@ -7,7 +7,7 @@
         
         //Spiller.sett_posisjon(300, 200);
         
-        setInterval(function() { Spiller.tick() }, 1000/30);
+        setInterval(function() { Spill.tick() }, 1000/30);
     })
 
 })();

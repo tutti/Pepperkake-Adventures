@@ -20,15 +20,18 @@
             "type": "vanlig",
             "x": 100,
             "y": 350,
-            "bredde": 40,
+            "bredde": 400,
             "hoyde": 20
         },
         {
-            "type": "vanlig",
+            "type": "heis",
             "x": 250,
-            "y": 250,
+            "y": 180,
             "bredde": 60,
-            "hoyde": 20
+            "hoyde": 20,
+            "dx": 0,
+            "dy": -5,
+            "ticktall": 30
         },
         {
             "type": "vanlig",
@@ -38,11 +41,12 @@
             "hoyde": 20
         },
         {
-            "type": "vanlig",
+            "type": "blink",
             "x": 400,
             "y": 150,
             "bredde": 100,
-            "hoyde": 20
+            "hoyde": 20,
+            "ticktall": 30
         },
         {
             "type": "vanlig",
@@ -50,6 +54,23 @@
             "y": 50,
             "bredde": 100,
             "hoyde": 20
+        },
+        {
+            "type": "vanlig",
+            "x": 6000,
+            "y": 550,
+            "bredde": 100,
+            "hoyde": 20
+        },
+        {
+            "type": "heis",
+            "x": 200,
+            "y": 420,
+            "bredde": 100,
+            "hoyde": 20,
+            "dx": 10,
+            "dy": 0,
+            "ticktall": 580
         }
     ],
     "spiller": [300, 450]
