@@ -42,17 +42,23 @@ Enhet.prototype.tick = function() {
     }
 }
 
-Enhet.prototype.sett_posisjon = function(x, y) {
+Enhet.prototype.sett_posisjon = function(x, y, oppdater) {
     this.x = x;
     this.y = y;
-    var elmt = this.hent_element();
-    elmt.css('left', x);
-    elmt.css('top', y);
+    if (oppdater || oppdater === undefined) {
+        this.oppdater();
+    }
 }
 
-Enhet.prototype.flytt = function(x, y) {
+Enhet.prototype.flytt = function(x, y, oppdater) {
     this.x += x;
     this.y += y;
+    if (oppdater || oppdater === undefined) {
+        this.oppdater();
+    }
+}
+
+Enhet.prototype.oppdater = function() {
     var elmt = this.hent_element();
     elmt.css('left', this.x);
     elmt.css('top', this.y);

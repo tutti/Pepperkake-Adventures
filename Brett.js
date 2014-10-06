@@ -37,3 +37,15 @@ Brett.prototype.last_ut = function() {
         this.plattformer[p_id].deaktiver();
     }
 }
+
+Brett.prototype.land = function(x1, y1, x2, y2) {
+    // Sjekker om en enhet som går fra (x1, y1) til (x2, y2)
+    // lander på en plattform og returnerer plattformen.
+    // Returnerer null hvis ingen plattform.
+    for (p_id in this.plattformer) {
+        if (this.plattformer[p_id].lander(x1, y1, x2, y2)) {
+            return this.plattformer[p_id];
+        }
+    }
+    return null;
+}
