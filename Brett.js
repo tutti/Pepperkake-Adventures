@@ -20,6 +20,9 @@ Brett = function(data) {
         
         this.plattformer.push(plattform);
     }
+    
+    this.x = data.spiller[0];
+    this.y = data.spiller[1];
 }
 
 Brett.prototype.vis_bakgrunn = function() {
@@ -30,6 +33,9 @@ Brett.prototype.last = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].aktiver();
     }
+    Spiller.sett_posisjon(this.x, this.y);
+    Spiller.status = "luft";
+    this.vis_bakgrunn();
 }
 
 Brett.prototype.last_ut = function() {

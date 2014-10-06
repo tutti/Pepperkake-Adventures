@@ -42,9 +42,9 @@ Enhet.prototype.tick = function() {
     }
 }
 
-Enhet.prototype.sett_posisjon = function(x, y, oppdater) {
-    this.x = x;
-    this.y = y;
+Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {
+    this.x = punkt_x - (this.bredde / 2);
+    this.y = punkt_y - this.hoyde;
     if (oppdater || oppdater === undefined) {
         this.oppdater();
     }
