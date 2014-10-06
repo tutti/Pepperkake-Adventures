@@ -67,7 +67,6 @@ Plattform.prototype.lander = function(x1, y1, x2, y2) {
     // sjekket punktet der linjene krysser).
     if (!this.vises) return false;
     if (y1 > this.y || y2 < this.y) {
-        if (this.type == "heis") console.log(y1 + " " + y2 + " " + this.y);
         return false;
     }
     if (x2 < this.x || x2 > this.x+this.bredde) {

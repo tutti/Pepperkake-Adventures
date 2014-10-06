@@ -88,8 +88,8 @@ Enhet.prototype.angrip = function() {
 Enhet.prototype.fall = function() {
     if (!this.plattform) return;
     this.plattform.fjern(this);
-    this.flytt(0, 1);
     this.plattform = null;
+    this.flytt(0, 1);
     this.status = "luft";
     this.momentum = 0;
 }
