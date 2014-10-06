@@ -1,7 +1,9 @@
 Enhet = function(bilde) {
     this.type = "enhet";
+    this.bilder = {};
     
-    this.bilde = bilde;
+    this.bilde = "";
+    
     this.x = 0;
     this.y = 0;
     this.bredde = 0;
@@ -14,6 +16,10 @@ Enhet = function(bilde) {
     this.status = "normal";
     this.plattform = null;
     this.kontroll = null;
+    
+    if (bilde) {
+        this.sett_bilde("", bilde);
+    }
 }
 
 Enhet.prototype.hent_element = function() {
@@ -92,4 +98,20 @@ Enhet.prototype.fall = function() {
     this.flytt(0, 1);
     this.status = "luft";
     this.momentum = 0;
+}
+
+Enhet.prototype.sett_bilde = function(navn, bilde) {
+    this.bilder[navn] = bilde;
+}
+
+Enhet.prototype.velg_bilde = function(navn) {
+    if (this.bilder[navn]) {
+        var bilde = this.bilder[navn];
+    } else if (this.bilder[""]) {
+        var bilde = this.bilder[""];
+    } else return;
+    if (bilde == this.bilde) return;
+    this.bilde = bilde;
+    var elmt = this.hent_element();
+    elmt.prop("src", bilde);
 }

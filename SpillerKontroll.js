@@ -8,10 +8,13 @@ SpillerKontroll.prototype.constructor = SpillerKontroll
 SpillerKontroll.prototype.styr = function(enhet) {
     // 37 venstre, 39 høyre, 38 opp, 32 space
     if (this.er_tast(37)) {
+        enhet.velg_bilde("venstre");
         enhet.beveg(-1);
     } else if (this.er_tast(39)) {
+        enhet.velg_bilde("høyre");
         enhet.beveg(1);
     } else {
+        enhet.velg_bilde("stopp");
         enhet.beveg(0);
     }
     

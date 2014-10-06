@@ -20,7 +20,7 @@
             "type": "vanlig",
             "x": 100,
             "y": 350,
-            "bredde": 400,
+            "bredde": 40,
             "hoyde": 20
         },
         {
@@ -46,7 +46,7 @@
             "y": 150,
             "bredde": 100,
             "hoyde": 20,
-            "ticktall": 30
+            "ticktall": 15
         },
         {
             "type": "vanlig",
@@ -57,8 +57,8 @@
         },
         {
             "type": "vanlig",
-            "x": 6000,
-            "y": 550,
+            "x": 2000,
+            "y": 450,
             "bredde": 100,
             "hoyde": 20
         },
@@ -68,9 +68,9 @@
             "y": 420,
             "bredde": 100,
             "hoyde": 20,
-            "dx": 10,
+            "dx": 20,
             "dy": 0,
-            "ticktall": 580
+            "ticktall": 180
         }
     ],
     "spiller": [300, 450]

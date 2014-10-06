@@ -1,5 +1,9 @@
 Spiller = new Enhet("bilder/spiller.png");
 
+Spiller.sett_bilde("stopp", "bilder/spiller.png");
+Spiller.sett_bilde("venstre", "bilder/spiller-v.gif");
+Spiller.sett_bilde("høyre", "bilder/spiller-h.gif");
+
 Spiller.hastighet = 12;
 Spiller.hoppstyrke = 20;
 Spiller.status = "normal";
