@@ -35,6 +35,8 @@ Spiller.tick = function() {
     else if (this.kontroll) {
         this.kontroll.styr(this);
     }
+    
+    $("#spillvindu").scrollLeft(this.punkt_x() - 400);
 }
 
 Spiller.beveg = function(retning) {
