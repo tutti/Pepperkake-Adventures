@@ -35,7 +35,6 @@ Spiller.tick = function() {
     else if (this.kontroll) {
         this.kontroll.styr(this);
     }
-    
 }
 
 Spiller.beveg = function(retning) {

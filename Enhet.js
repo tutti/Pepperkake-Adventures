@@ -83,3 +83,9 @@ Enhet.prototype.hopp = function() {
 Enhet.prototype.angrip = function() {
     this.status = "angrep";
 }
+
+Enhet.prototype.fall = function() {
+    this.flytt(0, 1);
+    this.status = "luft";
+    this.momentum = 0;
+}

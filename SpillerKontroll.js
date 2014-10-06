@@ -17,6 +17,8 @@ SpillerKontroll.prototype.styr = function(enhet) {
     
     if (this.er_tast(38)) {
         enhet.hopp();
+    } else if (this.er_tast(40)) {
+        enhet.fall();
     } else if (this.er_tast(32)) {
         enhet.angrip();
     }
