@@ -1,6 +1,6 @@
 {
     "navn": "Testbrett",
-    "bakgrunn": "bilder/bakgrunn2.jpg",
+    "bakgrunn": "bilder/bakgrunn.jpg",
     "plattformer": [
         {
             "type": "vanlig",
