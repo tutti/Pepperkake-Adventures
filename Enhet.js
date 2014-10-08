@@ -96,7 +96,7 @@ Enhet.prototype.sett_retning = function(retning) {
 Enhet.prototype.beveg = function(retning) {
     // retning er enten 1, 0 eller -1 (høyre, stillestående eller venstre)
     this.sett_retning(retning);
-    this.flytt(retning * (this.hastighet + this.momentum_x), 0)
+    this.flytt(retning * this.hastighet, 0)
     if (!this.plattform) {
         this.momentum = 0;
         this.status = "luft";
