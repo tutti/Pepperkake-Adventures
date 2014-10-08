@@ -1,5 +1,5 @@
-BlinkPlattform = function(x, y, bredde, hoyde, ticktall) {
-    Plattform.call(this, x, y, bredde, hoyde);
+BlinkPlattform = function(bilde, x, y, bredde, hoyde, ticktall) {
+    Plattform.call(this, bilde, x, y, bredde, hoyde);
     
     this.type = "blink";
     
@@ -26,5 +26,6 @@ BlinkPlattform.prototype.tick = function() {
 
 BlinkPlattform.prototype.aktiver = function() {
     Plattform.prototype.aktiver.call(this);
+    this.vis();
     this.tickteller = this.ticktall;
 }

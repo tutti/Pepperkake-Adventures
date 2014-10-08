@@ -15,6 +15,7 @@ Gelebolle.prototype = Object.create(Enhet.prototype);
 Gelebolle.prototype.constructor = Gelebolle
 
 Gelebolle.prototype.tick = function() {
+    if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
     Spill.brett.skadSpiller(this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning);
 }
@@ -24,5 +25,5 @@ Gelebolle.prototype.hopp = function() {
 }
 
 Gelebolle.prototype.angrip = function() {
-    // TODO: Angrep
+    // Gjør ingenting - gelebøller skader ved å røre borti, men kan ikke angripe
 }

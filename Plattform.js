@@ -1,14 +1,15 @@
-Plattform = function(x, y, bredde, hoyde) {
+Plattform = function(bilde, x, y, bredde, hoyde) {
     this.type = "vanlig";
     this.x = x;
     this.y = y;
     this.bredde = bredde;
     this.hoyde = hoyde;
     this.vises = true; // Plattformer som ikke vises, kan ikke stås på
-    this.bilde = "bilder/Midlertidig/Platfom1.png";
+    this.bilde = bilde;
     this.enheter = [];
     
     this.aktiv = false;
+    //this.skjul();
 }
 
 Plattform.prototype.hent_element = function() {

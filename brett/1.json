@@ -4,8 +4,9 @@
     "plattformer": [
         {
             "templat": true,
-            "type": "vanlig",
             "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/Midlertidig/Platfom1.png",
             "bredde": 100,
             "hoyde": 20
         },

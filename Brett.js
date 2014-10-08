@@ -25,14 +25,14 @@ Brett = function(data) {
             }
             switch (p.type) {
                 case "blink":
-                    var plattform = new BlinkPlattform(p.x, p.y, p.bredde, p.hoyde, p.ticktall);
+                    var plattform = new BlinkPlattform(p.bilde, p.x, p.y, p.bredde, p.hoyde, p.ticktall);
                     break;
                 case "heis":
-                    var plattform = new HeisPlattform(p.x, p.y, p.bredde, p.hoyde, p.dx, p.dy, p.ticktall);
+                    var plattform = new HeisPlattform(p.bilde, p.x, p.y, p.bredde, p.hoyde, p.dx, p.dy, p.ticktall);
                     break;
                 case "vanlig":
                 default:
-                    var plattform = new Plattform(p.x, p.y, p.bredde, p.hoyde);
+                    var plattform = new Plattform(p.bilde, p.x, p.y, p.bredde, p.hoyde);
                     break;
             }
             
@@ -65,7 +65,6 @@ Brett = function(data) {
             }
             
             fiende.sett_posisjon(f.x, f.y);
-            
             this.fiender.push(fiende);
         }
     }
@@ -84,6 +83,7 @@ Brett.prototype.last = function() {
     }
     Spill.spiller.sett_posisjon(this.x, this.y);
     Spill.spiller.status = "luft";
+    Spill.spiller.aktiver();
     this.vis_bakgrunn();
 }
 
@@ -91,6 +91,8 @@ Brett.prototype.last_ut = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].deaktiver();
     }
+    Spill.spiller.deaktiver();
+    $("#spillvindu").css('background', '');
 }
 
 Brett.prototype.land = function(x1, y1, x2, y2) {
@@ -105,15 +107,20 @@ Brett.prototype.land = function(x1, y1, x2, y2) {
     return null;
 }
 
-Brett.prototype.skadFiender = function(x1, y1, x2, y2, kraft, retning) {
+Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Skader alt som overlapper en firkant gitt av de fire koordinatene
-    // Kraft er valgfritt, default 1.
+    // Skade er valgfritt, default 1.
     // Retning (horisontalt) er også valgfritt. Dersom den er oppgitt, brukes den som den er;
     // hvis ikke regnes retningen ut fra midten av angrepet og enheten.
+    // Kraft er også valgfritt, med en default 1. Dette er en multiplikator for hvor langt
+    // fienden skal slås.
     // MERK: Foreløpig kode setter retning til 0 hvis den ikke blir oppgitt.
     if (x1 < x2 || y1 < y2) {
         console.error("skadFiender: Dårlige koordinater");
         return;
+    }
+    if (!skade && skade != 0) {
+        skade = 1;
     }
     if (!kraft && kraft != 0) {
         kraft = 1;
@@ -124,22 +131,25 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, kraft, retning) {
     for (f_id in this.fiender) {
         var f = this.fiender[f_id];
         if (f.x <= x2 && f.x+f.bredde >= x1 && f.y <= y2 && f.y+f.hoyde >= y1) {
-            f.skade(kraft, retning);
+            f.skade(skade, retning, kraft);
         }
     }
 }
 
-Brett.prototype.skadSpiller = function(x1, y1, x2, y2, kraft, retning) {
+Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Skader spilleren hvis den overlapper den gitte posisjonen
     var p = Spill.spiller;
     if (p.x <= x2 && p.x+p.bredde >= x1 && p.y <= y2 && p.y+p.hoyde >= y1) {
+        if (!skade && skade != 0) {
+            skade = 1;
+        }
         if (!kraft && kraft != 0) {
             kraft = 1;
         }
         if (!retning && retning != 0) {
             retning = 0;
         }
-        p.skade(kraft, retning);
+        p.skade(skade, retning, Math.sqrt(kraft));
     }
 }
 

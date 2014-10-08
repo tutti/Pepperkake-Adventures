@@ -20,6 +20,7 @@ Enhet = function(bilde) {
     this.status = "normal";
     this.plattform = null;
     this.kontroll = null;
+    this.aktiv = false;
     
     if (bilde) {
         this.sett_bilde("", bilde);
@@ -50,6 +51,7 @@ Enhet.prototype.punkt_x = function() { return this.x + (this.bredde / 2) }
 Enhet.prototype.punkt_y = function() { return this.y + this.hoyde }
 
 Enhet.prototype.tick = function() {
+    if (!this.aktiv) return;
     if (this.status == "luft") {
         var x1 = this.punkt_x();
         var y1 = this.punkt_y();
@@ -68,6 +70,28 @@ Enhet.prototype.tick = function() {
     else if (this.kontroll) {
         this.kontroll.styr(this);
     }
+}
+
+Enhet.prototype.vis = function() {
+    var elmt = this.hent_element();
+    elmt.show();
+    this.vises = true;
+}
+
+Enhet.prototype.skjul = function() {
+    var elmt = this.hent_element();
+    elmt.hide();
+    this.vises = false;
+}
+
+Enhet.prototype.aktiver = function() {
+    this.aktiv = true;
+    this.vis();
+}
+
+Enhet.prototype.deaktiver = function() {
+    this.aktiv = false;
+    this.skjul();
 }
 
 Enhet.prototype.fokus = function() {
@@ -138,7 +162,7 @@ Enhet.prototype.angrip = function() {
     this.status = "angrep";
 }
 
-Enhet.prototype.skade = function(kraft, retning) {
+Enhet.prototype.skade = function(skade, retning, kraft) {
     // Kalles når en enhet skades
     // Gir kraften i angrepet og retningen (horisontalt).
 }

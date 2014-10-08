@@ -39,9 +39,10 @@ Spiller.prototype.angrip = function() {
     // TODO: Implementer
 }
 
-Spiller.prototype.skade = function(kraft, retning) {
+Spiller.prototype.skade = function(skade, retning, kraft) {
+    this.fall();
     this.retning = 0;
-    this.momentum = this.hoppstyrke / 1.5;
-    this.momentum_x = retning * 10;
+    this.momentum = (this.hoppstyrke * kraft) / 1.5;
+    this.momentum_x = retning * kraft * 10;
     this.status = "luft";
 }

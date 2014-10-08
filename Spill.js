@@ -8,10 +8,12 @@ Spill = {
 
 // Last inn data om brettene
 brett = [];
-for (b_id in brettdata) {
-    var data = JSON.parse(atob(brettdata[b_id]));
-    brett[b_id] = new Brett(data);
-}
+$(document).ready(function() {
+    for (b_id in brettdata) {
+        var data = JSON.parse(atob(brettdata[b_id]));
+        brett[b_id] = new Brett(data);
+    }
+})
 
 Spill.last_brett = function(brett_id) {
     this.brett = brett[brett_id];

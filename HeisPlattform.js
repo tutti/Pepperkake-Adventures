@@ -1,9 +1,12 @@
-HeisPlattform = function(x, y, bredde, hoyde, dx, dy, ticktall) {
-    Plattform.call(this, x, y, bredde, hoyde);
+HeisPlattform = function(bilde, x, y, bredde, hoyde, dx, dy, ticktall) {
+    Plattform.call(this, bilde, x, y, bredde, hoyde);
     
     this.ticktall = ticktall;
     this.tickteller = this.ticktall;
     this.retning = 1;
+    
+    this.original_x = x;
+    this.original_y = y;
     
     this.dx = dx;
     this.dy = dy;
@@ -31,4 +34,12 @@ HeisPlattform.prototype.tick = function() {
             this.tickteller = this.ticktall;
         }
     }
+}
+
+HeisPlattform.prototype.aktiver = function() {
+    Plattform.prototype.aktiver.call(this);
+    this.x = this.original_x;
+    this.y = this.original_y;
+    this.retning = 1;
+    this.tickteller = this.ticktall;
 }
