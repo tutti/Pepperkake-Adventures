@@ -1,6 +1,4 @@
 (function() {
-    
-    
 
     $(document).ready(function() {
         Spill.last_brett(0);

@@ -1,77 +1,89 @@
 {
     "navn": "Testbrett",
-    "bakgrunn": "bilder/bakgrunn.jpg",
+    "bakgrunn": "bilder/bakgrunn3.jpg",
     "plattformer": [
         {
+            "templat": true,
             "type": "vanlig",
+            "navn": "standard",
+            "bredde": 100,
+            "hoyde": 20
+        },
+        {
+            "arv": "standard",
             "x": 100,
             "y": 550,
-            "bredde": 800,
-            "hoyde": 20
+            "bredde": 800
         },
         {
-            "type": "vanlig",
+            "arv": "standard",
             "x": 300,
             "y": 450,
-            "bredde": 400,
-            "hoyde": 20
+            "bredde": 400
         },
         {
-            "type": "vanlig",
+            "arv": "standard",
             "x": 100,
-            "y": 350,
-            "bredde": 120,
-            "hoyde": 20
+            "y": 350
         },
         {
+            "arv": "standard",
             "type": "heis",
             "x": 250,
             "y": 180,
             "bredde": 60,
-            "hoyde": 20,
             "dx": 0,
             "dy": -5,
             "ticktall": 30
         },
         {
-            "type": "vanlig",
+            "arv": "standard",
             "x": 100,
-            "y": 150,
-            "bredde": 100,
-            "hoyde": 20
+            "y": 150
         },
         {
+            "arv": "standard",
             "type": "blink",
             "x": 350,
             "y": 150,
-            "bredde": 100,
-            "hoyde": 20,
             "ticktall": 15
         },
         {
-            "type": "vanlig",
+            "arv": "standard",
             "x": 500,
-            "y": 50,
-            "bredde": 100,
-            "hoyde": 20
+            "y": 50
         },
         {
-            "type": "vanlig",
+            "arv": "standard",
             "x": 2000,
-            "y": 450,
-            "bredde": 100,
-            "hoyde": 20
+            "y": 450
         },
         {
+            "arv": "standard",
             "type": "heis",
             "x": 200,
             "y": 420,
-            "bredde": 100,
-            "hoyde": 20,
             "dx": 10,
             "dy": 0,
             "ticktall": 180
         }
     ],
-    "spiller": [300, 450]
+    "fiender": [
+        {
+            "templat": true,
+            "navn": "gelebølle",
+            "type": "gelebølle"
+        },
+        {
+            "arv": "gelebølle",
+            "x": 2020,
+            "y": 440
+        },
+        {
+            "arv": "gelebølle",
+            "x": 100,
+            "y": 550
+        }
+    ],
+    "spiller": [400, 450]
 }

@@ -5,7 +5,7 @@ Plattform = function(x, y, bredde, hoyde) {
     this.bredde = bredde;
     this.hoyde = hoyde;
     this.vises = true; // Plattformer som ikke vises, kan ikke stås på
-    this.bilde = "bilder/plattform.png";
+    this.bilde = "bilder/Midlertidig/Platfom1.png";
     this.enheter = [];
     
     this.aktiv = false;
@@ -16,7 +16,9 @@ Plattform.prototype.hent_element = function() {
     // Ellers lages et nytt som returneres.
     // Elementet skal uansett være et jQuery-objekt.
     if (this.element === undefined) {
-        this.element = $('<img class="plattform plattform-' + this.type + '" src="' + this.bilde + '" />');
+        //this.element = $('<img class="plattform plattform-' + this.type + '" src="' + this.bilde + '" />');
+        this.element = $('<div class="plattform plattform-' + this.type + '">');
+        this.element.css('background', 'url("' + this.bilde + '")');
         this.element.width(this.bredde);
         this.element.height(this.hoyde);
         this.element.css('left', this.x);
@@ -29,7 +31,7 @@ Plattform.prototype.hent_element = function() {
 Plattform.prototype.sett_bilde = function(bilde) {
     this.bilde = bilde;
     var elmt = this.hent_element();
-    elmt.attr('src', bilde);
+    elmt.css('background', 'url("' + bilde + '")');
 }
 
 Plattform.prototype.vis = function() {

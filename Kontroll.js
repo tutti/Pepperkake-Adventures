@@ -8,7 +8,7 @@ Kontroll.prototype.styr = function(enhet) {
 
 // Koden som kontrollerer tastestyring
 
-taster = {
+var taster = {
     
 }
 
@@ -30,4 +30,16 @@ $(document).ready(function() {
 Kontroll.prototype.er_tast = function(tast) {
     if (taster[tast]) return true;
     return false;
+}
+
+var kontroller = {
+    
+}
+
+Kontroll.sett = function(navn, kontroll) {
+    kontroller[navn] = kontroll;
+}
+
+Kontroll.hent = function(navn) {
+    return kontroller[navn];
 }

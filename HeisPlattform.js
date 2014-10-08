@@ -21,7 +21,6 @@ HeisPlattform.prototype.tick = function() {
         var elmt = this.hent_element();
         elmt.css('left', this.x).css('top', this.y);
         for (e_id in this.enheter) {
-            console.log(this.enheter, e_id);
             this.enheter[e_id].flytt(this.dx * this.retning, -this.dy * this.retning);
             this.enheter[e_id].momentum = this.dy * this.retning;
             this.enheter[e_id].momentum_x = this.dx * this.retning;

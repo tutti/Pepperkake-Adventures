@@ -1,7 +1,10 @@
 Spill = {
     gravitasjon: 2,
-    brett: null
+    brett: null,
+    spiller: new Spiller()
 }
+
+//Spill.spiller.sett_kontroll(Kontroll.hent("spiller"));
 
 // Last inn data om brettene
 brett = [];
@@ -16,9 +19,9 @@ Spill.last_brett = function(brett_id) {
 }
 
 Spill.tick = function() {
-    Spiller.tick();
+    this.spiller.tick();
     if (this.brett) {
         this.brett.tick();
     }
-    Spiller.fokus();
+    this.spiller.fokus();
 }

@@ -1,18 +1,40 @@
-Spiller = new Enhet("bilder/spiller.png");
+//Spiller = new Enhet("bilder/spiller.png");
 
-Spiller.sett_bilde("stopp", "bilder/spiller.png");
-Spiller.sett_bilde("venstre", "bilder/spiller-v.gif");
-Spiller.sett_bilde("høyre", "bilder/spiller-h.gif");
+Spiller = function() {
+    Enhet.call(this, "bilder/spiller.png");
+    
+    this.sett_bilde("stopp", "bilder/spiller.png");
+    this.sett_bilde("venstre", "bilder/spiller-v.gif");
+    this.sett_bilde("høyre", "bilder/spiller-h.gif");
+    
+    this.hastighet = 8;
+    this.hoppstyrke = 20;
+    this.status = "normal";
+    this.type = "spiller";
+    this.bredde = 32;
+    this.hoyde = 32;
+    
+    this.sett_kontroll(Kontroll.hent("spiller"));
+}
 
-Spiller.hastighet = 8;
-Spiller.hoppstyrke = 20;
-Spiller.status = "normal";
-Spiller.type = "spiller";
-Spiller.bredde = 32;
-Spiller.hoyde = 32;
+Spiller.prototype = Object.create(Enhet.prototype);
+Spiller.prototype.constructor = Spiller
 
-Spiller.sett_kontroll(new SpillerKontroll());
+Spiller.prototype.sett_retning = function(retning) {
+    Enhet.prototype.sett_retning.call(this, retning);
+    switch (retning) {
+        case -1:
+            this.velg_bilde("venstre");
+            break;
+        case 1:
+            this.velg_bilde("høyre");
+            break;
+        case 0:
+            this.velg_bilde("stopp");
+            break;
+    }
+}
 
-Spiller.angrip = function() {
+Spiller.prototype.angrip = function() {
     // TODO: Implementer
 }

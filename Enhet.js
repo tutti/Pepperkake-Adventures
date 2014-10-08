@@ -1,20 +1,21 @@
 Enhet = function(bilde) {
     this.type = "enhet";
     this.bilder = {};
+    this.bilde = bilde;
     
-    this.bilde = "";
+    // Overskriv disse i alt som arver Enhet
+    this.bredde = 0;
+    this.hoyde = 0;
+    this.hastighet = 10;
+    this.hoppstyrke = 30;
     
     this.x = 0;
     this.y = 0;
     this.gamle_punkt_x = 0;
     this.gamle_punkt_y = 0;
-    this.bredde = 0;
-    this.hoyde = 0;
     this.momentum = 0; // Momentum oppover
     this.momentum_x = 0;
     this.retning = 0;
-    this.hastighet = 10;
-    this.hoppstyrke = 30;
     
     this.status = "normal";
     this.plattform = null;
@@ -22,6 +23,7 @@ Enhet = function(bilde) {
     
     if (bilde) {
         this.sett_bilde("", bilde);
+        //this.velg_bilde("");
     }
 }
 
@@ -36,7 +38,6 @@ Enhet.prototype.hent_element = function() {
         this.element.css('left', this.x);
         this.element.css('top', this.y);
         $("#spillvindu").append(this.element);
-        //this.element.hide();
     }
     return this.element;
 }
@@ -79,9 +80,9 @@ Enhet.prototype.fokus = function() {
 Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {
     this.x = punkt_x - (this.bredde / 2);
     this.y = punkt_y - this.hoyde;
-    if (oppdater || oppdater === undefined) {
-        this.oppdater();
-    }
+    //if (oppdater || oppdater === undefined) {
+    //    this.oppdater();
+    //}
 }
 
 Enhet.prototype.flytt = function(x, y, oppdater) {
@@ -104,6 +105,9 @@ Enhet.prototype.sett_retning = function(retning) {
 }
 
 Enhet.prototype.beveg = function(retning) {
+    if (!retning && retning != 0) {
+        retning = this.retning;
+    }
     // retning er enten 1, 0 eller -1 (høyre, stillestående eller venstre)
     this.sett_retning(retning);
     this.flytt(retning * this.hastighet, 0)
@@ -144,6 +148,7 @@ Enhet.prototype.fall = function() {
 
 Enhet.prototype.land = function() {
     // HVIS en plattform kan landes på, lander enheten
+    if (this.gamle_punkt_x == 0 && this.gamle_punkt_y == 0) return;
     var x = this.punkt_x();
     var y = this.punkt_y();
     var plattform = Spill.brett.land(this.gamle_punkt_x, this.gamle_punkt_y, x, y);
