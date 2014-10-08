@@ -14,6 +14,11 @@ Gelebolle = function() {
 Gelebolle.prototype = Object.create(Enhet.prototype);
 Gelebolle.prototype.constructor = Gelebolle
 
+Gelebolle.prototype.tick = function() {
+    Enhet.prototype.tick.call(this);
+    Spill.brett.skadSpiller(this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning);
+}
+
 Gelebolle.prototype.hopp = function() {
     // Gjør ingenting - gelebøller kan ikke hoppe
 }

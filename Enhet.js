@@ -133,7 +133,14 @@ Enhet.prototype.hopp = function() {
 }
 
 Enhet.prototype.angrip = function() {
+    // Dette er den funksjonen som starter et angrep.
+    // Utførelsen av angrepet og skade gjort gjøres i tick.
     this.status = "angrep";
+}
+
+Enhet.prototype.skade = function(kraft, retning) {
+    // Kalles når en enhet skades
+    // Gir kraften i angrepet og retningen (horisontalt).
 }
 
 Enhet.prototype.fall = function() {

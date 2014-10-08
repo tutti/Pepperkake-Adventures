@@ -105,6 +105,44 @@ Brett.prototype.land = function(x1, y1, x2, y2) {
     return null;
 }
 
+Brett.prototype.skadFiender = function(x1, y1, x2, y2, kraft, retning) {
+    // Skader alt som overlapper en firkant gitt av de fire koordinatene
+    // Kraft er valgfritt, default 1.
+    // Retning (horisontalt) er også valgfritt. Dersom den er oppgitt, brukes den som den er;
+    // hvis ikke regnes retningen ut fra midten av angrepet og enheten.
+    // MERK: Foreløpig kode setter retning til 0 hvis den ikke blir oppgitt.
+    if (x1 < x2 || y1 < y2) {
+        console.error("skadFiender: Dårlige koordinater");
+        return;
+    }
+    if (!kraft && kraft != 0) {
+        kraft = 1;
+    }
+    if (!retning && retning != 0) {
+        retning = 0;
+    }
+    for (f_id in this.fiender) {
+        var f = this.fiender[f_id];
+        if (f.x <= x2 && f.x+f.bredde >= x1 && f.y <= y2 && f.y+f.hoyde >= y1) {
+            f.skade(kraft, retning);
+        }
+    }
+}
+
+Brett.prototype.skadSpiller = function(x1, y1, x2, y2, kraft, retning) {
+    // Skader spilleren hvis den overlapper den gitte posisjonen
+    var p = Spill.spiller;
+    if (p.x <= x2 && p.x+p.bredde >= x1 && p.y <= y2 && p.y+p.hoyde >= y1) {
+        if (!kraft && kraft != 0) {
+            kraft = 1;
+        }
+        if (!retning && retning != 0) {
+            retning = 0;
+        }
+        p.skade(kraft, retning);
+    }
+}
+
 Brett.prototype.tick = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].tick();

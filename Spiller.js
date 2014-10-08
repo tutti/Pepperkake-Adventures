@@ -38,3 +38,10 @@ Spiller.prototype.sett_retning = function(retning) {
 Spiller.prototype.angrip = function() {
     // TODO: Implementer
 }
+
+Spiller.prototype.skade = function(kraft, retning) {
+    this.retning = 0;
+    this.momentum = this.hoppstyrke / 1.5;
+    this.momentum_x = retning * 10;
+    this.status = "luft";
+}
