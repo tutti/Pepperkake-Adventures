@@ -6,9 +6,12 @@ Enhet = function(bilde) {
     
     this.x = 0;
     this.y = 0;
+    this.gamle_punkt_x = 0;
+    this.gamle_punkt_y = 0;
     this.bredde = 0;
     this.hoyde = 0;
-    this.momentum = 0;
+    this.momentum = 0; // Momentum oppover
+    this.momentum_x = 0;
     this.retning = 0;
     this.hastighet = 10;
     this.hoppstyrke = 30;
@@ -43,7 +46,22 @@ Enhet.prototype.sett_kontroll = function(kontroll) {
 }
 
 Enhet.prototype.tick = function() {
-    if (this.kontroll) {
+    if (this.status == "luft") {
+        var x1 = this.punkt_x();
+        var y1 = this.punkt_y();
+        this.flytt(this.retning * this.hastighet + this.momentum_x, -this.momentum, false);
+        this.momentum -= Spill.gravitasjon;
+        if (this.momentum <= 0) {
+            this.land();
+        }
+        this.gamle_punkt_x = x1;
+        this.gamle_punkt_y = y1;
+        this.oppdater();
+    }
+    else if (this.status == "angrep") {
+        // TODO: Angrip
+    }
+    else if (this.kontroll) {
         this.kontroll.styr(this);
     }
 }
@@ -78,13 +96,26 @@ Enhet.prototype.sett_retning = function(retning) {
 Enhet.prototype.beveg = function(retning) {
     // retning er enten 1, 0 eller -1 (høyre, stillestående eller venstre)
     this.sett_retning(retning);
+    this.flytt(retning * (this.hastighet + this.momentum_x), 0)
+    if (!this.plattform) {
+        this.momentum = 0;
+        this.status = "luft";
+    }
+    else if (!this.plattform.er_pa(this.punkt_x())) {
+        this.plattform.fjern(this);
+        this.plattform = null;
+        this.momentum = 0;
+        this.status = "luft";
+    }
 }
 
 Enhet.prototype.hopp = function() {
-    this.plattform.fjern(this);
-    this.plattform = null;
-    this.momentum = this.hoppstyrke;
-    this.status = "luft";
+    if (this.plattform) {
+        this.plattform.fjern(this);
+        this.plattform = null;
+        this.momentum += this.hoppstyrke;
+        this.status = "luft";
+    }
 }
 
 Enhet.prototype.angrip = function() {
@@ -98,6 +129,22 @@ Enhet.prototype.fall = function() {
     this.flytt(0, 1);
     this.status = "luft";
     this.momentum = 0;
+    this.momentum_x = 0;
+}
+
+Enhet.prototype.land = function() {
+    // HVIS en plattform kan landes på, lander enheten
+    var x = this.punkt_x();
+    var y = this.punkt_y();
+    var plattform = Spill.brett.land(this.gamle_punkt_x, this.gamle_punkt_y, x, y);
+        if (plattform) {
+            this.plattform = plattform;
+            plattform.legg_til(this);
+            this.status = "normal";
+            this.y = this.plattform.y - this.hoyde;
+            this.momentum = 0;
+            this.momentum_x = 0;
+        }
 }
 
 Enhet.prototype.sett_bilde = function(navn, bilde) {
