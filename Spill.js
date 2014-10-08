@@ -20,4 +20,5 @@ Spill.tick = function() {
     if (this.brett) {
         this.brett.tick();
     }
+    Spiller.fokus();
 }

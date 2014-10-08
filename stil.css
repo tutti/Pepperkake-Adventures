@@ -4,6 +4,7 @@
     height: 600px;
     overflow: hidden;
     position: relative;
+    margin: auto;
 }
 
 .plattform {

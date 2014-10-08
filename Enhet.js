@@ -45,6 +45,9 @@ Enhet.prototype.sett_kontroll = function(kontroll) {
     this.kontroll = kontroll;
 }
 
+Enhet.prototype.punkt_x = function() { return this.x + (this.bredde / 2) }
+Enhet.prototype.punkt_y = function() { return this.y + this.hoyde }
+
 Enhet.prototype.tick = function() {
     if (this.status == "luft") {
         var x1 = this.punkt_x();
@@ -63,6 +66,13 @@ Enhet.prototype.tick = function() {
     }
     else if (this.kontroll) {
         this.kontroll.styr(this);
+    }
+}
+
+Enhet.prototype.fokus = function() {
+    $("#spillvindu").scrollLeft(this.punkt_x() - 400);
+    if (this.punkt_x() > 400 && this.punkt_x() < $("#spillvindu")[0].scrollWidth - 400) {
+        $("#spillvindu").css('background-position', -(this.punkt_x()-400)/5);
     }
 }
 

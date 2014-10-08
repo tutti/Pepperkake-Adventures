@@ -20,7 +20,7 @@
             "type": "vanlig",
             "x": 100,
             "y": 350,
-            "bredde": 40,
+            "bredde": 120,
             "hoyde": 20
         },
         {
@@ -42,7 +42,7 @@
         },
         {
             "type": "blink",
-            "x": 400,
+            "x": 350,
             "y": 150,
             "bredde": 100,
             "hoyde": 20,
@@ -50,7 +50,7 @@
         },
         {
             "type": "vanlig",
-            "x": 600,
+            "x": 500,
             "y": 50,
             "bredde": 100,
             "hoyde": 20
