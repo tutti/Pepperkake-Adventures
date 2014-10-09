@@ -12,9 +12,9 @@
         },
         {
             "arv": "standard",
+            "bredde": 800,
             "x": 100,
-            "y": 550,
-            "bredde": 800
+            "y": 550
         },
         {
             "arv": "standard",
@@ -56,8 +56,12 @@
         },
         {
             "arv": "standard",
+            "type": "heis",
             "x": 2000,
-            "y": 450
+            "y": 450,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 30
         },
         {
             "arv": "standard",
@@ -72,14 +76,9 @@
     "fiender": [
         {
             "type": "gelebølle",
-            "x": 2020,
-            "y": 440
-        },
-        {
-            "type": "gelebølle",
-            "x": 100,
+            "x": 300,
             "y": 550
         }
     ],
-    "spiller": [400, 450]
+    "spiller": [550, 450]
 }

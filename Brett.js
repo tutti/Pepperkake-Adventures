@@ -69,7 +69,6 @@ Brett = function(data) {
                     break;
             }
             
-            //fiende.sett_posisjon(f.x, f.y);
             this.fiender.push(fiende);
         }
     }
@@ -91,6 +90,7 @@ Brett.prototype.last = function() {
     }
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();
+    Spill.spiller.fokus();
     Spill.spiller.sett_posisjon(this.x, this.y);
     this.vis_bakgrunn();
 }
@@ -126,8 +126,8 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Kraft er også valgfritt, med en default 1. Dette er en multiplikator for hvor langt
     // fienden skal slås.
     // MERK: Foreløpig kode setter retning til 0 hvis den ikke blir oppgitt.
-    if (x1 < x2 || y1 < y2) {
-        console.error("skadFiender: Dårlige koordinater");
+    if (x2 < x1 || y2 < y1) {
+        console.error("skadFiender: Dårlige koordinater", x1, y1, x2, y2);
         return;
     }
     if (!skade && skade != 0) {
@@ -149,6 +149,10 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
 
 Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Skader spilleren hvis den overlapper den gitte posisjonen
+    if (x2 < x1 || y2 < y1) {
+        console.error("skadSpiller: Dårlige koordinater", x1, y1, x2, y2);
+        return;
+    }
     var p = Spill.spiller;
     if (p.x <= x2 && p.x+p.bredde >= x1 && p.y <= y2 && p.y+p.hoyde >= y1) {
         if (!skade && skade != 0) {

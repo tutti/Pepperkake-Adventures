@@ -14,6 +14,7 @@ Spiller = function() {
     this.bredde = 32;
     this.hoyde = 32;
     this.maxhp = 3;
+    this.original_retning = 0;
     
     this.sett_kontroll(Kontroll.hent("spiller"));
 }
@@ -36,8 +37,32 @@ Spiller.prototype.sett_retning = function(retning) {
     }
 }
 
-Spiller.prototype.angrip = function() {
-    // TODO: Implementer
+Spiller.prototype.tick = function() {
+    Enhet.prototype.tick.call(this);
+    if (this.status == "luft") {
+        this.kontroll.styr(this);
+    }
+}
+
+//Spiller.prototype.angrip = function() {
+//    Enhet.prototype.angrip.call(this);
+//}
+
+Spiller.prototype.angrep_tick = function() {
+    Enhet.prototype.angrep_tick.call(this);
+    switch (this.retning) {
+        case -1:
+            Spill.brett.skadFiender(this.x - this.bredde, this.y, this.x, this.y + this.hoyde, 1, -1, 1);
+            break;
+        case 1:
+            Spill.brett.skadFiender(this.x + this.bredde, this.y, this.x + 2 * this.bredde, this.y + this.hoyde, 1, 1, 1);
+            break;
+        case 0:
+        default:
+            Spill.brett.skadFiender(this.x - this.bredde / 2, this.y, this.x + this.bredde / 2, this.y + this.hoyde, 1, -1, 1);
+            Spill.brett.skadFiender(this.x + this.bredde / 2, this.y, this.x + this.bredde * 1.5, this.y + this.hoyde, 1, 1, 1);
+            break;
+    }
 }
 
 Spiller.prototype.skade = function(skade, retning, kraft) {
@@ -46,9 +71,7 @@ Spiller.prototype.skade = function(skade, retning, kraft) {
     this.retning = 0;
     this.momentum = (this.hoppstyrke * kraft) / 1.5;
     this.momentum_x = retning * kraft * 10;
-    this.status = "luft";
     Enhet.prototype.skade.call(this, skade, retning, kraft);
-    console.log(this.hp);
 }
 
 Spiller.prototype.dod = function() {

@@ -18,6 +18,7 @@ Enhet = function(bilde, x, y) {
     this.gamle_punkt_y = 0;
     this.momentum = 0; // Momentum oppover
     this.momentum_x = 0;
+    this.original_retning = 1;
     this.retning = 0;
     
     this.status = "normal";
@@ -25,6 +26,8 @@ Enhet = function(bilde, x, y) {
     this.kontroll = null;
     this.aktiv = false;
     
+    this.angrep_teller = 0;
+    this.angrep = false;
     this.hp = 0;
     this.immunitet = 0;
     this.lever = false;
@@ -59,20 +62,18 @@ Enhet.prototype.punkt_y = function() { return this.y + this.hoyde }
 
 Enhet.prototype.tick = function() {
     if (!this.aktiv || !this.lever) return;
+    var elmt = this.hent_element();
     if (this.immunitet > 0) {
         --this.immunitet;
-        var elmt = this.hent_element();
-        if (this.immunitet == 0) elmt.css('opacity', 1);
-        else elmt.css('opacity', 0.5);
-    }
+        elmt.css('opacity', 0.5);
+    } else elmt.css('opacity', 1);
     if (this.punkt_y() > Spill.brett.taplinje) {
         this.dod();
     }
-    //console.log(this.type);
     if (this.status == "luft") {
         var x1 = this.punkt_x();
         var y1 = this.punkt_y();
-        this.flytt(this.retning * this.hastighet + this.momentum_x, -this.momentum, false);
+        this.flytt(this.momentum_x, -this.momentum, false);
         this.momentum -= Spill.gravitasjon;
         if (this.momentum <= 0) {
             this.land();
@@ -81,11 +82,20 @@ Enhet.prototype.tick = function() {
         this.gamle_punkt_y = y1;
         this.oppdater();
     }
-    else if (this.status == "angrep") {
-        // TODO: Angrip
-    }
-    else if (this.kontroll) {
+    else if (!this.angrep && this.kontroll) {
         this.kontroll.styr(this);
+    }
+    if (this.angrep) {
+        this.angrep_tick();
+    }
+}
+
+Enhet.prototype.angrep_tick = function() {
+    // Gjør ingenting spesielt, annet enn å redusere angrepstelleren
+    // For ting som faktisk skal skje under angreper, implementer.
+    --this.angrep_teller;
+    if (this.angrep_teller <= 0) {
+        this.angrep = false;
     }
 }
 
@@ -109,6 +119,7 @@ Enhet.prototype.aktiver = function() {
     this.momentum = 0;
     this.momentum_x = 0;
     this.sett_posisjon(this.original_x, this.original_y);
+    this.sett_retning(this.original_retning);
     this.oppdater();
     this.vis();
 }
@@ -119,10 +130,12 @@ Enhet.prototype.deaktiver = function() {
 }
 
 Enhet.prototype.fokus = function() {
-    if (this.punkt_x() > 400 && this.punkt_x() < $("#spillvindu")[0].scrollWidth - 400) {
-        $("#spillvindu").scrollLeft(this.punkt_x() - 400);
-        $("#spillvindu").css('background-position', -(this.punkt_x()-400)/5);
-    }
+    //var punkt = Math.max(Math.min(this.punkt_x()-400, $("#spillvindu")[0].scrollWidth - 400), 400);
+    var punkt = Math.max(this.punkt_x() - 400, 0);
+    punkt = Math.min(punkt, $("#spillvindu")[0].scrollWidth - 800);
+    
+    $("#spillvindu").scrollLeft(punkt);
+    $("#spillvindu").css('background-position', -punkt/5);
 }
 
 Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {
@@ -156,15 +169,19 @@ Enhet.prototype.beveg = function(retning) {
     // retning er enten 1, 0 eller -1 (høyre, stillestående eller venstre)
     this.sett_retning(retning);
     this.flytt(retning * this.hastighet, 0)
-    if (!this.plattform) {
-        this.momentum = 0;
-        this.status = "luft";
-    }
-    else if (!this.plattform.er_pa(this.punkt_x())) {
-        this.plattform.fjern(this);
-        this.plattform = null;
-        this.momentum = 0;
-        this.status = "luft";
+    if (this.status == "normal") {
+        if (!this.plattform) {
+            this.momentum = 0;
+            this.momentum_x = this.retning * this.hastighet;
+            this.status = "luft";
+        }
+        else if (!this.plattform.er_pa(this.punkt_x())) {
+            this.plattform.fjern(this);
+            this.plattform = null;
+            this.momentum = 0;
+            this.momentum_x = this.retning * this.hastighet;
+            this.status = "luft";
+        }
     }
 }
 
@@ -173,6 +190,7 @@ Enhet.prototype.hopp = function() {
         this.plattform.fjern(this);
         this.plattform = null;
         this.momentum += this.hoppstyrke;
+        this.momentum_x += this.retning * this.hastighet;
         this.status = "luft";
     }
 }
@@ -180,7 +198,10 @@ Enhet.prototype.hopp = function() {
 Enhet.prototype.angrip = function() {
     // Dette er den funksjonen som starter et angrep.
     // Utførelsen av angrepet og skade gjort gjøres i tick.
-    this.status = "angrep";
+    // Denne funksjonen gjør ikke noe annet enn å sette
+    // enheten i angrepsstatus; ingen skade utføres.
+    this.angrep = true;
+    this.angrep_teller = 10;
 }
 
 Enhet.prototype.skade = function(skade, retning, kraft) {
@@ -203,10 +224,10 @@ Enhet.prototype.fall = function() {
     if (!this.plattform) return;
     this.plattform.fjern(this);
     this.plattform = null;
-    this.flytt(0, 1);
+    this.flytt(0, 5);
     this.status = "luft";
     this.momentum = 0;
-    this.momentum_x = 0;
+    this.momentum_x += this.retning * this.hastighet;
 }
 
 Enhet.prototype.land = function() {
