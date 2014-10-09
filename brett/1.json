@@ -71,17 +71,12 @@
     ],
     "fiender": [
         {
-            "templat": true,
-            "navn": "gelebølle",
-            "type": "gelebølle"
-        },
-        {
-            "arv": "gelebølle",
+            "type": "gelebølle",
             "x": 2020,
             "y": 440
         },
         {
-            "arv": "gelebølle",
+            "type": "gelebølle",
             "x": 100,
             "y": 550
         }

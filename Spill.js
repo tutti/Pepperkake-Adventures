@@ -27,3 +27,9 @@ Spill.tick = function() {
     }
     this.spiller.fokus();
 }
+
+Spill.spiller_dod = function() {
+    this.brett.last_ut();
+    $("#spillvindu").scrollLeft(0);
+    $("#tapmeny").show();
+}

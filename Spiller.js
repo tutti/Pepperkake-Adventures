@@ -1,7 +1,7 @@
 //Spiller = new Enhet("bilder/spiller.png");
 
 Spiller = function() {
-    Enhet.call(this, "bilder/spiller.png");
+    Enhet.call(this, "bilder/spiller.png", 0, 0);
     
     this.sett_bilde("stopp", "bilder/spiller.png");
     this.sett_bilde("venstre", "bilder/spiller-v.gif");
@@ -13,6 +13,7 @@ Spiller = function() {
     this.type = "spiller";
     this.bredde = 32;
     this.hoyde = 32;
+    this.maxhp = 3;
     
     this.sett_kontroll(Kontroll.hent("spiller"));
 }
@@ -40,9 +41,17 @@ Spiller.prototype.angrip = function() {
 }
 
 Spiller.prototype.skade = function(skade, retning, kraft) {
+    if (this.immunitet > 0) return;
     this.fall();
     this.retning = 0;
     this.momentum = (this.hoppstyrke * kraft) / 1.5;
     this.momentum_x = retning * kraft * 10;
     this.status = "luft";
+    Enhet.prototype.skade.call(this, skade, retning, kraft);
+    console.log(this.hp);
+}
+
+Spiller.prototype.dod = function() {
+    Enhet.prototype.dod.call(this);
+    Spill.spiller_dod();
 }

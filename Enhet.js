@@ -1,4 +1,4 @@
-Enhet = function(bilde) {
+Enhet = function(bilde, x, y) {
     this.type = "enhet";
     this.bilder = {};
     this.bilde = bilde;
@@ -8,9 +8,12 @@ Enhet = function(bilde) {
     this.hoyde = 0;
     this.hastighet = 10;
     this.hoppstyrke = 30;
+    this.maxhp = 0;
     
-    this.x = 0;
-    this.y = 0;
+    this.original_x = x;
+    this.original_y = y;
+    this.x = x;
+    this.y = y;
     this.gamle_punkt_x = 0;
     this.gamle_punkt_y = 0;
     this.momentum = 0; // Momentum oppover
@@ -21,6 +24,10 @@ Enhet = function(bilde) {
     this.plattform = null;
     this.kontroll = null;
     this.aktiv = false;
+    
+    this.hp = 0;
+    this.immunitet = 0;
+    this.lever = false;
     
     if (bilde) {
         this.sett_bilde("", bilde);
@@ -51,7 +58,17 @@ Enhet.prototype.punkt_x = function() { return this.x + (this.bredde / 2) }
 Enhet.prototype.punkt_y = function() { return this.y + this.hoyde }
 
 Enhet.prototype.tick = function() {
-    if (!this.aktiv) return;
+    if (!this.aktiv || !this.lever) return;
+    if (this.immunitet > 0) {
+        --this.immunitet;
+        var elmt = this.hent_element();
+        if (this.immunitet == 0) elmt.css('opacity', 1);
+        else elmt.css('opacity', 0.5);
+    }
+    if (this.punkt_y() > Spill.brett.taplinje) {
+        this.dod();
+    }
+    //console.log(this.type);
     if (this.status == "luft") {
         var x1 = this.punkt_x();
         var y1 = this.punkt_y();
@@ -86,6 +103,13 @@ Enhet.prototype.skjul = function() {
 
 Enhet.prototype.aktiver = function() {
     this.aktiv = true;
+    this.lever = true;
+    this.hp = this.maxhp;
+    this.immunitet = 0;
+    this.momentum = 0;
+    this.momentum_x = 0;
+    this.sett_posisjon(this.original_x, this.original_y);
+    this.oppdater();
     this.vis();
 }
 
@@ -95,8 +119,8 @@ Enhet.prototype.deaktiver = function() {
 }
 
 Enhet.prototype.fokus = function() {
-    $("#spillvindu").scrollLeft(this.punkt_x() - 400);
     if (this.punkt_x() > 400 && this.punkt_x() < $("#spillvindu")[0].scrollWidth - 400) {
+        $("#spillvindu").scrollLeft(this.punkt_x() - 400);
         $("#spillvindu").css('background-position', -(this.punkt_x()-400)/5);
     }
 }
@@ -104,9 +128,6 @@ Enhet.prototype.fokus = function() {
 Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {
     this.x = punkt_x - (this.bredde / 2);
     this.y = punkt_y - this.hoyde;
-    //if (oppdater || oppdater === undefined) {
-    //    this.oppdater();
-    //}
 }
 
 Enhet.prototype.flytt = function(x, y, oppdater) {
@@ -165,6 +186,17 @@ Enhet.prototype.angrip = function() {
 Enhet.prototype.skade = function(skade, retning, kraft) {
     // Kalles når en enhet skades
     // Gir kraften i angrepet og retningen (horisontalt).
+    if (this.immunitet > 0) return;
+    this.immunitet = 20;
+    this.hp -= skade;
+    if (this.hp <= 0) {
+        this.dod();
+    }
+}
+
+Enhet.prototype.dod = function() {
+    this.deaktiver();
+    this.lever = false;
 }
 
 Enhet.prototype.fall = function() {
@@ -183,14 +215,14 @@ Enhet.prototype.land = function() {
     var x = this.punkt_x();
     var y = this.punkt_y();
     var plattform = Spill.brett.land(this.gamle_punkt_x, this.gamle_punkt_y, x, y);
-        if (plattform) {
-            this.plattform = plattform;
-            plattform.legg_til(this);
-            this.status = "normal";
-            this.y = this.plattform.y - this.hoyde;
-            this.momentum = 0;
-            this.momentum_x = 0;
-        }
+    if (plattform) {
+        this.plattform = plattform;
+        plattform.legg_til(this);
+        this.status = "normal";
+        this.y = this.plattform.y - this.hoyde;
+        this.momentum = 0;
+        this.momentum_x = 0;
+    }
 }
 
 Enhet.prototype.sett_bilde = function(navn, bilde) {

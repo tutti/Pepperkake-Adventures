@@ -5,6 +5,11 @@ Brett = function(data) {
     this.t_plattformer = {};
     this.fiender = [];
     this.t_fiender = {};
+    if (!data.taplinje && data.taplinje != 0) {
+        this.taplinje = 650;
+    } else {
+        this.taplinje = data.taplinje;
+    }
     
     for (plattform_id in data.plattformer) {
         var p = data.plattformer[plattform_id];
@@ -60,11 +65,11 @@ Brett = function(data) {
             switch (f.type) {
                 case "gelebølle":
                 default:
-                    var fiende = new Gelebolle();
+                    var fiende = new Gelebolle(f.x, f.y);
                     break;
             }
             
-            fiende.sett_posisjon(f.x, f.y);
+            //fiende.sett_posisjon(f.x, f.y);
             this.fiender.push(fiende);
         }
     }
@@ -84,15 +89,18 @@ Brett.prototype.last = function() {
     for (f_id in this.fiender) {
         this.fiender[f_id].aktiver();
     }
-    Spill.spiller.sett_posisjon(this.x, this.y);
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();
+    Spill.spiller.sett_posisjon(this.x, this.y);
     this.vis_bakgrunn();
 }
 
 Brett.prototype.last_ut = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].deaktiver();
+    }
+    for (f_id in this.fiender) {
+        this.fiender[f_id].deaktiver();
     }
     Spill.spiller.deaktiver();
     $("#spillvindu").css('background', '');
