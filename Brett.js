@@ -81,6 +81,9 @@ Brett.prototype.last = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].aktiver();
     }
+    for (f_id in this.fiender) {
+        this.fiender[f_id].aktiver();
+    }
     Spill.spiller.sett_posisjon(this.x, this.y);
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();

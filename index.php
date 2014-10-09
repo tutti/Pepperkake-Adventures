@@ -3,7 +3,7 @@
     <head>
         <title>Pepperkake Adventures</title>
         <link rel="stylesheet" href="stil.css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="jquery.min.js"></script>
         <?php require "brett.php"; ?>
         <script src="Kontroll.js"></script>
         <script src="Enhet.js"></script>
