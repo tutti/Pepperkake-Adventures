@@ -10,6 +10,8 @@
         <script src="Enhet.js"></script>
         <script src="fiender/kontroll/GelebolleKontroll.js"></script>
         <script src="fiender/Gelebolle.js"></script>
+        <script src="fiender/kontroll/SeigeninjaKontroll.js"></script>
+        <script src="fiender/Seigeninja.js"></script>
         <script src="SpillerKontroll.js"></script>
         <script src="Spiller.js"></script>
         <script src="Plattform.js"></script>

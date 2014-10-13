@@ -9,6 +9,7 @@ Enhet = function(bilde, x, y) {
     this.hastighet = 10;
     this.hoppstyrke = 30;
     this.maxhp = 0;
+    this.rekkevidde = 32;
     
     this.original_x = x;
     this.original_y = y;
@@ -93,6 +94,8 @@ Enhet.prototype.tick = function() {
 Enhet.prototype.angrep_tick = function() {
     // Gjør ingenting spesielt, annet enn å redusere angrepstelleren
     // For ting som faktisk skal skje under angreper, implementer.
+    // Separert fra tick for å kunne implementere dette uten å trenge
+    // å overskrive hele tick.
     --this.angrep_teller;
     if (this.angrep_teller <= 0) {
         this.angrep = false;
@@ -185,6 +188,17 @@ Enhet.prototype.beveg = function(retning) {
     }
 }
 
+Enhet.prototype.beveg_mot = function(enhet) {
+    // Beveger enheten i retning av den andre enheten
+    if (this.punkt_x() < enhet.punkt_x()) {
+        this.beveg(1);
+    } else if (this.punkt_x() == enhet.punkt_x()) {
+        this.beveg(0);
+    } else {
+        this.beveg(-1);
+    }
+}
+
 Enhet.prototype.hopp = function() {
     if (this.plattform) {
         this.plattform.fjern(this);
@@ -244,6 +258,71 @@ Enhet.prototype.land = function() {
         this.momentum = 0;
         this.momentum_x = 0;
     }
+}
+
+Enhet.prototype.innenfor_rekkevidde = function(enhet) {
+    // Sjekker om en annen enhet er innenfor rekkevidde for ninjaen
+    // Returnerer true eller false
+    var avstand = Math.abs(this.punkt_x() - enhet.punkt_x()) + (this.bredde / 2);
+    if (avstand <= this.rekkevidde && enhet.punkt_y() >= this.punkt_y() && enhet.punkt_y() <= this.punkt_y() + this.hoyde) {
+        return true;
+    }
+    return false;
+}
+
+Enhet.prototype.trajectory_plattform = function() {
+    // Finner plattformen enheten vil lande på hvis den hopper nå
+    var momentum = this.momentum + this.hoppstyrke;
+    var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    
+    var x = this.punkt_x();
+    var y = this.punkt_y();
+    var forrige_x = 0;
+    var forrige_y = 0;
+    var plattform = null;
+    while (!plattform && y <= Spill.brett.taplinje) {
+        forrige_x = x;
+        forrige_y = y;
+        x += momentum_x;
+        y -= momentum;
+        momentum -= Spill.gravitasjon;
+        console.log(forrige_x, forrige_y, x, y);
+        if (momentum <= 0) {
+            plattform = Spill.brett.land(forrige_x, forrige_y, x, y);
+        }
+    }
+    
+    return plattform;
+}
+
+Enhet.prototype.trajectory_rekkevidde = function(enhet) {
+    // Finner ut om en enhet vil være innenfor rekkevidde for enheten hvis den hopper nå.
+    // Dette tar IKKE enhetens bevegelse med i beregningen!
+    // Funksjonen bryr seg heller ikke om hvorvidt enheten vil overleve hoppet.
+    var momentum = this.momentum + this.hoppstyrke;
+    var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    
+    var x = this.punkt_x();
+    var y = this.punkt_y();
+    var forrige_x = 0;
+    var forrige_y = 0;
+    var plattform = null;
+    do {
+        forrige_x = x;
+        forrige_y = y;
+        x += momentum_x;
+        y -= momentum;
+        momentum -= Spill.gravitasjon;
+        if (momentum <= 0) {
+            plattform = Spill.brett.land(forrige_x, forrige_y, x, y);
+            var avstand = Math.abs(x - enhet.punkt_x()) + (this.bredde / 2);
+            if (avstand <= this.rekkevidde && enhet.punkt_y() >= y && enhet.punkt_y() <= y + this.hoyde) {
+                return true;
+            }
+        }
+    } while (!plattform && y >= Spill.brett.taplinje);
+    
+    return false;
 }
 
 Enhet.prototype.sett_bilde = function(navn, bilde) {

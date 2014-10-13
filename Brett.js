@@ -63,6 +63,9 @@ Brett = function(data) {
                 f = f2;
             }
             switch (f.type) {
+                case "seigeninja":
+                    var fiende = new Seigeninja(f.x, f.y);
+                    break;
                 case "gelebølle":
                 default:
                     var fiende = new Gelebolle(f.x, f.y);

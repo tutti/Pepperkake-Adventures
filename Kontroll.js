@@ -39,6 +39,8 @@ Kontroll.prototype.er_tast = function(tast) {
     return false;
 }
 
+// Kode for å gjøre kontroller tilgjengelig uten å opprette nye objekter for dem
+
 var kontroller = {
     
 }
