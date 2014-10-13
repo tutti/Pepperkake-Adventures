@@ -261,10 +261,12 @@ Enhet.prototype.land = function() {
 }
 
 Enhet.prototype.innenfor_rekkevidde = function(enhet) {
-    // Sjekker om en annen enhet er innenfor rekkevidde for ninjaen
-    // Returnerer true eller false
-    var avstand = Math.abs(this.punkt_x() - enhet.punkt_x()) + (this.bredde / 2);
-    if (avstand <= this.rekkevidde && enhet.punkt_y() >= this.punkt_y() && enhet.punkt_y() <= this.punkt_y() + this.hoyde) {
+    // Sjekker om en annen enhet er innenfor rekkevidde
+    // For de fleste enheter vil det si at et sidelengs angrep
+    // vil treffe den andre enheten.
+    // For annerledes funksjonalitet, overskriv metoden.
+    var avstand_x = Math.abs(this.punkt_x() - enhet.punkt_x()) + (this.bredde / 2);
+    if (avstand_x <= this.rekkevidde && enhet.y <= this.y + this.hoyde && enhet.y + enhet.hoyde >= this.y) {
         return true;
     }
     return false;
@@ -286,7 +288,6 @@ Enhet.prototype.trajectory_plattform = function() {
         x += momentum_x;
         y -= momentum;
         momentum -= Spill.gravitasjon;
-        console.log(forrige_x, forrige_y, x, y);
         if (momentum <= 0) {
             plattform = Spill.brett.land(forrige_x, forrige_y, x, y);
         }
@@ -307,7 +308,7 @@ Enhet.prototype.trajectory_rekkevidde = function(enhet) {
     var forrige_x = 0;
     var forrige_y = 0;
     var plattform = null;
-    do {
+    while (!plattform && y <= Spill.brett.taplinje) {
         forrige_x = x;
         forrige_y = y;
         x += momentum_x;
@@ -315,12 +316,13 @@ Enhet.prototype.trajectory_rekkevidde = function(enhet) {
         momentum -= Spill.gravitasjon;
         if (momentum <= 0) {
             plattform = Spill.brett.land(forrige_x, forrige_y, x, y);
-            var avstand = Math.abs(x - enhet.punkt_x()) + (this.bredde / 2);
+            var avstand = Math.abs(x - enhet.punkt_x());
             if (avstand <= this.rekkevidde && enhet.punkt_y() >= y && enhet.punkt_y() <= y + this.hoyde) {
                 return true;
             }
+            
         }
-    } while (!plattform && y >= Spill.brett.taplinje);
+    }
     
     return false;
 }

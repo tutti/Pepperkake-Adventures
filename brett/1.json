@@ -76,27 +76,22 @@
     "fiender": [
         {
             "type": "seigeninja",
-            "x": 300,
+            "x": 200,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 320,
+            "x": 325,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 340,
+            "x": 350,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 360,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 380,
+            "x": 375,
             "y": 550
         },
         {
@@ -106,22 +101,27 @@
         },
         {
             "type": "seigeninja",
-            "x": 420,
+            "x": 425,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 440,
+            "x": 450,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 460,
+            "x": 475,
             "y": 550
         },
         {
             "type": "seigeninja",
-            "x": 480,
+            "x": 500,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 525,
             "y": 550
         }
     ],

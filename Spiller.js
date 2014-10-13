@@ -1,5 +1,3 @@
-//Spiller = new Enhet("bilder/spiller.png");
-
 Spiller = function() {
     Enhet.call(this, "bilder/spiller.png", 0, 0);
     

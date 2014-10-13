@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+#testblokk {
+    position: absolute;
+    background-color: red;
+}
+
 #spillvindu {
     border: 1px solid black;
     width: 800px;

@@ -1,13 +1,15 @@
 Seigeninja = function(x, y) {
-    Enhet.call(this, "bilder/seigeninja.png", x, y);
+    this.farge = Math.floor(Math.random()*4);
+    Enhet.call(this, "bilder/seigeninja"+this.farge+".png", x, y);
     
     this.type = "seigeninja";
     this.bredde = 32;
     this.hoyde = 32;
     this.hastighet = 10;
-    this.hoppstyrke = 30;
+    this.hoppstyrke = 25;
     this.original_retning = 1;
     this.maxhp = 3;
+    this.rekkevidde = 32;
     
     this.sett_kontroll(Kontroll.hent("seigeninja"));
 }

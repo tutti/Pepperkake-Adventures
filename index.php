@@ -6,6 +6,7 @@
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
         <script src="jquery.min.js"></script>
         <?php require "brett.php"; ?>
+        <script src="Lyd.js"></script>
         <script src="Kontroll.js"></script>
         <script src="Enhet.js"></script>
         <script src="fiender/kontroll/GelebolleKontroll.js"></script>
@@ -22,7 +23,16 @@
         <script src="pepperkake.js"></script>
     </head>
     <body>
+        <audio id="bgm" src=""></audio>
+        <?php define('ANTALL_LYD', 10);
+        for ($i = 0; $i < ANTALL_LYD; ++$i) { ?>
+        <audio id="lyd<?=$i?>" src=""></audio>
+        <?php } ?>
+        <script>
+            var antall_lydelementer = <?=ANTALL_LYD?>;
+        </script>
         <div id="spillvindu">
+            <div id="testblokk"></div>
             <div id="hovedmeny">
                 <h1 id="spilloverskrift">Pepperkake Adventures</h1>
                 <span id="startknapp">Start spill</span>
