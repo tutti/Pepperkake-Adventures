@@ -1,6 +1,7 @@
 Spill = {
     gravitasjon: 2,
     brett: null,
+    //spiller: new Gelebolle()
     spiller: new Spiller()
 }
 

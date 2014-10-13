@@ -52,15 +52,15 @@ Spiller.prototype.angrep_tick = function() {
     Enhet.prototype.angrep_tick.call(this);
     switch (this.retning) {
         case -1:
-            Spill.brett.skadFiender(this.x - this.bredde, this.y, this.x, this.y + this.hoyde, 1, -1, 1);
+            Spill.brett.skad(this, this.x - this.bredde, this.y, this.x, this.y + this.hoyde, 1, -1, 1);
             break;
         case 1:
-            Spill.brett.skadFiender(this.x + this.bredde, this.y, this.x + 2 * this.bredde, this.y + this.hoyde, 1, 1, 1);
+            Spill.brett.skad(this, this.x + this.bredde, this.y, this.x + 2 * this.bredde, this.y + this.hoyde, 1, 1, 1);
             break;
         case 0:
         default:
-            Spill.brett.skadFiender(this.x - this.bredde / 2, this.y, this.x + this.bredde / 2, this.y + this.hoyde, 1, -1, 1);
-            Spill.brett.skadFiender(this.x + this.bredde / 2, this.y, this.x + this.bredde * 1.5, this.y + this.hoyde, 1, 1, 1);
+            Spill.brett.skad(this, this.x - this.bredde / 2, this.y, this.x + this.bredde / 2, this.y + this.hoyde, 1, -1, 1);
+            Spill.brett.skad(this, this.x + this.bredde / 2, this.y, this.x + this.bredde * 1.5, this.y + this.hoyde, 1, 1, 1);
             break;
     }
 }

@@ -126,6 +126,7 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Kraft er også valgfritt, med en default 1. Dette er en multiplikator for hvor langt
     // fienden skal slås.
     // MERK: Foreløpig kode setter retning til 0 hvis den ikke blir oppgitt.
+    // Ikke kall denne direkte; kall heller Brett.skad().
     if (x2 < x1 || y2 < y1) {
         console.error("skadFiender: Dårlige koordinater", x1, y1, x2, y2);
         return;
@@ -149,6 +150,7 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
 
 Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Skader spilleren hvis den overlapper den gitte posisjonen
+    // Ikke kall denne direkte; kall heller Brett.skad().
     if (x2 < x1 || y2 < y1) {
         console.error("skadSpiller: Dårlige koordinater", x1, y1, x2, y2);
         return;
@@ -165,6 +167,14 @@ Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
             retning = 0;
         }
         p.skade(skade, retning, Math.sqrt(kraft));
+    }
+}
+
+Brett.prototype.skad = function(enhet, x1, y1, x2, y2, skade, retning, kraft) {
+    if (enhet == Spill.spiller) {
+        this.skadFiender(x1, y1, x2, y2, skade, retning, kraft);
+    } else {
+        this.skadSpiller(x1, y1, x2, y2, skade, retning, kraft);
     }
 }
 

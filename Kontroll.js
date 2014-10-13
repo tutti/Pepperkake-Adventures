@@ -6,6 +6,13 @@ Kontroll.prototype.styr = function(enhet) {
     // Velger styring for enheten for et tick
 }
 
+// Konstanter for tastene som brukes
+Kontroll.SPACE = Kontroll.MELLOMROM = 32;
+Kontroll.VENSTRE = 37;
+Kontroll.OPP = 38;
+Kontroll.HOYRE = 39;
+Kontroll.NED = 40;
+
 // Koden som kontrollerer tastestyring
 
 var taster = {
