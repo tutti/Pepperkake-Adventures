@@ -78,6 +78,51 @@
             "type": "seigeninja",
             "x": 300,
             "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 320,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 340,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 360,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 380,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 400,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 420,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 440,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 460,
+            "y": 550
+        },
+        {
+            "type": "seigeninja",
+            "x": 480,
+            "y": 550
         }
     ],
     "spiller": [550, 450]
