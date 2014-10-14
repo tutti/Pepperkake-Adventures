@@ -1,6 +1,9 @@
 Gelebolle = function(x, y) {
     Enhet.call(this, "bilder/gelebolle.png", x, y);
     
+    this.sett_bilde("venstre", "bilder/gelebolle-v.gif");
+    this.sett_bilde("høyre", "bilder/gelebolle-h.gif");
+    
     this.type = "gelebolle";
     this.bredde = 32;
     this.hoyde = 32;
@@ -15,6 +18,18 @@ Gelebolle = function(x, y) {
 
 Gelebolle.prototype = Object.create(Enhet.prototype);
 Gelebolle.prototype.constructor = Gelebolle
+
+Gelebolle.prototype.sett_retning = function(retning) {
+    Enhet.prototype.sett_retning.call(this, retning);
+    switch (retning) {
+        case -1:
+            this.velg_bilde("venstre");
+            break;
+        case 1:
+            this.velg_bilde("høyre");
+            break;
+    }
+}
 
 Gelebolle.prototype.tick = function() {
     if (!this.aktiv) return;

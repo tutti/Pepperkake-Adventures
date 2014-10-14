@@ -81,47 +81,12 @@
         },
         {
             "type": "seigeninja",
-            "x": 325,
-            "y": 550
+            "x": 600,
+            "y": 50
         },
         {
-            "type": "seigeninja",
-            "x": 350,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 375,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 400,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 425,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 450,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 475,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 500,
-            "y": 550
-        },
-        {
-            "type": "seigeninja",
-            "x": 525,
+            "type": "gelebølle",
+            "x": 200,
             "y": 550
         }
     ],

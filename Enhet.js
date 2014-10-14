@@ -144,6 +144,8 @@ Enhet.prototype.fokus = function() {
 Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {
     this.x = punkt_x - (this.bredde / 2);
     this.y = punkt_y - this.hoyde;
+    this.gamle_punkt_x = this.x;
+    this.gamle_punkt_y = this.y;
 }
 
 Enhet.prototype.flytt = function(x, y, oppdater) {
@@ -238,7 +240,12 @@ Enhet.prototype.fall = function() {
     if (!this.plattform) return;
     this.plattform.fjern(this);
     this.plattform = null;
-    this.flytt(0, 5);
+    //this.gamle_punkt_y = this.punkt_y() + 1 - Math.abs(this.momentum);
+    this.gamle_punkt_x = 0;
+    this.gamle_punkt_y = 0;
+    this.flytt(0, 5+Math.abs(this.momentum));
+    //this.sett_posisjon(this.punkt_x(), this.punkt_y()+this.momentum+10, false);
+    //this.flytt(0, 1);
     this.status = "luft";
     this.momentum = 0;
     this.momentum_x += this.retning * this.hastighet;

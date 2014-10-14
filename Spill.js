@@ -21,6 +21,8 @@ Spill.last_brett = function(brett_id) {
     this.brett.last();
 }
 
+var deg = 0;
+
 Spill.tick = function() {
     this.spiller.tick();
     if (this.brett) {
