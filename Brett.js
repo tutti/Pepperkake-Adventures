@@ -66,6 +66,9 @@ Brett = function(data) {
                 case "seigeninja":
                     var fiende = new Seigeninja(f.x, f.y);
                     break;
+                case "julebruiser":
+                    var fiende = new Julebruiser(f.x, f.y);
+                    break;
                 case "gelebølle":
                 default:
                     var fiende = new Gelebolle(f.x, f.y);

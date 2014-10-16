@@ -76,19 +76,19 @@
     "fiender": [
         {
             "type": "seigeninja",
-            "x": 200,
-            "y": 550
+            "x": 10,
+            "y": 600
         },
         {
             "type": "seigeninja",
-            "x": 600,
-            "y": 50
+            "x": 10,
+            "y": 600
         },
         {
-            "type": "gelebølle",
-            "x": 200,
-            "y": 550
+            "type": "julebruiser",
+            "x": 400,
+            "y": 450
         }
     ],
-    "spiller": [550, 450]
+    "spiller": [350, 450]
 }
