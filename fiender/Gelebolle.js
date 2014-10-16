@@ -1,8 +1,9 @@
 Gelebolle = function(x, y) {
-    Enhet.call(this, "bilder/gelebolle.png", x, y);
+    this.farge = Math.floor(Math.random()*3);
+    Enhet.call(this, "bilder/gelebolle/" + this.farge + "/h.gif", x, y);
     
-    this.sett_bilde("venstre", "bilder/gelebolle-v.gif");
-    this.sett_bilde("høyre", "bilder/gelebolle-h.gif");
+    this.sett_bilde("venstre", "bilder/gelebolle/" + this.farge + "/v.gif");
+    this.sett_bilde("høyre", "bilder/gelebolle/" + this.farge + "/h.gif");
     
     this.type = "gelebolle";
     this.bredde = 32;

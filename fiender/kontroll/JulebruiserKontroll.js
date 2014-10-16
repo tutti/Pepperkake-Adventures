@@ -9,15 +9,19 @@ JulebruiserKontroll.prototype.styr = function(enhet) {
     // Gå et steg
     enhet.beveg(enhet.retning);
     
-    // Hvis enden av plattformen er nær, snu.
-    if (!enhet.plattform) return;
-    if ((enhet.retning == -1 && (enhet.plattform.x > (enhet.punkt_x() - enhet.hastighet)))
-        || (enhet.retning == 1 && (enhet.plattform.x + enhet.plattform.bredde) < (enhet.punkt_x() + enhet.hastighet))) {
-        enhet.retning *= -1;
+    // Hvis enden av plattformen er nær, stopp.
+    if (this.gar_av_plattform(enhet)) {
+        enhet.sett_retning(0);
     }
     
+    // Hvis spilleren er innenfor rekkevidde, angrip.
     if (enhet.innenfor_rekkevidde(Spill.spiller)) {
         enhet.angrip();
+    }
+    
+    // Hvis spilleren er på samme plattform, begynn å gå mot spilleren.
+    if (enhet.plattform == Spill.spiller.plattform) {
+        enhet.sett_retning_mot(Spill.spiller);
     }
 }
 

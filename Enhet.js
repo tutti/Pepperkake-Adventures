@@ -167,6 +167,17 @@ Enhet.prototype.sett_retning = function(retning) {
     this.retning = retning;
 }
 
+Enhet.prototype.sett_retning_mot = function(enhet) {
+    // Beveger enheten i retning av den andre enheten
+    if (this.punkt_x() < enhet.punkt_x()) {
+        this.sett_retning(1);
+    } else if (this.punkt_x() == enhet.punkt_x()) {
+        this.sett_retning(0);
+    } else {
+        this.sett_retning(-1);
+    }
+}
+
 Enhet.prototype.beveg = function(retning) {
     if (!retning && retning != 0) {
         retning = this.retning;
@@ -279,10 +290,23 @@ Enhet.prototype.innenfor_rekkevidde = function(enhet) {
     return false;
 }
 
-Enhet.prototype.trajectory_plattform = function() {
-    // Finner plattformen enheten vil lande på hvis den hopper nå
-    var momentum = this.momentum + this.hoppstyrke;
-    var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+Enhet.prototype.trajectory_plattform = function(fra_topp) {
+    // Finner plattformen enheten vil lande på hvis den:
+    //  - er på en plattform og hopper nå
+    //  - er i luften allerede
+    //  - hvis fra_topp == true: hvis den starter et fall nå
+    //var momentum = this.momentum + this.hoppstyrke;
+    //var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    var momentum = this.momentum;
+    var momentum_x = this.momentum_x;
+    if (this.status == "normal") {
+        momentum += this.hoppstyrke;
+        momentum_x += this.retning * this.hastighet;
+    }
+    if (fra_topp) {
+        momentum = 0;
+        y -= 5;
+    }
     
     var x = this.punkt_x();
     var y = this.punkt_y();
@@ -303,12 +327,25 @@ Enhet.prototype.trajectory_plattform = function() {
     return plattform;
 }
 
-Enhet.prototype.trajectory_rekkevidde = function(enhet) {
-    // Finner ut om en enhet vil være innenfor rekkevidde for enheten hvis den hopper nå.
+Enhet.prototype.trajectory_rekkevidde = function(enhet, fra_topp) {
+    // Finner ut om en enhet vil være innenfor rekkevidde for enheten hvis den:
+    //  - er på en plattform og hopper nå
+    //  - er i luften allerede
+    //  - hvis fra_topp == true: hvis den starter et fall nå
     // Dette tar IKKE enhetens bevegelse med i beregningen!
     // Funksjonen bryr seg heller ikke om hvorvidt enheten vil overleve hoppet.
-    var momentum = this.momentum + this.hoppstyrke;
-    var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    //var momentum = this.momentum + this.hoppstyrke;
+    //var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    var momentum = this.momentum;
+    var momentum_x = this.momentum_x;
+    if (this.status == "normal") {
+        momentum += this.hoppstyrke;
+        momentum_x += this.retning * this.hastighet;
+    }
+    if (fra_topp) {
+        momentum = 0;
+        --y;
+    }
     
     var x = this.punkt_x();
     var y = this.punkt_y();

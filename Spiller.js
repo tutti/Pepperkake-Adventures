@@ -2,8 +2,8 @@ Spiller = function() {
     Enhet.call(this, "bilder/spiller.png", 0, 0);
     
     this.sett_bilde("stopp", "bilder/spiller.png");
-    this.sett_bilde("venstre", "bilder/spiller-v.gif");
-    this.sett_bilde("høyre", "bilder/spiller-h.gif");
+    this.sett_bilde("gå-venstre", "bilder/spiller-v.gif");
+    this.sett_bilde("gå-høyre", "bilder/spiller-h.gif");
     
     this.hastighet = 8;
     this.hoppstyrke = 20;
@@ -24,10 +24,10 @@ Spiller.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
         case -1:
-            this.velg_bilde("venstre");
+            this.velg_bilde("gå-venstre");
             break;
         case 1:
-            this.velg_bilde("høyre");
+            this.velg_bilde("gå-høyre");
             break;
         case 0:
             this.velg_bilde("stopp");

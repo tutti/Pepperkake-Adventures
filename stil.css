@@ -77,27 +77,3 @@
 .enhet {
     position: absolute;
 }
-    /*.enhet-seigeninja {*/
-    /*    -webkit-filter: hue-rotate(30deg) brightness(200%);*/
-    /*}*/
-    .enhet.farge1 {
-        filter: hue-rotate(120deg) brightness(220%);
-        -webkit-filter: hue-rotate(120deg) brightness(220%);
-        -moz-filter: hue-rotate(120deg) brightness(220%);
-        -o-filter: hue-rotate(120deg) brightness(220%);
-        -ms-filter: hue-rotate(120deg) brightness(220%);
-    }
-    .enhet.farge2 {
-        filter: hue-rotate(60deg) brightness(300%);
-        -webkit-filter: hue-rotate(60deg) brightness(300%);
-        -moz-filter: hue-rotate(60deg) brightness(300%);
-        -o-filter: hue-rotate(60deg) brightness(300%);
-        -ms-filter: hue-rotate(60deg) brightness(300%);
-    }
-    .enhet.farge3 {
-        filter: hue-rotate(60deg) brightness(500%);
-        -webkit-filter: hue-rotate(60deg) brightness(500%);
-        -moz-filter: hue-rotate(60deg) brightness(500%);
-        -o-filter: hue-rotate(60deg) brightness(500%);
-        -ms-filter: hue-rotate(60deg) brightness(500%);
-    }

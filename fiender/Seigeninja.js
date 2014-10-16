@@ -1,6 +1,10 @@
 Seigeninja = function(x, y) {
     this.farge = Math.floor(Math.random()*4);
-    Enhet.call(this, "bilder/seigeninja.png", x, y);
+    Enhet.call(this, "bilder/seigeninja/" + this.farge + "/n.png", x, y);
+    
+    this.sett_bilde("stopp", "bilder/seigeninja/" + this.farge + "/n.png");
+    this.sett_bilde("gå-venstre", "bilder/seigeninja/" + this.farge + "/gv.gif");
+    this.sett_bilde("gå-høyre", "bilder/seigeninja/" + this.farge + "/gh.gif");
     
     this.type = "seigeninja";
     this.bredde = 32;
@@ -17,12 +21,27 @@ Seigeninja = function(x, y) {
 Seigeninja.prototype = Object.create(Enhet.prototype);
 Seigeninja.prototype.constructor = Seigeninja
 
+Seigeninja.prototype.sett_retning = function(retning) {
+    Enhet.prototype.sett_retning.call(this, retning);
+    switch (retning) {
+        case -1:
+            this.velg_bilde("gå-venstre");
+            break;
+        case 1:
+            this.velg_bilde("gå-høyre");
+            break;
+        case 0:
+            this.velg_bilde("stopp");
+            break;
+    }
+}
+
 Seigeninja.prototype.hent_element = function() {
     // Hvis enheten har et HTML-element, returneres det.
     // Ellers lages et nytt som returneres.
     // Elementet skal uansett være et jQuery-objekt.
     if (this.element === undefined) {
-        this.element = $('<img class="enhet enhet-' + this.type + ' farge' + this.farge + '" src="' + this.bilde + '" />');
+        this.element = $('<img class="enhet enhet-' + this.type + '" src="' + this.bilde + '" />');
         this.element.width(this.bredde);
         this.element.height(this.hoyde);
         this.element.css('left', this.x);

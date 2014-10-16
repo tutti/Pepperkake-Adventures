@@ -39,6 +39,17 @@ Kontroll.prototype.er_tast = function(tast) {
     return false;
 }
 
+// Nyttige funksjoner for kontroller
+
+Kontroll.prototype.gar_av_plattform = function(enhet) {
+    if (!enhet.plattform) return false;
+    if ((enhet.retning == -1 && (enhet.plattform.x > (enhet.punkt_x() - enhet.hastighet)))
+        || (enhet.retning == 1 && (enhet.plattform.x + enhet.plattform.bredde) < (enhet.punkt_x() + enhet.hastighet))) {
+        return true;
+    }
+    return false;
+}
+
 // Kode for å gjøre kontroller tilgjengelig uten å opprette nye objekter for dem
 
 var kontroller = {

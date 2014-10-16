@@ -75,19 +75,19 @@
     ],
     "fiender": [
         {
-            "type": "seigeninja",
-            "x": 10,
-            "y": 600
+            "templat": true,
+            "navn": "standard",
+            "type": "gelebølle"
         },
         {
-            "type": "seigeninja",
-            "x": 10,
-            "y": 600
+            "arv": "standard",
+            "x": 200,
+            "y": 550
         },
         {
-            "type": "julebruiser",
+            "arv": "standard",
             "x": 400,
-            "y": 450
+            "y": 550
         }
     ],
     "spiller": [350, 450]

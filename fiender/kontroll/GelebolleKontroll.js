@@ -10,10 +10,9 @@ GelebolleKontroll.prototype.styr = function(enhet) {
     enhet.beveg(enhet.retning);
     
     // Hvis enden av plattformen er nær, snu.
-    if (!enhet.plattform) return;
-    if ((enhet.retning == -1 && (enhet.plattform.x > (enhet.punkt_x() - enhet.hastighet)))
-        || (enhet.retning == 1 && (enhet.plattform.x + enhet.plattform.bredde) < (enhet.punkt_x() + enhet.hastighet))) {
-        enhet.retning *= -1;
+    if (this.gar_av_plattform(enhet)) {
+        //enhet.retning *= -1;
+        enhet.sett_retning(enhet.retning * -1);
     }
 }
 
