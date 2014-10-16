@@ -1,19 +1,15 @@
 Gelebolle = function(x, y) {
-    this.farge = Math.floor(Math.random()*3);
-    Enhet.call(this, "bilder/gelebolle/" + this.farge + "/h.gif", x, y);
-    
-    this.sett_bilde("venstre", "bilder/gelebolle/" + this.farge + "/v.gif");
-    this.sett_bilde("høyre", "bilder/gelebolle/" + this.farge + "/h.gif");
-    
     this.type = "gelebolle";
+    Enhet.call(this, x, y);
+    
     this.bredde = 32;
     this.hoyde = 32;
     this.hastighet = 5;
     this.hoppstyrke = 0;
     this.original_retning = 1;
-    //this.retning = 1;
     this.maxhp = 3;
     
+    this.velg_farge(Math.floor(Math.random()*3));
     this.sett_kontroll(Kontroll.hent("gelebølle"));
 }
 
@@ -24,10 +20,10 @@ Gelebolle.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
         case -1:
-            this.velg_bilde("venstre");
+            this.velg_bilde("gå-venstre");
             break;
         case 1:
-            this.velg_bilde("høyre");
+            this.velg_bilde("gå-høyre");
             break;
     }
 }
@@ -53,3 +49,5 @@ Gelebolle.prototype.skade = function(skade, retning, kraft) {
     this.momentum_x = retning * kraft * 10;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
 }
+
+Enhet.registrer("gelebølle", Gelebolle);

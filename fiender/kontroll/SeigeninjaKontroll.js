@@ -18,12 +18,10 @@ SeigeninjaKontroll.prototype.styr = function(enhet) {
             }
         } else if (Spill.spiller.plattform) { // Spiller er på annen plattform
             if (enhet.trajectory_plattform()
-                && (enhet.trajectory_plattform() == Spill.spiller.plattform
-                || enhet.trajectory_plattform() == Spill.spiller.trajectory_plattform())) { // Plattformen kan nås med et hopp
+                && (enhet.trajectory_plattform() == Spill.spiller.plattform)) { // Plattformen kan nås med et hopp
                 enhet.hopp();
             } else if (enhet.trajectory_plattform(true)
-                && (enhet.trajectory_plattform(true) == Spill.spiller.plattform
-                || enhet.trajectory_plattform(true) == Spill.spiller.trajectory_plattform())) {
+                && (enhet.trajectory_plattform(true) == Spill.spiller.plattform)) {
                 enhet.fall();
             } else {
                 enhet.sett_retning_mot(Spill.spiller);
@@ -31,16 +29,6 @@ SeigeninjaKontroll.prototype.styr = function(enhet) {
                     enhet.beveg_mot(Spill.spiller);
                 }
             }
-            //if (enhet.trajectory_plattform() == Spill.spiller.plattform) {
-            //    enhet.hopp();
-            //} else if (enhet.trajectory_plattform(true) == Spill.spiller.plattform) {
-            //    enhet.fall();
-            //} else {
-            //    enhet.sett_retning_mot(Spill.spiller);
-            //    if (!this.gar_av_plattform(enhet)) {
-            //        enhet.beveg_mot(Spill.spiller);
-            //    }
-            //}
         } else if (Spill.spiller.punkt_x() >= enhet.plattform.x
                    && Spill.spiller.punkt_x() <= enhet.plattform.x + enhet.plattform.bredde
                    && Spill.spiller.punkt_y() <= enhet.plattform.y) { // Spiller er over samme plattform

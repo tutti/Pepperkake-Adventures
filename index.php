@@ -15,14 +15,15 @@
         <script src="fiender/Seigeninja.js"></script>
         <script src="fiender/kontroll/JulebruiserKontroll.js"></script>
         <script src="fiender/Julebruiser.js"></script>
+        <script src="PepperkakeKontroll.js"></script>
+        <script src="Pepperkake.js"></script>
         <script src="SpillerKontroll.js"></script>
-        <script src="Spiller.js"></script>
         <script src="Plattform.js"></script>
         <script src="BlinkPlattform.js"></script>
         <script src="HeisPlattform.js"></script>
         <script src="Brett.js"></script>
         <script src="Spill.js"></script>
-        <script src="pepperkake.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
         <audio id="bgm" src=""></audio>

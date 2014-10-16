@@ -1,12 +1,7 @@
 Seigeninja = function(x, y) {
-    this.farge = Math.floor(Math.random()*4);
-    Enhet.call(this, "bilder/seigeninja/" + this.farge + "/n.png", x, y);
-    
-    this.sett_bilde("stopp", "bilder/seigeninja/" + this.farge + "/n.png");
-    this.sett_bilde("gå-venstre", "bilder/seigeninja/" + this.farge + "/gv.gif");
-    this.sett_bilde("gå-høyre", "bilder/seigeninja/" + this.farge + "/gh.gif");
-    
     this.type = "seigeninja";
+    Enhet.call(this, x, y);
+    
     this.bredde = 32;
     this.hoyde = 32;
     this.hastighet = 10;
@@ -15,6 +10,7 @@ Seigeninja = function(x, y) {
     this.maxhp = 3;
     this.rekkevidde = 32;
     
+    this.velg_farge(Math.floor(Math.random()*4));
     this.sett_kontroll(Kontroll.hent("seigeninja"));
 }
 
@@ -53,6 +49,9 @@ Seigeninja.prototype.hent_element = function() {
 
 Seigeninja.prototype.angrep_tick = function() {
     Enhet.prototype.angrep_tick.call(this);
+    if (this.angrep_teller > 5) {
+        return;
+    }
     switch (this.retning) {
         case -1:
             Spill.brett.skad(this, this.x - this.rekkevidde, this.y, this.punkt_x(), this.y + this.hoyde, 1, -1, 1);
@@ -75,3 +74,5 @@ Seigeninja.prototype.skade = function(skade, retning, kraft) {
     this.momentum_x = retning * kraft * 10;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
 }
+
+Enhet.registrer("seigeninja", Seigeninja);

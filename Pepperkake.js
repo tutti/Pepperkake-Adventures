@@ -1,26 +1,23 @@
-Spiller = function() {
-    Enhet.call(this, "bilder/spiller.png", 0, 0);
-    
-    this.sett_bilde("stopp", "bilder/spiller.png");
-    this.sett_bilde("gå-venstre", "bilder/spiller-v.gif");
-    this.sett_bilde("gå-høyre", "bilder/spiller-h.gif");
+Pepperkake = function(x, y) {
+    this.type = "pepperkake";
+    this.antall_farger = 1;
+    Enhet.call(this, x, y);
     
     this.hastighet = 8;
     this.hoppstyrke = 20;
     this.status = "normal";
-    this.type = "spiller";
     this.bredde = 32;
     this.hoyde = 32;
     this.maxhp = 3;
     this.original_retning = 0;
     
-    this.sett_kontroll(Kontroll.hent("spiller"));
+    this.sett_kontroll(Kontroll.hent("pepperkake"));
 }
 
-Spiller.prototype = Object.create(Enhet.prototype);
-Spiller.prototype.constructor = Spiller
+Pepperkake.prototype = Object.create(Enhet.prototype);
+Pepperkake.prototype.constructor = Pepperkake
 
-Spiller.prototype.sett_retning = function(retning) {
+Pepperkake.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
         case -1:
@@ -35,14 +32,14 @@ Spiller.prototype.sett_retning = function(retning) {
     }
 }
 
-Spiller.prototype.tick = function() {
+Pepperkake.prototype.tick = function() {
     Enhet.prototype.tick.call(this);
     if (this.status == "luft") {
         this.kontroll.styr(this);
     }
 }
 
-Spiller.prototype.angrep_tick = function() {
+Pepperkake.prototype.angrep_tick = function() {
     Enhet.prototype.angrep_tick.call(this);
     switch (this.retning) {
         case -1:
@@ -59,7 +56,7 @@ Spiller.prototype.angrep_tick = function() {
     }
 }
 
-Spiller.prototype.skade = function(skade, retning, kraft) {
+Pepperkake.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     this.fall();
     this.retning = 0;
@@ -68,7 +65,9 @@ Spiller.prototype.skade = function(skade, retning, kraft) {
     Enhet.prototype.skade.call(this, skade, retning, kraft);
 }
 
-Spiller.prototype.dod = function() {
+Pepperkake.prototype.dod = function() {
     Enhet.prototype.dod.call(this);
     Spill.spiller_dod();
 }
+
+Enhet.registrer("pepperkake", Pepperkake);

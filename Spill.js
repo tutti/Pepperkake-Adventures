@@ -1,11 +1,10 @@
 Spill = {
     gravitasjon: 2,
     brett: null,
-    //spiller: new Gelebolle()
-    spiller: new Spiller()
+    spiller: Enhet.ny("pepperkake", 0, 0)
 }
 
-//Spill.spiller.sett_kontroll(Kontroll.hent("spiller"));
+Spill.spiller.sett_kontroll(Kontroll.hent("spiller"));
 
 // Last inn data om brettene
 brett = [];

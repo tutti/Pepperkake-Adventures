@@ -34,7 +34,7 @@
             "y": 180,
             "bredde": 60,
             "dx": 0,
-            "dy": -5,
+            "dy": 5,
             "ticktall": 30
         },
         {
@@ -88,6 +88,11 @@
             "arv": "standard",
             "x": 400,
             "y": 550
+        },
+        {
+            "type": "pepperkake",
+            "x": 2020,
+            "y": 450
         }
     ],
     "spiller": [350, 450]

@@ -62,18 +62,8 @@ Brett = function(data) {
                 }
                 f = f2;
             }
-            switch (f.type) {
-                case "seigeninja":
-                    var fiende = new Seigeninja(f.x, f.y);
-                    break;
-                case "julebruiser":
-                    var fiende = new Julebruiser(f.x, f.y);
-                    break;
-                case "gelebølle":
-                default:
-                    var fiende = new Gelebolle(f.x, f.y);
-                    break;
-            }
+            
+            var fiende = Enhet.ny(f.type, f.x, f.y);
             
             this.fiender.push(fiende);
         }
@@ -112,12 +102,14 @@ Brett.prototype.last_ut = function() {
     $("#spillvindu").css('background', '');
 }
 
-Brett.prototype.land = function(x1, y1, x2, y2) {
+Brett.prototype.land = function(x1, y1, x2, y2, ticks) {
     // Sjekker om en enhet som går fra (x1, y1) til (x2, y2)
     // lander på en plattform og returnerer plattformen.
     // Returnerer null hvis ingen plattform.
+    // Hvis ticks er oppgitt, vil det sjekkes om en landing kan foretas etter så mange tick.
+    if (!ticks) ticks = 0;
     for (p_id in this.plattformer) {
-        if (this.plattformer[p_id].lander(x1, y1, x2, y2)) {
+        if (this.plattformer[p_id].lander(x1, y1, x2, y2, ticks)) {
             return this.plattformer[p_id];
         }
     }

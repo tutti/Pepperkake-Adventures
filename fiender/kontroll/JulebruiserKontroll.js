@@ -7,7 +7,7 @@ JulebruiserKontroll.prototype.constructor = JulebruiserKontroll
 
 JulebruiserKontroll.prototype.styr = function(enhet) {
     // Gå et steg
-    enhet.beveg(enhet.retning);
+    enhet.beveg();
     
     // Hvis enden av plattformen er nær, stopp.
     if (this.gar_av_plattform(enhet)) {

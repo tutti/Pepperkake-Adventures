@@ -52,9 +52,7 @@ Kontroll.prototype.gar_av_plattform = function(enhet) {
 
 // Kode for å gjøre kontroller tilgjengelig uten å opprette nye objekter for dem
 
-var kontroller = {
-    
-}
+var kontroller = {}
 
 Kontroll.sett = function(navn, kontroll) {
     kontroller[navn] = kontroll;

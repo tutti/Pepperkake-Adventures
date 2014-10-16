@@ -63,13 +63,16 @@ Plattform.prototype.deaktiver = function() {
 Plattform.prototype.tick = function() {
 }
 
-Plattform.prototype.lander = function(x1, y1, x2, y2) {
+Plattform.prototype.lander = function(x1, y1, x2, y2, ticks) {
     // Sjekker om et fallende objekt kan lande på plattformen
     // Enkel sjekk; objektet må gå fra over plattformen til under,
     // og x2 må lande på plattformen (en ordentlig sjekk ville ha
     // sjekket punktet der linjene krysser).
+    // Antall ticks inn i fremtiden plattformen skal sjekkes kan
+    // spesifiseres, men gjør ingen forskjell for vanlige
+    // plattformer.
     if (!this.vises) return false;
-    if (y1 > this.y || y2 < this.y) {
+    if (y1 >= this.y || y2 < this.y) {
         return false;
     }
     if (x2 < this.x || x2 > this.x+this.bredde) {

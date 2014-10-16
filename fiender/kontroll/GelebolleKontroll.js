@@ -6,8 +6,10 @@ GelebolleKontroll.prototype = Object.create(Kontroll.prototype);
 GelebolleKontroll.prototype.constructor = GelebolleKontroll
 
 GelebolleKontroll.prototype.styr = function(enhet) {
+    if (enhet.retning == 0) enhet.sett_retning(1);
+    
     // Gå et steg
-    enhet.beveg(enhet.retning);
+    enhet.beveg();
     
     // Hvis enden av plattformen er nær, snu.
     if (this.gar_av_plattform(enhet)) {

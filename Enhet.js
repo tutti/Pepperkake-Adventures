@@ -1,7 +1,9 @@
-Enhet = function(bilde, x, y) {
-    this.type = "enhet";
+Enhet = function(x, y) {
+    
+    if (this.type === undefined) this.type = "enhet";
+    this.farge = 0;
     this.bilder = {};
-    this.bilde = bilde;
+    this.bilde = "";
     
     // Overskriv disse i alt som arver Enhet
     this.bredde = 0;
@@ -33,10 +35,12 @@ Enhet = function(bilde, x, y) {
     this.immunitet = 0;
     this.lever = false;
     
-    if (bilde) {
-        this.sett_bilde("", bilde);
-        //this.velg_bilde("");
-    }
+    this.sett_bilde("stopp", "n.png");
+    this.sett_bilde("gå-venstre", "gv.gif");
+    this.sett_bilde("gå-høyre", "gh.gif");
+    this.sett_bilde("angrip", "a.gif");
+    this.sett_bilde("angrip-venstre", "av.gif");
+    this.sett_bilde("angrip-høyre", "ah.gif");
 }
 
 Enhet.prototype.hent_element = function() {
@@ -44,11 +48,12 @@ Enhet.prototype.hent_element = function() {
     // Ellers lages et nytt som returneres.
     // Elementet skal uansett være et jQuery-objekt.
     if (this.element === undefined) {
-        this.element = $('<img class="enhet enhet-' + this.type + '" src="' + this.bilde + '" />');
+        this.element = $('<img class="enhet enhet-' + this.type + '" src="" />');
         this.element.width(this.bredde);
         this.element.height(this.hoyde);
         this.element.css('left', this.x);
         this.element.css('top', this.y);
+        this.velg_bilde("stopp");
         $("#spillvindu").append(this.element);
     }
     return this.element;
@@ -179,6 +184,7 @@ Enhet.prototype.sett_retning_mot = function(enhet) {
 }
 
 Enhet.prototype.beveg = function(retning) {
+    if (this.status != "normal") { return; }
     if (!retning && retning != 0) {
         retning = this.retning;
     }
@@ -227,6 +233,11 @@ Enhet.prototype.angrip = function() {
     // Utførelsen av angrepet og skade gjort gjøres i tick.
     // Denne funksjonen gjør ikke noe annet enn å sette
     // enheten i angrepsstatus; ingen skade utføres.
+    switch (this.retning) {
+        case -1: this.velg_bilde("angrip-venstre"); break;
+        case 1: this.velg_bilde("angrip-høyre"); break;
+        case 0: this.velg_bilde("angrip"); break;
+    }
     this.angrep = true;
     this.angrep_teller = 10;
 }
@@ -267,7 +278,7 @@ Enhet.prototype.land = function() {
     if (this.gamle_punkt_x == 0 && this.gamle_punkt_y == 0) return;
     var x = this.punkt_x();
     var y = this.punkt_y();
-    var plattform = Spill.brett.land(this.gamle_punkt_x, this.gamle_punkt_y, x, y);
+    var plattform = Spill.brett.land(this.gamle_punkt_x, this.gamle_punkt_y, x, y, 0);
     if (plattform) {
         this.plattform = plattform;
         plattform.legg_til(this);
@@ -295,8 +306,7 @@ Enhet.prototype.trajectory_plattform = function(fra_topp) {
     //  - er på en plattform og hopper nå
     //  - er i luften allerede
     //  - hvis fra_topp == true: hvis den starter et fall nå
-    //var momentum = this.momentum + this.hoppstyrke;
-    //var momentum_x = this.momentum_x + (this.retning * this.hastighet);
+    // Plattformen spilleren er på vil ikke returneres.
     var momentum = this.momentum;
     var momentum_x = this.momentum_x;
     if (this.status == "normal") {
@@ -305,9 +315,9 @@ Enhet.prototype.trajectory_plattform = function(fra_topp) {
     }
     if (fra_topp) {
         momentum = 0;
-        y -= 5;
     }
     
+    var ticks = 0;
     var x = this.punkt_x();
     var y = this.punkt_y();
     var forrige_x = 0;
@@ -319,9 +329,10 @@ Enhet.prototype.trajectory_plattform = function(fra_topp) {
         x += momentum_x;
         y -= momentum;
         momentum -= Spill.gravitasjon;
-        if (momentum <= 0) {
-            plattform = Spill.brett.land(forrige_x, forrige_y, x, y);
+        if (momentum < 0) {
+            plattform = Spill.brett.land(forrige_x, forrige_y, x, y, ticks);
         }
+        ++ticks;
     }
     
     return plattform;
@@ -376,6 +387,14 @@ Enhet.prototype.sett_bilde = function(navn, bilde) {
 }
 
 Enhet.prototype.velg_bilde = function(navn) {
+    /*
+     *    this.sett_bilde("stopp", "bilder/"+this.type+"/"+this.farge+"/n.png");
+    this.sett_bilde("gå-venstre", "bilder/"+this.type+"/"+this.farge+"/gv.gif");
+    this.sett_bilde("gå-høyre", "bilder/"+this.type+"/"+this.farge+"/gh.gif");
+    this.sett_bilde("angrip", "bilder/"+this.type+"/"+this.farge+"/a.gif");
+    this.sett_bilde("angrip-venstre", "bilder/"+this.type+"/"+this.farge+"/av.gif");
+    this.sett_bilde("angrip-høyre", "bilder/"+this.type+"/"+this.farge+"/ah.gif");
+    */
     if (this.bilder[navn]) {
         var bilde = this.bilder[navn];
     } else if (this.bilder[""]) {
@@ -384,5 +403,19 @@ Enhet.prototype.velg_bilde = function(navn) {
     if (bilde == this.bilde) return;
     this.bilde = bilde;
     var elmt = this.hent_element();
-    elmt.prop("src", bilde);
+    elmt.prop("src", "bilder/"+this.type+"/"+this.farge+"/"+bilde);
+}
+
+Enhet.prototype.velg_farge = function(farge) {
+    this.farge = farge;
+}
+
+var enheter = {}
+
+Enhet.registrer = function(type, enhetklasse) {
+    enheter[type] = enhetklasse;
+}
+
+Enhet.ny = function(type, x, y) {
+    return new enheter[type](x, y);
 }

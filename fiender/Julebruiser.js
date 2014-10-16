@@ -1,10 +1,11 @@
 Julebruiser = function(x, y) {
+    this.type = "julebruiser";
+    this.antall_farger = 0;
     Enhet.call(this, "bilder/julebruiser.png", x, y);
     
-    //this.sett_bilde("venstre", "bilder/gelebolle-v.gif");
-    //this.sett_bilde("høyre", "bilder/gelebolle-h.gif");
+    this.sett_bilde("gå-venstre", "bilder/julebruiser.png");
+    this.sett_bilde("gå-høyre", "bilder/julebruiser.png");
     
-    this.type = "julebruiser";
     this.bredde = 32;
     this.hoyde = 32;
     this.hastighet = 15;
@@ -53,7 +54,7 @@ Julebruiser.prototype.angrep_tick = function() {
     }
 }
 
-Enhet.prototype.angrip = function() {
+Julebruiser.prototype.angrip = function() {
     this.angrep = true;
     this.angrep_teller = 25;
 }
@@ -65,3 +66,5 @@ Julebruiser.prototype.skade = function(skade, retning, kraft) {
     this.momentum_x = retning * kraft * 10;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
 }
+
+Enhet.registrer("julebruiser", Julebruiser);
