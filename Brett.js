@@ -127,8 +127,9 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Ikke kall denne direkte; kall heller Brett.skad().
     if (x2 < x1 || y2 < y1) {
         console.error("skadFiender: Dårlige koordinater", x1, y1, x2, y2);
-        return;
+        return false;
     }
+    var skadet = false;
     if (!skade && skade != 0) {
         skade = 1;
     }
@@ -142,8 +143,10 @@ Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
         var f = this.fiender[f_id];
         if (f.x <= x2 && f.x+f.bredde >= x1 && f.y <= y2 && f.y+f.hoyde >= y1) {
             f.skade(skade, retning, kraft);
+            skadet = true;
         }
     }
+    return skadet;
 }
 
 Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
@@ -151,7 +154,7 @@ Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
     // Ikke kall denne direkte; kall heller Brett.skad().
     if (x2 < x1 || y2 < y1) {
         console.error("skadSpiller: Dårlige koordinater", x1, y1, x2, y2);
-        return;
+        return false;
     }
     var p = Spill.spiller;
     if (p.x <= x2 && p.x+p.bredde >= x1 && p.y <= y2 && p.y+p.hoyde >= y1) {
@@ -165,14 +168,16 @@ Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
             retning = 0;
         }
         p.skade(skade, retning, Math.sqrt(kraft));
+        return true;
     }
+    return false;
 }
 
 Brett.prototype.skad = function(enhet, x1, y1, x2, y2, skade, retning, kraft) {
     if (enhet == Spill.spiller) {
-        this.skadFiender(x1, y1, x2, y2, skade, retning, kraft);
+        return this.skadFiender(x1, y1, x2, y2, skade, retning, kraft);
     } else {
-        this.skadSpiller(x1, y1, x2, y2, skade, retning, kraft);
+        return this.skadSpiller(x1, y1, x2, y2, skade, retning, kraft);
     }
 }
 

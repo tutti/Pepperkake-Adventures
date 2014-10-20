@@ -31,7 +31,9 @@ Gelebolle.prototype.sett_retning = function(retning) {
 Gelebolle.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
-    Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5);
+    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
+        Lyd.Effekt.spill("lyd/slag1.mp3");
+    }
 }
 
 Gelebolle.prototype.hopp = function() {

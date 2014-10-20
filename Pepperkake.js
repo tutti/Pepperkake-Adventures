@@ -56,6 +56,11 @@ Pepperkake.prototype.angrep_tick = function() {
     }
 }
 
+Pepperkake.prototype.hopp = function() {
+    Enhet.prototype.hopp.call(this);
+    Lyd.Effekt.spill("lyd/Hopp2.mp3");
+}
+
 Pepperkake.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     this.fall();
@@ -67,7 +72,7 @@ Pepperkake.prototype.skade = function(skade, retning, kraft) {
 
 Pepperkake.prototype.dod = function() {
     Enhet.prototype.dod.call(this);
-    Spill.spiller_dod();
+    Lyd.Effekt.spill("lyd/Tap.mp3");
 }
 
 Enhet.registrer("pepperkake", Pepperkake);

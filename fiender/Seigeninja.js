@@ -52,19 +52,28 @@ Seigeninja.prototype.angrep_tick = function() {
     if (this.angrep_teller > 5) {
         return;
     }
+    var skade = false;
     switch (this.retning) {
         case -1:
-            Spill.brett.skad(this, this.x - this.rekkevidde, this.y, this.punkt_x(), this.y + this.hoyde, 1, -1, 1);
+            skade = Spill.brett.skad(this, this.x - this.rekkevidde, this.y, this.punkt_x(), this.y + this.hoyde, 1, -1, 1);
             break;
         case 1:
-            Spill.brett.skad(this, this.punkt_x(), this.y, this.x + 2 * this.rekkevidde, this.y + this.hoyde, 1, 1, 1);
+            skade = Spill.brett.skad(this, this.punkt_x(), this.y, this.x + 2 * this.rekkevidde, this.y + this.hoyde, 1, 1, 1);
             break;
         case 0:
         default:
-            Spill.brett.skad(this, this.x - this.rekkevidde / 2, this.y, this.x + this.rekkevidde / 2, this.y + this.hoyde, 1, -1, 1);
-            Spill.brett.skad(this, this.x + this.rekkevidde / 2, this.y, this.x + this.rekkevidde * 1.5, this.y + this.hoyde, 1, 1, 1);
+            skade = Spill.brett.skad(this, this.x - this.rekkevidde / 2, this.y, this.x + this.rekkevidde / 2, this.y + this.hoyde, 1, -1, 1);
+            skade = Spill.brett.skad(this, this.x + this.rekkevidde / 2, this.y, this.x + this.rekkevidde * 1.5, this.y + this.hoyde, 1, 1, 1);
             break;
     }
+    if (skade) {
+        Lyd.Effekt.spill("lyd/slag2.mp3");
+    }
+}
+
+Seigeninja.prototype.hopp = function() {
+    Enhet.prototype.hopp.call(this);
+    Lyd.Effekt.spill("lyd/Hopp.mp3");
 }
 
 Seigeninja.prototype.skade = function(skade, retning, kraft) {

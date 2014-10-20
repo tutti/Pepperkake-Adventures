@@ -77,7 +77,7 @@
         {
             "templat": true,
             "navn": "standard",
-            "type": "gelebølle"
+            "type": "seigeninja"
         },
         {
             "arv": "standard",

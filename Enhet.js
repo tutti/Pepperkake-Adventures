@@ -256,6 +256,9 @@ Enhet.prototype.skade = function(skade, retning, kraft) {
 Enhet.prototype.dod = function() {
     this.deaktiver();
     this.lever = false;
+    if (this == Spill.spiller) {
+        Spill.spiller_dod();
+    }
 }
 
 Enhet.prototype.fall = function() {
