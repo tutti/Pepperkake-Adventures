@@ -47,7 +47,12 @@
     #startknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 250px;
+        top: 150px;
+    }
+    #loggutknapp {
+        border: 3px solid grey;
+        background: lightgreen;
+        top: 180px;
     }
     .brettknapp {
         width: 94px;
@@ -61,16 +66,27 @@
         background: lightgreen;
         top: 250px;
     }
-    #loginknapp {
-        border: 3px solid grey;
-        background: lightgreen;
+    #brukermeny {
+        position: relative;
+        width: 600px;
         top: 150px;
+        margin: auto;
     }
-    #registrerknapp {
-        border: 3px solid grey;
-        background: lightgreen;
-        top: 180px;
-    }
+        #brukermeny input {
+            display: block;
+            width: 252px;
+            margin: auto;
+        }
+        #brukermeny .knapp {
+            border: 3px solid grey;
+            background: lightgreen;
+            width: 250px;
+            margin-top: 10px;
+        }
+        #brukermeny #feilmelding {
+            text-align: center;
+            color: red;
+        }
 
 .plattform {
     position: absolute;

@@ -7,7 +7,6 @@ class User {
     private static $current_user;
     private $authenticated = false;
     private $id = 0;
-    public $name = "";
     public $username = "";
     private $password = "";
     public $admin = false;
@@ -16,9 +15,9 @@ class User {
     {
         if (!self::$db) {
             self::$db = Database::get();
-            self::$db->prepare("get_user_by_username", "SELECT * FROM user WHERE alias=?");
-            self::$db->prepare("create_user", "INSERT INTO user (name, alias, password) VALUES (?, ?, ?)");
-            self::$db->prepare("save_user", "UPDATE user SET name=:name, alias=:username, admin=:admin WHERE id=:id");
+            self::$db->prepare("get_user_by_username", "SELECT * FROM user WHERE username=:username");
+            self::$db->prepare("create_user", "INSERT INTO user (username, password) VALUES (:username, :password)");
+            self::$db->prepare("save_user", "UPDATE user SET username=:username, admin=:admin WHERE id=:id");
             self::$db->prepare("change_user_password", "UPDATE user SET password=:password WHERE id=:id");
         }
     }
@@ -31,7 +30,7 @@ class User {
         if (self::$current_user) {
             return self::$current_user;
         }
-        return false;
+        return self::from_session();
     }
     
     /**
@@ -58,11 +57,10 @@ class User {
     public function __construct($username)
     {
         self::do_db_work();
-        self::$db->bind("get_user_by_username", 1, $username);
+        self::$db->bind("get_user_by_username", ":username", $username);
         $result = self::$db->getOne("get_user_by_username");
         $this->id = $result['id'];
         $this->username = $username;
-        $this->name = $result['name'];
         $this->admin = $result['admin'];
         $this->password = $result['password'];
         $this->authenticated = false;
@@ -134,9 +132,28 @@ class User {
     public function save()
     {
         self::$db->bind("save_user", ":id", $this->id);
-        self::$db->bind("save_user", ":name", $this->name);
         self::$db->bind("save_user", ":username", $this->username);
         self::$db->bind("save_user", ":admin", $this->admin);
         self::$db->execute("save_user");
+    }
+    
+    public static function user_exists($username) {
+        self::do_db_work();
+        self::$db->bind("get_user_by_username", ":username", $username);
+        $user = self::$db->getFirst("get_user_by_username");
+        if ($user['id']) return true;
+        return false;
+    }
+    
+    /**
+     * Creates a new user and returns it.
+     * The user is automatically saved to the database.
+     */
+    public static function create($username, $password) {
+        self::do_db_work();
+        self::$db->bind("create_user", ":username", $username);
+        self::$db->bind("create_user", ":password", password_hash($password, PASSWORD_DEFAULT));
+        self::$db->execute("create_user");
+        return new User($username);
     }
 }

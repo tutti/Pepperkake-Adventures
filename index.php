@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
 require "server/user.php";
-$user = User::get_current();
+session_start();
+$bruker = User::get_current();
 ?>
 <html>
     <head>
@@ -42,12 +43,28 @@ $user = User::get_current();
             <div id="testblokk"></div>
             <div id="hovedmeny" class="meny">
                 <h1 id="spilloverskrift">Pepperkake Adventures</h1>
-                <?php //if ($user) { ?>
+                <?php if ($bruker) { ?>
                 <span id="startknapp" class="knapp">Start spill</span>
-                <?php //} else { ?>
-<!--                <span id="loginknapp" class="knapp">Logg inn</span>
-                <span id="registrerknapp" class="knapp">Registrer</span>-->
-                <?php //} ?>
+                <span id="loggutknapp" class="knapp">Logg ut</span>
+                <?php } else { ?>
+                <table id="brukermeny">
+                    <tr>
+                        <th>Brukernavn</th>
+                        <th>Passord</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="brukernavn" /></td>
+                        <td><input type="password" id="passord" /></td>
+                    </tr>
+                    <tr>
+                        <td><span id="logginnknapp" class="knapp">Logg inn</span></td>
+                        <td><span id="registrerknapp" class="knapp">Registrer</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="feilmelding"></td>
+                    </tr>
+                </table>
+                <?php } ?>
             </div>
             <div id="brettmeny" class="meny" style="display: none;">
                 <h1 id="brettoverskrift">Velg et brett</h1>
@@ -60,9 +77,6 @@ $user = User::get_current();
             <div id="tapmeny" class="meny" style="display: none;">
                 <h1 id="tapoverskrift">Spillet er over</h1>
                 <span class="knapp okknapp" id="tapokknapp">Tilbake</span>
-            </div>
-            <div id="loginmeny" class="meny" style="display: none;">
-                
             </div>
         </div>
     </body>
