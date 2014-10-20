@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+require "server/user.php";
+$user = User::get_current();
+?>
 <html>
     <head>
         <title>Pepperkake Adventures</title>
@@ -36,21 +40,29 @@
         </script>
         <div id="spillvindu">
             <div id="testblokk"></div>
-            <div id="hovedmeny">
+            <div id="hovedmeny" class="meny">
                 <h1 id="spilloverskrift">Pepperkake Adventures</h1>
-                <span id="startknapp">Start spill</span>
+                <?php //if ($user) { ?>
+                <span id="startknapp" class="knapp">Start spill</span>
+                <?php //} else { ?>
+<!--                <span id="loginknapp" class="knapp">Logg inn</span>
+                <span id="registrerknapp" class="knapp">Registrer</span>-->
+                <?php //} ?>
             </div>
-            <div id="brettmeny" style="display: none;">
+            <div id="brettmeny" class="meny" style="display: none;">
                 <h1 id="brettoverskrift">Velg et brett</h1>
                 <div id="brettknapper">
                     <?php for ($i = 0; $i < ANTALL_BRETT; ++$i) { ?>
-                    <span class="brettknapp" brett="<?= $i; ?>"><?= $i+1; ?></span>
+                    <span class="brettknapp knapp" brett="<?= $i; ?>"><?= $i+1; ?></span>
                     <?php } ?>
                 </div>
             </div>
-            <div id="tapmeny" style="display: none;">
+            <div id="tapmeny" class="meny" style="display: none;">
                 <h1 id="tapoverskrift">Spillet er over</h1>
-                <span class="okknapp" id="tapokknapp">Tilbake</span>
+                <span class="knapp okknapp" id="tapokknapp">Tilbake</span>
+            </div>
+            <div id="loginmeny" class="meny" style="display: none;">
+                
             </div>
         </div>
     </body>
