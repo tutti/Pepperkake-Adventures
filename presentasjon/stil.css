@@ -148,13 +148,28 @@ h2 {
         display: inline-block;
         overflow: hidden;
     }
-        #bildeslide img {
-            position: relative;
-            cursor: pointer;
-            height: 100px;
-            float: left;
-            z-index: 1;
+        #bildeslide .slidebilde-wrapper {
+                position: relative;
+                height: 120px;
+                float: left;
+                z-index: 1;
         }
+            #bildeslide img {
+                display: block;
+                margin: auto;
+                cursor: pointer;
+                height: 100px;
+                opacity: 0.4;
+            }
+                #bildeslide img.valgt,
+                #bildeslide img:hover {
+                    opacity: 1;
+                }
+
+#person-overskrift {
+    text-align: center;
+    margin: 10px;
+}
 
 #info-venstre {
     margin-top: 20px;
