@@ -12,6 +12,10 @@ Pepperkake = function(x, y) {
     this.original_retning = 0;
     
     this.sett_kontroll(Kontroll.hent("pepperkake"));
+    
+    this.sett_bilde("angrip-luft", "la.gif");
+    this.sett_bilde("angrip-luft-venstre", "lav.png");
+    this.sett_bilde("angrip-luft-høyre", "lah.png");
 }
 
 Pepperkake.prototype = Object.create(Enhet.prototype);
