@@ -16,9 +16,7 @@
     position: relative;
     margin: auto;
 }
-    #spilloverskrift,
-    #brettoverskrift,
-    #tapoverskrift {
+    .menyoverskrift {
         font-family: sans-serif;
         text-transform: uppercase;
         text-align: center;
@@ -38,7 +36,7 @@
         text-transform: uppercase;
         cursor: pointer;
     }
-    #brettknapper {
+    .brettknapper {
         position: relative;
         width: 600px;
         top: 150px;
@@ -60,8 +58,26 @@
         border: 3px solid grey;
         background: lightgreen;
         float: left;
+        text-transform: none;
+        /*line-height: 1em;*/
+        font-size: 0.75em;
+        /*display: inline-block;*/
     }
+        .brettknapp span {
+            line-height: 1em;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .brettknapp.disabled {
+            background: lightgrey;
+            cursor: auto;
+        }
     #tapokknapp {
+        border: 3px solid grey;
+        background: lightgreen;
+        top: 250px;
+    }
+    #brettferdigokknapp {
         border: 3px solid grey;
         background: lightgreen;
         top: 250px;
@@ -94,4 +110,11 @@
 
 .enhet {
     position: absolute;
+}
+
+.utgang {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background-image: url("bilder/utgang.png");
 }

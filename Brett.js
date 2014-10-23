@@ -1,6 +1,9 @@
-Brett = function(data) {
+Brett = function(data, mappe, filnavn, apnet) {
     this.navn = data.navn;
+    this.mappe = mappe;
+    this.filnavn = filnavn;
     this.bakgrunn = data.bakgrunn;
+    this.apnet = apnet;
     this.plattformer = [];
     this.t_plattformer = {};
     this.fiender = [];
@@ -41,6 +44,10 @@ Brett = function(data) {
                     break;
             }
             
+            if (p.utgang) {
+                plattform.sett_utgang(p.utgang);
+            }
+            
             this.plattformer.push(plattform);
         }
     }
@@ -71,6 +78,11 @@ Brett = function(data) {
     
     this.x = data.spiller[0];
     this.y = data.spiller[1];
+    
+    if (apnet) {
+        //console.log($('[data-mappe="'+this.mappe+'"][data-brett="'+this.navn+'"]'));
+        $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]').removeClass("disabled");
+    }
 }
 
 Brett.prototype.vis_bakgrunn = function() {
@@ -100,6 +112,13 @@ Brett.prototype.last_ut = function() {
     }
     Spill.spiller.deaktiver();
     $("#spillvindu").css('background', '');
+}
+
+Brett.prototype.apne = function() {
+    this.apnet = true;
+    $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]').removeClass("disabled");
+    Server.apne_brett(this.mappe, this.filnavn);
+    console.log("Åpner lastet brett");
 }
 
 Brett.prototype.land = function(x1, y1, x2, y2, ticks) {

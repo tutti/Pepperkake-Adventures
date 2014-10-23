@@ -1,6 +1,6 @@
 <?php
 
-require "database.php";
+require_once "database.php";
 
 class User {
     private static $db;
@@ -19,6 +19,12 @@ class User {
             self::$db->prepare("create_user", "INSERT INTO user (username, password) VALUES (:username, :password)");
             self::$db->prepare("save_user", "UPDATE user SET username=:username, admin=:admin WHERE id=:id");
             self::$db->prepare("change_user_password", "UPDATE user SET password=:password WHERE id=:id");
+            
+            self::$db->prepare("has_folder", "SELECT id FROM bruker_mappe WHERE bruker=:bruker AND mappe=:mappe");
+            self::$db->prepare("has_level", "SELECT id FROM bruker_brett WHERE bruker=:bruker, brett=(SELECT id FROM brett WHERE mappe=:mappe, fil=:fil)");
+            self::$db->prepare("unlock_folder", "INSERT IGNORE INTO bruker_mappe (bruker, mappe) VALUES (:bruker, :mappe)");
+            self::$db->prepare("unlock_level", "INSERT IGNORE INTO bruker_brett (bruker, brett) VALUES (:bruker, (SELECT id FROM brett WHERE mappe=:mappe AND fil=:fil))");
+            self::$db->prepare("level_list", "SELECT DISTINCT(brett.id), brett.mappe, brett.fil, bruker_brett.id AS apnet FROM brett LEFT JOIN bruker_brett ON brett.id = bruker_brett.brett AND bruker_brett.bruker=:bruker WHERE (mappe IN (SELECT mappe FROM bruker_mappe WHERE bruker=:bruker) OR mappe='standard') GROUP BY brett.id");
         }
     }
     
@@ -154,6 +160,56 @@ class User {
         self::$db->bind("create_user", ":username", $username);
         self::$db->bind("create_user", ":password", password_hash($password, PASSWORD_DEFAULT));
         self::$db->execute("create_user");
-        return new User($username);
+        // Application specific start
+        $u = new User($username);
+        $u->apne_brett("standard", "1.json");
+        return $u;
+        // Application specific end
+        //return new User($username);
+    }
+    
+    /**
+     * Application specific functions
+     */
+    public function har_mappe($brettmappe) {
+        self::$db->bind("has_folder", ":bruker", $this->id);
+        self::$db->bind("has_folder", ":mappe", $brettmappe);
+        $r = self::$db->getFirst("has_folder");
+        if ($r['id']) return true;
+        return false;
+    }
+    
+    public function apne_mappe($brettmappe) {
+        self::$db->bind("unlock_folder", ":mappe", $brettmappe);
+        self::$db->bind("unlock_folder", ":bruker", $this->id);
+        self::$db->execute("unlock_folder");
+    }
+    
+    public function har_brett($brettmappe, $brettfil) {
+        self::$db->bind("has_level", ":mappe", $brettmappe);
+        self::$db->bind("has_level", ":fil", $brettfil);
+        self::$db->bind("has_level", ":bruker", $this->id);
+        $r = self::$db->getFirst("has_level");
+        if ($r['id']) return true;
+        return false;
+    }
+    
+    public function apne_brett($brettmappe, $brettfil) {
+        $this->apne_mappe($brettmappe);
+        self::$db->bind("unlock_level", ":mappe", $brettmappe);
+        self::$db->bind("unlock_level", ":fil", $brettfil);
+        self::$db->bind("unlock_level", ":bruker", $this->id);
+        self::$db->execute("unlock_level");
+    }
+    
+    public function brettliste() {
+        self::$db->bind("level_list", ":bruker", $this->id);
+        $r = array();
+        $liste = self::$db->getAll("level_list");
+        foreach ($liste as $brett) {
+            if (!array_key_exists($brett['mappe'], $r)) $r[$brett['mappe']] = array();
+            $r[$brett['mappe']][] = [$brett['fil'], $brett['apnet'] != null ? true : false];
+        }
+        return $r;
     }
 }

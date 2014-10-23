@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <?php
-require "server/user.php";
+require_once "server/user.php";
 session_start();
 $bruker = User::get_current();
 ?>
 <html>
     <head>
         <title>Pepperkake Adventures</title>
+        <meta charset="UTF-8" />
         <link rel="stylesheet" href="stil.css" />
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
         <script src="jquery.min.js"></script>
-        <?php require "brett.php"; ?>
+        <?php require "server/brett.php"; ?>
+        <script src="Server.js"></script>
         <script src="Lyd.js"></script>
         <script src="Kontroll.js"></script>
         <script src="Enhet.js"></script>
@@ -42,7 +44,7 @@ $bruker = User::get_current();
         <div id="spillvindu">
             <div id="testblokk"></div>
             <div id="hovedmeny" class="meny">
-                <h1 id="spilloverskrift">Pepperkake Adventures</h1>
+                <h1 id="spilloverskrift" class="menyoverskrift">Pepperkake Adventures</h1>
                 <?php if ($bruker) { ?>
                 <span id="startknapp" class="knapp">Start spill</span>
                 <span id="loggutknapp" class="knapp">Logg ut</span>
@@ -67,16 +69,23 @@ $bruker = User::get_current();
                 <?php } ?>
             </div>
             <div id="brettmeny" class="meny" style="display: none;">
-                <h1 id="brettoverskrift">Velg et brett</h1>
-                <div id="brettknapper">
+                <h1 id="brettoverskrift" class="menyoverskrift">Velg et brett</h1>
+                <div id="brettknapper-standard" class="brettknapper">
                     <?php for ($i = 0; $i < ANTALL_BRETT; ++$i) { ?>
-                    <span class="brettknapp knapp" brett="<?= $i; ?>"><?= $i+1; ?></span>
+                    <div id="brettknapp-<?= $i; ?>" class="brettknapp knapp disabled" data-mappe="" data-brett=""><span><?= $i+1; ?></span></div>
                     <?php } ?>
                 </div>
             </div>
             <div id="tapmeny" class="meny" style="display: none;">
-                <h1 id="tapoverskrift">Spillet er over</h1>
+                <h1 id="tapoverskrift" class="menyoverskrift">Spillet er over</h1>
                 <span class="knapp okknapp" id="tapokknapp">Tilbake</span>
+            </div>
+            <div id="lastermeny" class="meny" style="display: none;">
+                <h1 id="lasteroverskrift" class="menyoverskrift">Laster inn nye brett...</h1>
+            </div>
+            <div id="brettferdigmeny" class="meny" style="display: none;">
+                <h1 id="brettferdigoverskrift" class="menyoverskrift">Brett ferdig</h1>
+                <span class="knapp okknapp" id="brettferdigokknapp">OK</span>
             </div>
         </div>
     </body>

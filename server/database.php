@@ -68,6 +68,7 @@ class Database {
         for ($row = $sth->fetch(); $row; $row = $sth->fetch()) {
             $r[] = $row;
         }
+        return $r;
     }
     
     /**

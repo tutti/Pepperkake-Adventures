@@ -1,7 +1,7 @@
 Julebruiser = function(x, y) {
     this.type = "julebruiser";
     this.antall_farger = 0;
-    Enhet.call(this, "bilder/julebruiser.png", x, y);
+    Enhet.call(this, x, y);
     
     this.sett_bilde("gå-venstre", "bilder/julebruiser.png");
     this.sett_bilde("gå-høyre", "bilder/julebruiser.png");
@@ -23,10 +23,10 @@ Julebruiser.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
         case -1:
-            this.velg_bilde("venstre");
+            this.velg_bilde("gå-venstre");
             break;
         case 1:
-            this.velg_bilde("høyre");
+            this.velg_bilde("gå-høyre");
             break;
     }
 }

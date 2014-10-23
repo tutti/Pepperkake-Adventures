@@ -7,9 +7,9 @@ Plattform = function(bilde, x, y, bredde, hoyde) {
     this.vises = true; // Plattformer som ikke vises, kan ikke stås på
     this.bilde = bilde;
     this.enheter = [];
+    this.utgang = false;
     
     this.aktiv = false;
-    //this.skjul();
 }
 
 Plattform.prototype.hent_element = function() {
@@ -17,14 +17,21 @@ Plattform.prototype.hent_element = function() {
     // Ellers lages et nytt som returneres.
     // Elementet skal uansett være et jQuery-objekt.
     if (this.element === undefined) {
-        //this.element = $('<img class="plattform plattform-' + this.type + '" src="' + this.bilde + '" />');
         this.element = $('<div class="plattform plattform-' + this.type + '">');
-        this.element.css('background', 'url("' + this.bilde + '")');
-        this.element.width(this.bredde);
-        this.element.height(this.hoyde);
-        this.element.css('left', this.x);
-        this.element.css('top', this.y);
+        this.element
+            .css('background', 'url("' + this.bilde + '")')
+            .width(this.bredde)
+            .height(this.hoyde)
+            .css('left', this.x)
+            .css('top', this.y);
         $("#spillvindu").append(this.element);
+    }
+    if (this.utgang_element === undefined && this.utgang) {
+        this.utgang_element = $('<div class="utgang">');
+        this.utgang_element
+            .css('left', this.x+(this.bredde/2)-32)
+            .css('top', this.y-64);
+        $("#spillvindu").append(this.utgang_element);
     }
     return this.element;
 }
@@ -38,12 +45,14 @@ Plattform.prototype.sett_bilde = function(bilde) {
 Plattform.prototype.vis = function() {
     var elmt = this.hent_element();
     elmt.show();
+    if (this.utgang) this.utgang_element.show();
     this.vises = true;
 }
 
 Plattform.prototype.skjul = function() {
     var elmt = this.hent_element();
     elmt.hide();
+    if (this.utgang) this.utgang_element.hide();
     this.vises = false;
     for (e_id in this.enheter) {
         this.enheter[e_id].fall();
@@ -58,6 +67,14 @@ Plattform.prototype.aktiver = function() {
 Plattform.prototype.deaktiver = function() {
     this.aktiv = false;
     this.skjul();
+}
+
+Plattform.prototype.sett_utgang = function(utgang) {
+    // utgang skal enten være false (for ingen utgang),
+    // en streng som sier hvilket brett utgangen skal gå til,
+    // eller en tom streng hvis utgangen går til hovedmenyen
+    // (f.eks hvis spillet er ferdig).
+    this.utgang = utgang;
 }
 
 Plattform.prototype.tick = function() {
@@ -92,6 +109,10 @@ Plattform.prototype.er_pa = function(x) {
 }
 
 Plattform.prototype.legg_til = function(enhet) {
+    if (this.utgang && enhet == Spill.spiller) {
+        Spill.brett_ferdig(this.utgang);
+        return;
+    }
     var i = this.enheter.indexOf(enhet);
     if (i == -1) {
         this.enheter.push(enhet);

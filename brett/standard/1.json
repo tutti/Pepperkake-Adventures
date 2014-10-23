@@ -52,7 +52,8 @@
         {
             "arv": "standard",
             "x": 500,
-            "y": 50
+            "y": 50,
+            "utgang": "standard/2.json"
         },
         {
             "arv": "standard",
@@ -77,7 +78,7 @@
         {
             "templat": true,
             "navn": "standard",
-            "type": "seigeninja"
+            "type": "julebruiser"
         },
         {
             "arv": "standard",
