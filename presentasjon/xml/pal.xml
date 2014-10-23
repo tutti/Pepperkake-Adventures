@@ -38,13 +38,11 @@
     </BILDE>
     <BILDE src="jmtlogo.png" alt="Logoen til JMT">
         <OVERSKRIFT>Jobben min</OVERSKRIFT>
-        <TEKST type="html">
-            <![CDATA[
+        <TEKST type="text">
             Dette er logoen til arbeidsplassen min. JMT Nordic er en webbedrift
             i Åsane med flere prosjekter. Et av prosjektene jeg har hatt mye med
             er humorsiden likeaboss.com, som vi brukte til å sponse Andreas
             Bakkerud.
-            ]]>
         </TEKST>
     </BILDE>
 </PERSON>
