@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PERSON>
+    <NAVN>Martin Fure</NAVN>
+    <BILDE src="bildet.jpg" alt="Bilde av Martin">
+        <OVERSKRIFT>Om meg</OVERSKRIFT>
+        <TEKST type="html">
+            <![CDATA[
+            <p>Alder: 19 år </p>
+            <p>Heimstad: Øystese</p>
+            <p>Jobb: Kiwi Øystese</p>
+            <p>Studerer på HIB</p>
+            
+            <a href="https://www.facebook.com/marfur95">
+                <img src="bilder/facebook-icon-small.png" alt="Facebook logo" />
+            </a>
+            <br>
+            <h3>Hobbyar</h3>
+            <ul>
+                <li>Musikk</li>
+                <li>Dataspel</li>
+                <li>Karate</li>
+                <li>Film</li>
+                <li>Henga med venar</li>
+            </ul>
+            ]]>
+        </TEKST>
+    </BILDE>
+    <BILDE src="blackvenus.jpg" alt="Logoen til Black Venus">
+        <OVERSKRIFT>Bandet mitt</OVERSKRIFT>
+        <TEKST type="tekst">
+            Eg har spelt gitar i eit band som heiter Black Venus i 4 år. Me kom
+            vidare i frå lokal UKM i 2013 men av grunnar deltok me ikkje i
+            fylkesmønstringa.
+        </TEKST>
+    </BILDE>
+    <BILDE src="zelda.jpg" alt="Logoen til Legend of Zelda">
+        <OVERSKRIFT>Legend of Zelda</OVERSKRIFT>
+        <TEKST type="tekst">
+            Favoritt spelserien min er the legend of zelda. Eg har 16 av 17 spel
+            i hovudserien, eg har i tilleg spin-off spelet Hyrule Warriors.
+        </TEKST>
+    </BILDE>
+    <BILDE src="arrow.jpeg" alt="Logoen til Arrow">
+        <OVERSKRIFT>Arrow</OVERSKRIFT>
+        <TEKST type="tekst">
+            Mesteparten av fritida mi går med på å sjå på tv-seriar.
+            Favoritserien min for øyeblikket er Arrow som er basert på superhelt
+            tegneserien "Green Arrow".
+        </TEKST>
+    </BILDE>
+</PERSON>

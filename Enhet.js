@@ -41,6 +41,9 @@ Enhet = function(x, y) {
     this.sett_bilde("angrip", "a.gif");
     this.sett_bilde("angrip-venstre", "av.gif");
     this.sett_bilde("angrip-høyre", "ah.gif");
+    this.sett_bilde("angrip-luft", "la.gif");
+    this.sett_bilde("angrip-luft-venstre", "lav.gif");
+    this.sett_bilde("angrip-luft-høyre", "lah.gif");
 }
 
 Enhet.prototype.hent_element = function() {
@@ -233,10 +236,18 @@ Enhet.prototype.angrip = function() {
     // Utførelsen av angrepet og skade gjort gjøres i tick.
     // Denne funksjonen gjør ikke noe annet enn å sette
     // enheten i angrepsstatus; ingen skade utføres.
-    switch (this.retning) {
-        case -1: this.velg_bilde("angrip-venstre"); break;
-        case 1: this.velg_bilde("angrip-høyre"); break;
-        case 0: this.velg_bilde("angrip"); break;
+    if (this.status == "luft") {
+        switch (this.retning) {
+            case -1: this.velg_bilde("angrip-luft-venstre"); break;
+            case 1: this.velg_bilde("angrip-luft-høyre"); break;
+            case 0: this.velg_bilde("angrip-luft"); break;
+        }
+    } else {
+        switch (this.retning) {
+            case -1: this.velg_bilde("angrip-venstre"); break;
+            case 1: this.velg_bilde("angrip-høyre"); break;
+            case 0: this.velg_bilde("angrip"); break;
+        }
     }
     this.angrep = true;
     this.angrep_teller = 10;

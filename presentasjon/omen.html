@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Presentasjon av gruppen</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="stil.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            (function($) {
+                $(document).ready(function() {
+                    $("#header").load("header.html");
+                });
+            })(jQuery);
+        </script>
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="wrapper">
+            <h2 id="personnavn">&nbsp;</h2>
+            <div id="bildeslide">
+                <div id="bildeslide-indre"></div>
+            </div>
+            <div id="info">
+                <h3 id="person-overskrift">&nbsp;</h3>
+                <div id="info-venstre">
+                    <img id="bilde" src="bilder/none.png" alt="Bilde av en pepperkakemann" />
+                </div>
+                <div id="info-hoyre">
+                    <div id="infotekst"></div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+        <script src="xml.js"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PERSON>
+    <NAVN>Stig A. Langeland</NAVN>
+    <BILDE src="stig.jpg" alt="Bilde av Stig">
+        <OVERSKRIFT>Om meg</OVERSKRIFT>
+        <TEKST type="tekst">
+            Navnet mitt er Stig. Jeg er en mann på 20 år som kommer fra Osterøy.
+            På fritiden praktierer jeg en god kombinasjon av mye trening og
+            dataspill.
+        </TEKST>
+    </BILDE>
+    <BILDE src="lol.jpg" alt="League of Legends">
+        <OVERSKRIFT>League of Legends</OVERSKRIFT>
+        <TEKST type="tekst">
+            League of Legends (forkortet LoL) er et gratis strategispill som er
+            utviklet at Riot Games.Jeg og vennene mine bruker en god del tid på
+            LoL. Det blir også arrangert store mesterskap i LoL rundt om i
+            verden, hvor førstepremien som oftest er en fin sum med penger. Her
+            deltar de beste lagene i verden. Under er en tabell over mine to
+            farovitt-karakterer i LoL.
+        </TEKST>
+    </BILDE>
+    <BILDE src="orianna.jpg" alt="Bilde av Orianna">
+        <OVERSKRIFT>Orianna</OVERSKRIFT>
+        <TEKST type="tekst">
+            Orianna er en såkalt "mage"-champ, det vil si at hun angriper
+            fienden ved hjelp av magi. Hun er ekstremt kraftfull, og har
+            egenskaper som gjør at hun kan avgjøre en hel kamp hvis hun treffer
+            riktig med egenskapene sine.
+        </TEKST>
+    </BILDE>
+    <BILDE src="tristana.jpg" alt="Bilde av Tristana">
+        <OVERSKRIFT>Tristana</OVERSKRIFT>
+        <TEKST type="tekst">
+            Tristana er en champion i League of Legends som holder seg på
+            avstand. Hennes oppgave er å gjøre så mye som mulig skade på
+            fiendene på avstand, og har derfor sjangeren "Marksman". 
+        </TEKST>
+    </BILDE>
+</PERSON>
