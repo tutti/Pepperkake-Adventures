@@ -260,9 +260,9 @@ Enhet.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     this.immunitet = 20;
     this.hp -= skade;
-    if (this.hp <= 0) {
-        this.dod();
-    }
+    //if (this.hp <= 0) {
+    //    this.dod();
+    //}
 }
 
 Enhet.prototype.dod = function() {
@@ -290,6 +290,7 @@ Enhet.prototype.fall = function() {
 
 Enhet.prototype.land = function() {
     // HVIS en plattform kan landes på, lander enheten
+    if (this.hp <= 0) return;
     if (this.gamle_punkt_x == 0 && this.gamle_punkt_y == 0) return;
     var x = this.punkt_x();
     var y = this.punkt_y();
