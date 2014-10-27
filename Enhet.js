@@ -248,6 +248,7 @@ Enhet.prototype.angrip = function() {
             case 1: this.velg_bilde("angrip-høyre"); break;
             case 0: this.velg_bilde("angrip"); break;
         }
+        console.log(this.retning);
     }
     this.angrep = true;
     this.angrep_teller = 10;

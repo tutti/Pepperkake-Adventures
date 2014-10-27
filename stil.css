@@ -106,10 +106,12 @@
 
 .plattform {
     position: absolute;
+    z-index: 1;
 }
 
 .enhet {
     position: absolute;
+    z-index: 2;
 }
 
 .utgang {

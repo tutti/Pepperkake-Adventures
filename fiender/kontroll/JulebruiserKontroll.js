@@ -20,7 +20,7 @@ JulebruiserKontroll.prototype.styr = function(enhet) {
     }
     
     // Hvis spilleren er på samme plattform, begynn å gå mot spilleren.
-    if (enhet.plattform == Spill.spiller.plattform) {
+    else if (enhet.plattform == Spill.spiller.plattform) {
         enhet.sett_retning_mot(Spill.spiller);
     }
 }
