@@ -3,8 +3,8 @@ Julebruiser = function(x, y) {
     this.antall_farger = 0;
     Enhet.call(this, x, y);
     
-    this.sett_bilde("gå-venstre", "bilder/julebruiser.png");
-    this.sett_bilde("gå-høyre", "bilder/julebruiser.png");
+    this.sett_bilde("angrip-venstre", "av.png");
+    this.sett_bilde("angrip-høyre", "ah.png");
     
     this.bredde = 32;
     this.hoyde = 32;
@@ -28,13 +28,9 @@ Julebruiser.prototype.sett_retning = function(retning) {
         case 1:
             this.velg_bilde("gå-høyre");
             break;
+        case 0:
+            this.velg_bilde("stopp");
     }
-}
-
-Julebruiser.prototype.tick = function() {
-    if (!this.aktiv) return;
-    Enhet.prototype.tick.call(this);
-    //Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5);
 }
 
 Julebruiser.prototype.angrep_tick = function() {
@@ -55,7 +51,7 @@ Julebruiser.prototype.angrep_tick = function() {
 }
 
 Julebruiser.prototype.angrip = function() {
-    this.angrep = true;
+    Enhet.prototype.angrip.call(this);
     this.angrep_teller = 25;
 }
 

@@ -13,7 +13,8 @@ Pepperkake = function(x, y) {
     
     this.sett_kontroll(Kontroll.hent("pepperkake"));
     
-    this.sett_bilde("angrip-luft", "la.gif");
+    this.sett_bilde("angrip-venstre", "av.png");
+    this.sett_bilde("angrip-høyre", "ah.png");
     this.sett_bilde("angrip-luft-venstre", "lav.png");
     this.sett_bilde("angrip-luft-høyre", "lah.png");
 }
