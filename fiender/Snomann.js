@@ -47,15 +47,15 @@ Snomann.prototype.sett_retning = function(retning) {
 }
 
 //Snomann.prototype.tick = function() {
-//    if (!this.aktiv) return;
-//    Enhet.prototype.tick.call(this);
-//    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
-//        Lyd.Effekt.spill("lyd/slag1.mp3");
-//    }
+    //if (!this.aktiv) return;
+    //Enhet.prototype.tick.call(this);
+    //if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
+    //    Lyd.Effekt.spill("lyd/slag1.mp3");
+    //}
 //}
 
 //Snomann.prototype.hopp = function() {
-//    // Gjør ingenting - gelebøller kan ikke hoppe
+//     //Gjør ingenting - gelebøller kan ikke hoppe
 //}
 
 Snomann.prototype.angrip = function() {
