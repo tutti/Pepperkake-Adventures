@@ -248,7 +248,6 @@ Enhet.prototype.angrip = function() {
             case 1: this.velg_bilde("angrip-høyre"); break;
             case 0: this.velg_bilde("angrip"); break;
         }
-        console.log(this.retning);
     }
     this.angrep = true;
     this.angrep_teller = 10;
@@ -290,6 +289,7 @@ Enhet.prototype.fall = function() {
 
 Enhet.prototype.land = function() {
     // HVIS en plattform kan landes på, lander enheten
+    // Hvis enheten er død, går den ned gjennom alt
     if (this.hp <= 0) return;
     if (this.gamle_punkt_x == 0 && this.gamle_punkt_y == 0) return;
     var x = this.punkt_x();
