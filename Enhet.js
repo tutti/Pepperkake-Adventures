@@ -131,6 +131,7 @@ Enhet.prototype.aktiver = function() {
     this.momentum_x = 0;
     this.sett_posisjon(this.original_x, this.original_y);
     this.sett_retning(this.original_retning);
+    this.status = "luft";
     this.oppdater();
     this.vis();
 }
@@ -248,7 +249,6 @@ Enhet.prototype.angrip = function() {
             case 1: this.velg_bilde("angrip-høyre"); break;
             case 0: this.velg_bilde("angrip"); break;
         }
-        console.log(this.retning);
     }
     this.angrep = true;
     this.angrep_teller = 10;
@@ -283,13 +283,14 @@ Enhet.prototype.fall = function() {
     this.flytt(0, 5+Math.abs(this.momentum));
     //this.sett_posisjon(this.punkt_x(), this.punkt_y()+this.momentum+10, false);
     //this.flytt(0, 1);
-    this.status = "luft";
     this.momentum = 0;
     this.momentum_x += this.retning * this.hastighet;
+    this.status = "luft";
 }
 
 Enhet.prototype.land = function() {
     // HVIS en plattform kan landes på, lander enheten
+    // Hvis enheten er død, går den ned gjennom alt
     if (this.hp <= 0) return;
     if (this.gamle_punkt_x == 0 && this.gamle_punkt_y == 0) return;
     var x = this.punkt_x();
@@ -403,14 +404,6 @@ Enhet.prototype.sett_bilde = function(navn, bilde) {
 }
 
 Enhet.prototype.velg_bilde = function(navn) {
-    /*
-     *    this.sett_bilde("stopp", "bilder/"+this.type+"/"+this.farge+"/n.png");
-    this.sett_bilde("gå-venstre", "bilder/"+this.type+"/"+this.farge+"/gv.gif");
-    this.sett_bilde("gå-høyre", "bilder/"+this.type+"/"+this.farge+"/gh.gif");
-    this.sett_bilde("angrip", "bilder/"+this.type+"/"+this.farge+"/a.gif");
-    this.sett_bilde("angrip-venstre", "bilder/"+this.type+"/"+this.farge+"/av.gif");
-    this.sett_bilde("angrip-høyre", "bilder/"+this.type+"/"+this.farge+"/ah.gif");
-    */
     if (this.bilder[navn]) {
         var bilde = this.bilder[navn];
     } else if (this.bilder[""]) {

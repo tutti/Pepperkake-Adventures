@@ -1,6 +1,6 @@
 {
     "navn": "Testbrett",
-    "bakgrunn": "bilder/bakgrunn3.jpg",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
     "plattformer": [
         {
             "templat": true,
@@ -78,7 +78,7 @@
         {
             "templat": true,
             "navn": "standard",
-            "type": "julebruiser"
+            "type": "snømann"
         },
         {
             "arv": "standard",

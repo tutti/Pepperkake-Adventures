@@ -22,6 +22,8 @@ $bruker = User::get_current();
         <script src="fiender/Seigeninja.js"></script>
         <script src="fiender/kontroll/JulebruiserKontroll.js"></script>
         <script src="fiender/Julebruiser.js"></script>
+        <script src="fiender/kontroll/SnomannKontroll.js"></script>
+        <script src="fiender/Snomann.js"></script>
         <script src="PepperkakeKontroll.js"></script>
         <script src="Pepperkake.js"></script>
         <script src="SpillerKontroll.js"></script>
@@ -33,7 +35,7 @@ $bruker = User::get_current();
         <script src="script.js"></script>
     </head>
     <body>
-        <audio id="bgm" src=""></audio>
+        <audio id="bgm" src="" loop="loop"></audio>
         <?php define('ANTALL_LYD', 10);
         for ($i = 0; $i < ANTALL_LYD; ++$i) { ?>
         <audio id="lyd<?=$i?>" src=""></audio>

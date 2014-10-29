@@ -114,9 +114,15 @@
     z-index: 2;
 }
 
+.enhet-tillegg {
+    position: absolute;
+    z-index: 3;
+}
+
 .utgang {
     width: 64px;
     height: 64px;
     position: absolute;
     background-image: url("bilder/utgang.png");
+    z-index: 1;
 }
