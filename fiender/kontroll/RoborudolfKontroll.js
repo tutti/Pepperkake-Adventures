@@ -87,6 +87,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     } else {
                         --enhet.handlingteller;
                         if (enhet.handlingteller <= 0) {
+                            Spill.brett.hent_plattform("hengeplattform").skjul();
                             enhet.fase = "hovedfase";
                             this.tilfeldig_handling(enhet);
                         }
@@ -118,8 +119,11 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
             if (enhet.handlingteller <= 0) {
                 if (enhet.hp % 20 == 0 && enhet.fiendefaseflagg) {
                     // Start fiendefase
+                    Spill.brett.hent_plattform("hengeplattform").vis();
+                    enhet.fiendefaseflagg = false;
                     enhet.fase = "fiendefase";
                     enhet.handling = "hopp";
+                    enhet.handlingteller = 2;
                 } else {
                     this.tilfeldig_handling(enhet);
                 }
@@ -128,17 +132,25 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
         case "fiendefase":
             switch (enhet.handling) {
                 case "hopp":
-                    enhet.hastighet = 15;
-                    enhet.hoppstyrke = 32;
-                    enhet.sett_retning(1);
-                    enhet.hopp();
-                    enhet.handling = "vent";
-                    enhet.handlingteller = 300;
+                    if (enhet.handlingteller > 0) {
+                        enhet.beveg(1);
+                        --enhet.handlingteller;
+                    } else {
+                        enhet.hastighet = 15;
+                        enhet.hoppstyrke = 32;
+                        enhet.sett_retning(1);
+                        enhet.hopp();
+                        enhet.handling = "vent";
+                        enhet.handlingteller = 300;
+                    }
                     break;
                 case "vent":
+                    enhet.sett_retning(-1);
                     --enhet.handlingteller;
                     if (enhet.handlingteller <= 0) {
                         enhet.handling = "tilbake";
+                        enhet.hastighet = 10;
+                        enhet.hoppstyrke = 20;
                         enhet.handlingteller = 90;
                     }
                     break;
@@ -146,11 +158,9 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     if (enhet.punkt_x() > 400) {
                         enhet.beveg(-1);
                     } else {
+                        Spill.brett.hent_plattform("hengeplattform").skjul();
                         --enhet.handlingteller;
-                        console.log(enhet.punkt_x());
                         if (enhet.handlingteller <= 0) {
-                            enhet.hastighet = 10;
-                            enhet.hoppstyrke = 20;
                             enhet.fase = "hovedfase";
                             this.tilfeldig_handling(enhet);
                         }

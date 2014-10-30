@@ -38,9 +38,9 @@ Roborudolf.prototype.sett_retning = function(retning) {
 Roborudolf.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
-    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
-        Lyd.Effekt.spill("lyd/slag1.mp3");
-    }
+    //if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
+    //    Lyd.Effekt.spill("lyd/slag1.mp3");
+    //}
 }
 
 Roborudolf.prototype.aktiver = function() {
@@ -55,10 +55,6 @@ Roborudolf.prototype.deaktiver = function() {
     Enhet.prototype.deaktiver.call(this);
 }
 
-//Roborudolf.prototype.hopp = function() {
-//    // Gjør ingenting - gelebøller kan ikke hoppe
-//}
-//
 Roborudolf.prototype.angrip = function() {
     // Roborudolfs eneste direkte angrep er laseren hans.
 }

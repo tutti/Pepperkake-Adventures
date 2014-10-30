@@ -84,6 +84,10 @@ Brett = function(data, mappe, filnavn, apnet) {
             if (f.id) {
                 this.fiender_id[f.id] = fiende;
             }
+            
+            if (f.utgang) {
+                fiende.utgang = f.utgang;
+            }
         }
     }
     
