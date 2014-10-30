@@ -5,9 +5,14 @@ Roborudolf = function(x, y) {
     this.bredde = 64;
     this.hoyde = 64;
     this.hastighet = 10;
-    this.hoppstyrke = 10;
+    this.hoppstyrke = 20;
     this.original_retning = 1;
     this.maxhp = 60;
+    
+    this.fase = "start";
+    this.handling = "";
+    this.handlingteller = 0;
+    this.fiendefaseflagg = false;
     
     this.sett_bilde("venstre", "venstre.png");
     this.sett_bilde("høyre", "hoyre.png");
@@ -38,23 +43,36 @@ Roborudolf.prototype.tick = function() {
     }
 }
 
+Roborudolf.prototype.aktiver = function() {
+    Enhet.prototype.aktiver.call(this);
+    this.fase = "";
+    this.handling = "";
+    this.handlingteller = 0;
+    this.fiendefaseflagg = false;
+}
+
+Roborudolf.prototype.deaktiver = function() {
+    Enhet.prototype.deaktiver.call(this);
+}
+
 //Roborudolf.prototype.hopp = function() {
 //    // Gjør ingenting - gelebøller kan ikke hoppe
 //}
 //
-//Roborudolf.prototype.angrip = function() {
-//    // Gjør ingenting - gelebøller skader ved å røre borti, men kan ikke angripe
-//}
+Roborudolf.prototype.angrip = function() {
+    // Roborudolfs eneste direkte angrep er laseren hans.
+}
 
 Roborudolf.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
+    this.fiendefaseflagg = true;
     if (this.hp == 0) {
         this.fall();
         this.momentum = (20 * kraft) / 1.5;
         this.momentum_x = retning * kraft * 10;
     } else if (this.hp % 20 == 0) {
-        this.immunitet = this.immunitet + 150;
+        this.immunitet += this.handlingteller + 50;
     }
 }
 

@@ -35,7 +35,7 @@
     ],
     "fiender": [
         {
-            "type": "gelebølle",
+            "type": "roborudolf",
             "x": 750,
             "y": 300,
             "utgang": "standard2/1.json"

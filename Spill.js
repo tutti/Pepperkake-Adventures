@@ -46,11 +46,13 @@ Spill.brett_ferdig = function(utgang) {
 }
 
 Spill.tick = function() {
-    this.spiller.tick();
     if (this.brett) {
-        this.brett.tick();
+        this.spiller.tick();
+        if (this.brett) {
+            this.brett.tick();
+        }
+        this.spiller.fokus();
     }
-    this.spiller.fokus();
 }
 
 Spill.spiller_dod = function() {
