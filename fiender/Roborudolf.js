@@ -49,10 +49,13 @@ Roborudolf.prototype.aktiver = function() {
     this.handling = "";
     this.handlingteller = 0;
     this.fiendefaseflagg = false;
+    $("#bosshp").show();
+    Spill.bosshp(100);
 }
 
 Roborudolf.prototype.deaktiver = function() {
     Enhet.prototype.deaktiver.call(this);
+    $("#bosshp").hide();
 }
 
 Roborudolf.prototype.angrip = function() {
@@ -62,6 +65,10 @@ Roborudolf.prototype.angrip = function() {
 Roborudolf.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
+    var farge = "#0F0";
+    if (this.hp <= 40) farge = "#F80";
+    if (this.hp <= 20) farge = "#F00";
+    Spill.bosshp(100 * this.hp / this.maxhp, farge);
     this.fiendefaseflagg = true;
     if (this.hp == 0) {
         this.fall();

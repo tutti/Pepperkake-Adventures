@@ -45,6 +45,17 @@ $bruker = User::get_current();
         <script>
             var antall_lydelementer = <?=ANTALL_LYD?>;
         </script>
+        <div id="ui">
+            <div id="spillerhp" style="display: none;">
+                <img id="spillerhp-1" src="bilder/hjerte1.png" />
+                <img id="spillerhp-2" src="bilder/hjerte1.png" />
+                <img id="spillerhp-3" src="bilder/hjerte1.png" />
+            </div>
+            <div id="bosshp" style="display: none;">
+                <div id="bosshp-indre"></div>
+            </div>
+            <img id="laster" src="bilder/laster.gif" style="display: none;" />
+        </div>
         <div id="spillvindu">
             <div id="testblokk"></div>
             <div id="hovedmeny" class="meny">

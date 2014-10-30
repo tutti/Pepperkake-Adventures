@@ -26,11 +26,13 @@ $(document).ready(function() {
 Spill.last_brett = function(mappenavn, brettnavn) {
     this.brett = brett[mappenavn][brettnavn];
     this.brett.last();
+    $("#spillerhp").show();
 }
 
 Spill.brett_ferdig = function(utgang) {
     this.brett.last_ut();
     $("#spillvindu").scrollLeft(0);
+    $("#spillerhp").hide();
     var temp = utgang.split("/");
     if (brett[temp[0]]) {
         if (!brett[temp[0]][temp[1]].apnet) {
@@ -59,4 +61,22 @@ Spill.spiller_dod = function() {
     this.brett.last_ut();
     $("#spillvindu").scrollLeft(0);
     $("#tapmeny").show();
+}
+
+Spill.spillerhp = function(hp) {
+    for (var i=1; i<3; ++i) {
+        if (hp >= i) {
+            $("#spillerhp-"+i).attr("src", "bilder/hjerte1");
+        } else {
+            $("#spillerhp-"+i).attr("src", "bilder/hjerte0");
+        }
+    }
+}
+
+Spill.bosshp = function(prosent, farge) {
+    console.log(farge);
+    if (!farge) {
+        farge = "#0F0";
+    }
+    $("#bosshp-indre").css("width", Math.floor(prosent*6)).css("background-color", farge);
 }

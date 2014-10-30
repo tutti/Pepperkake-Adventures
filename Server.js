@@ -3,6 +3,7 @@ var callback = {
         var data = JSON.parse(json_data);
         if (data.status == 0) {
             location.reload();
+            $("#laster").show();
         } else {
             $("#feilmelding").text(data.error[0]);
         }
@@ -12,6 +13,7 @@ var callback = {
         var data = JSON.parse(json_data);
         if (data.status == 0) {
             location.reload();
+            $("#laster").show();
         } else {
             $("#feilmelding").text(data.error[0]);
         }
@@ -52,6 +54,7 @@ var add_to_queue = function(method, url, data, callback) {
 }
 
 var success = function(data, textstatus, jqXHR) {
+    $("#laster").hide();
     current_callback(data);
     communicating = false;
     // Success; remove the call we just completed and do the next
@@ -69,6 +72,7 @@ var error = function(jqXHR, textstatus, httptext) {
 var next = function() {
     if (communicating) return;
     if (comQueue.length == 0) return;
+    $("#laster").show();
     communicating = true;
     var o = comQueue[0];
     current_callback = o.callback;

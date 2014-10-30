@@ -206,6 +206,7 @@ Brett.prototype.skadSpiller = function(x1, y1, x2, y2, skade, retning, kraft) {
             retning = 0;
         }
         p.skade(skade, retning, Math.sqrt(kraft));
+        Spill.spillerhp(p.hp);
         return true;
     }
     return false;
