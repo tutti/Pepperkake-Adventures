@@ -45,8 +45,6 @@ Spill.brett_ferdig = function(utgang) {
     }
 }
 
-//var deg = 0;
-
 Spill.tick = function() {
     this.spiller.tick();
     if (this.brett) {

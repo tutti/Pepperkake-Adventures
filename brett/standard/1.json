@@ -1,6 +1,7 @@
 {
     "navn": "Testbrett",
     "bakgrunn": "bilder/bakgrunn1.jpg",
+    "bredde": 2100,
     "plattformer": [
         {
             "templat": true,

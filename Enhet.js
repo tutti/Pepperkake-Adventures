@@ -144,7 +144,7 @@ Enhet.prototype.deaktiver = function() {
 Enhet.prototype.fokus = function() {
     //var punkt = Math.max(Math.min(this.punkt_x()-400, $("#spillvindu")[0].scrollWidth - 400), 400);
     var punkt = Math.max(this.punkt_x() - 400, 0);
-    punkt = Math.min(punkt, $("#spillvindu")[0].scrollWidth - 800);
+    punkt = Math.min(punkt, Spill.brett.bredde - 800);
     
     $("#spillvindu").scrollLeft(punkt);
     $("#spillvindu").css('background-position', -punkt/5);
@@ -270,6 +270,8 @@ Enhet.prototype.dod = function() {
     this.lever = false;
     if (this == Spill.spiller) {
         Spill.spiller_dod();
+    } else if (this.utgang) {
+        Spill.brett_ferdig(this.utgang);
     }
 }
 

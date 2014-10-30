@@ -1,7 +1,7 @@
 {
-    "navn": "Testbrett2",
-    "låsopp": "standard/3.json",
-    "bakgrunn": "bilder/bakgrunn3.jpg",
+    "navn": "Testbrett 2",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "bredde": 2100,
     "plattformer": [
         {
             "templat": true,
@@ -16,7 +16,7 @@
             "bredde": 800,
             "x": 100,
             "y": 550,
-            "utgang": "dlc1/3.json"
+            "utgang": "standard/3.json"
         },
         {
             "arv": "standard",

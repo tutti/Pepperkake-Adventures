@@ -1,7 +1,7 @@
 {
-    "navn": "Testbrett3",
-    "låsopp": "",
-    "bakgrunn": "bilder/bakgrunn3.jpg",
+    "navn": "Testbrett boss 1",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "bredde": 800,
     "plattformer": [
         {
             "templat": true,
@@ -13,87 +13,32 @@
         },
         {
             "arv": "standard",
+            "id": "hovedplattform",
             "bredde": 800,
-            "x": 100,
+            "x": 0,
             "y": 550
         },
         {
             "arv": "standard",
-            "x": 300,
-            "y": 450,
-            "bredde": 400
+            "id": "hengeplattform",
+            "bredde": 100,
+            "x": 700,
+            "y": 300
         },
         {
             "arv": "standard",
-            "x": 100,
-            "y": 350
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "x": 250,
-            "y": 180,
-            "bredde": 60,
-            "dx": 0,
-            "dy": 5,
-            "ticktall": 30
-        },
-        {
-            "arv": "standard",
-            "x": 100,
-            "y": 150
-        },
-        {
-            "arv": "standard",
-            "type": "blink",
-            "x": 350,
-            "y": 150,
-            "ticktall": 15
-        },
-        {
-            "arv": "standard",
-            "x": 500,
+            "id": "bombeplattform",
+            "bredde": 800,
+            "x": 0,
             "y": 50
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "x": 2000,
-            "y": 450,
-            "dx": 0,
-            "dy": 5,
-            "ticktall": 30
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "x": 200,
-            "y": 420,
-            "dx": 10,
-            "dy": 0,
-            "ticktall": 180
         }
     ],
     "fiender": [
         {
-            "templat": true,
-            "navn": "standard",
-            "type": "seigeninja"
-        },
-        {
-            "arv": "standard",
-            "x": 200,
-            "y": 550
-        },
-        {
-            "arv": "standard",
-            "x": 400,
-            "y": 550
-        },
-        {
-            "type": "pepperkake",
-            "x": 2020,
-            "y": 450
+            "type": "gelebølle",
+            "x": 750,
+            "y": 300,
+            "utgang": "standard2/1.json"
         }
     ],
     "spiller": [350, 450]

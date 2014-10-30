@@ -2,12 +2,15 @@ Brett = function(data, mappe, filnavn, apnet) {
     this.navn = data.navn;
     this.mappe = mappe;
     this.filnavn = filnavn;
+    this.bredde = data.bredde;
     this.bakgrunn = data.bakgrunn;
     this.apnet = apnet;
     this.plattformer = [];
     this.t_plattformer = {};
+    this.plattformer_id = {};
     this.fiender = [];
     this.t_fiender = {};
+    this.fiender_id = {};
     if (!data.taplinje && data.taplinje != 0) {
         this.taplinje = 650;
     } else {
@@ -48,6 +51,10 @@ Brett = function(data, mappe, filnavn, apnet) {
                 plattform.sett_utgang(p.utgang);
             }
             
+            if (p.id) {
+                this.plattformer_id[p.id] = plattform;
+            }
+            
             this.plattformer.push(plattform);
         }
     }
@@ -73,6 +80,10 @@ Brett = function(data, mappe, filnavn, apnet) {
             var fiende = Enhet.ny(f.type, f.x, f.y);
             
             this.fiender.push(fiende);
+            
+            if (f.id) {
+                this.fiender_id[f.id] = fiende;
+            }
         }
     }
     
@@ -133,6 +144,10 @@ Brett.prototype.land = function(x1, y1, x2, y2, ticks) {
         }
     }
     return null;
+}
+
+Brett.prototype.hent_plattform = function(p_id) {
+    return this.plattformer_id[p_id];
 }
 
 Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {
