@@ -4,6 +4,7 @@ Brett = function(data, mappe, filnavn, apnet) {
     this.filnavn = filnavn;
     this.bredde = data.bredde;
     this.bakgrunn = data.bakgrunn;
+    this.musikk = data.musikk;
     this.apnet = apnet;
     this.plattformer = [];
     this.t_plattformer = {};
@@ -46,6 +47,8 @@ Brett = function(data, mappe, filnavn, apnet) {
                     var plattform = new Plattform(p.bilde, p.x, p.y, p.bredde, p.hoyde);
                     break;
             }
+            
+            plattform.status = p.status;
             
             if (p.utgang) {
                 plattform.sett_utgang(p.utgang);
@@ -106,7 +109,11 @@ Brett.prototype.vis_bakgrunn = function() {
 
 Brett.prototype.last = function() {
     for (p_id in this.plattformer) {
-        this.plattformer[p_id].aktiver();
+        if (this.plattformer[p_id].status == "inaktiv") {
+            this.plattformer[p_id].deaktiver();
+        } else {
+            this.plattformer[p_id].aktiver();
+        }
     }
     for (f_id in this.fiender) {
         this.fiender[f_id].aktiver();
@@ -115,6 +122,8 @@ Brett.prototype.last = function() {
     Spill.spiller.aktiver();
     Spill.spiller.fokus();
     Spill.spiller.sett_posisjon(this.x, this.y);
+    Lyd.BGM.sett(this.musikk).spill();
+    console.log(this.musikk);
     this.vis_bakgrunn();
 }
 
@@ -125,6 +134,7 @@ Brett.prototype.last_ut = function() {
     for (f_id in this.fiender) {
         this.fiender[f_id].deaktiver();
     }
+    Lyd.BGM.pause();
     Spill.spiller.deaktiver();
     $("#spillvindu").css('background', '');
 }

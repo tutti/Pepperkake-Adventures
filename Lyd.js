@@ -16,14 +16,17 @@ Lyd = {
         
         sett: function(path) {
             bgm.src = path;
+            return this;
         },
         
         spill: function() {
             bgm.play();
+            return this;
         },
         
         pause: function() {
             bgm.pause();
+            return this;
         }
         
     },
@@ -31,11 +34,11 @@ Lyd = {
     Effekt: {
         
         spill: function(path) {
-            // TODO
             var e = lydelementer[lydelement];
             e.src = path;
             e.play();
             lydelement = (lydelement + 1) % antall_lydelementer;
+            return this;
         }
         
     }

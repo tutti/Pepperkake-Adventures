@@ -23,6 +23,20 @@ Roborudolf = function(x, y) {
 Roborudolf.prototype = Object.create(Enhet.prototype);
 Roborudolf.prototype.constructor = Roborudolf
 
+Roborudolf.prototype.hent_element = function() {
+    var elmt = Enhet.prototype.hent_element.call(this);
+    if (!this.laser_element) {
+        this.laser_element = $('<img class="enhet-tillegg laser" src="bilder/roborudolf/0/laser.png" />');
+        this.laser_element.width(800);
+        this.laser_element.height(64);
+        this.laser_element.css('left', 0);
+        this.laser_element.css('top', 486);
+        this.laser_element.hide();
+        $("#spillvindu").append(this.laser_element);
+    }
+    return elmt;
+}
+
 Roborudolf.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
@@ -43,6 +57,11 @@ Roborudolf.prototype.tick = function() {
     //}
 }
 
+Roborudolf.prototype.angrep_tick = function() {
+    Enhet.prototype.angrep_tick.call(this);
+    Spill.brett.skad(this, 0, 484, 800, 550, 1, this.retning, 2);
+}
+
 Roborudolf.prototype.aktiver = function() {
     Enhet.prototype.aktiver.call(this);
     this.fase = "";
@@ -60,6 +79,12 @@ Roborudolf.prototype.deaktiver = function() {
 
 Roborudolf.prototype.angrip = function() {
     // Roborudolfs eneste direkte angrep er laseren hans.
+    if (this.angrep_teller > 0) return;
+    this.hent_element();
+    this.laser_element.fadeIn(250).fadeOut(250);
+    this.angrep = true;
+    this.angrep_teller = 15;
+    Lyd.Effekt.spill("lyd/roborudolf-laser.mp3");
 }
 
 Roborudolf.prototype.skade = function(skade, retning, kraft) {

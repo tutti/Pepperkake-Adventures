@@ -19,10 +19,10 @@ RoborudolfKontroll.prototype.constructor = RoborudolfKontroll
  *              2. Løp over plattformen 2 ganger (160: >130)
  *              3. Løp til midten igjen (40: >90)
  *              4. Vent 3 sekunder (90: >0)
- *          "laser": Rudolf skyter en laser (260)
- *              1. Løp til en ende av plattformen (40: >220)
- *              2. Snu og vent 2 sekunder (60: >160)
- *              3. Skyt laser (30: >130)
+ *          "laser": Rudolf skyter en laser (230 + laser)
+ *              1. Løp til en ende av plattformen (40: >190)
+ *              2. Snu og vent 2 sekunder (60: >130)
+ *              3. Skyt laser (0: >130)
  *              4. Løp til midten av plattformen (40: >90)
  *              5. Vent 3 sekunder (90: >0)
  *          "bombe": Rudolf er på øverste plattform og dropper bomber
@@ -48,7 +48,8 @@ RoborudolfKontroll.prototype.constructor = RoborudolfKontroll
  */
 
 RoborudolfKontroll.prototype.tilfeldig_handling = function(enhet) {
-    switch (Math.floor(Math.random()*1)) { // Skru opp til 2 eller 3 for å tillate laser og bombe
+    //switch (Math.floor(Math.random()*2)) { // Skru opp til 2 eller 3 for å tillate laser og bombe
+    switch (1) {
         case 0:
             enhet.handling = "plattform";
             enhet.handlingteller = 330;
@@ -56,7 +57,11 @@ RoborudolfKontroll.prototype.tilfeldig_handling = function(enhet) {
             break;
         case 1:
             enhet.handling = "laser";
-            enhet.handlingteller = 260;
+            enhet.handlingteller = 230;
+            this.retning = Math.floor(Math.random()*2)*2-1
+            Spill.brett.hent_plattform("blink-1").aktiver();
+            Spill.brett.hent_plattform("blink-2").aktiver();
+            Spill.brett.hent_plattform("blink-3").aktiver();
             break;
         case 2:
             enhet.handling = "bombe";
@@ -109,7 +114,19 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     }
                     break;
                 case "laser":
-                    // TODO
+                    if (enhet.handlingteller > 190) {
+                        enhet.beveg(this.retning);
+                    } else if (enhet.handlingteller > 131) {
+                        enhet.sett_retning (-this.retning);
+                    } else if (enhet.handlingteller == 131) {
+                        enhet.angrip();
+                    } else if (enhet.handlingteller > 90) {
+                        enhet.beveg(-this.retning);
+                    } else if (enhet.handlingteller == 90) {
+                        Spill.brett.hent_plattform("blink-1").deaktiver();
+                        Spill.brett.hent_plattform("blink-2").deaktiver();
+                        Spill.brett.hent_plattform("blink-3").deaktiver();
+                    }
                     break;
                 case "bombe":
                     // TODO

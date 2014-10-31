@@ -67,13 +67,13 @@ Seigeninja.prototype.angrep_tick = function() {
             break;
     }
     if (skade) {
-        Lyd.Effekt.spill("lyd/slag2.mp3");
+        Lyd.Effekt.spill("lyd/seigeninja-slag.mp3");
     }
 }
 
 Seigeninja.prototype.hopp = function() {
     Enhet.prototype.hopp.call(this);
-    Lyd.Effekt.spill("lyd/Hopp.mp3");
+    Lyd.Effekt.spill("lyd/seigeninja-hopp.mp3");
 }
 
 Seigeninja.prototype.skade = function(skade, retning, kraft) {

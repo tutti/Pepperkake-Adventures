@@ -7,7 +7,7 @@ Spill = {
 Spill.spiller.sett_kontroll(Kontroll.hent("spiller"));
 
 // Last inn data om brettene
-brett = {};
+var brett = {};
 $(document).ready(function() {
     var i = 0;
     for (mappenavn in brettdata) {
@@ -26,6 +26,7 @@ $(document).ready(function() {
 Spill.last_brett = function(mappenavn, brettnavn) {
     this.brett = brett[mappenavn][brettnavn];
     this.brett.last();
+    this.spillerhp(3);
     $("#spillerhp").show();
 }
 
@@ -61,14 +62,15 @@ Spill.spiller_dod = function() {
     this.brett.last_ut();
     $("#spillvindu").scrollLeft(0);
     $("#tapmeny").show();
+    $("#spillerhp").hide();
 }
 
 Spill.spillerhp = function(hp) {
-    for (var i=1; i<3; ++i) {
+    for (var i=1; i<=3; ++i) {
         if (hp >= i) {
-            $("#spillerhp-"+i).attr("src", "bilder/hjerte1");
+            $("#spillerhp-"+i).attr("src", "bilder/hjerte1.png");
         } else {
-            $("#spillerhp-"+i).attr("src", "bilder/hjerte0");
+            $("#spillerhp-"+i).attr("src", "bilder/hjerte0.png");
         }
     }
 }
