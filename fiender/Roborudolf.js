@@ -34,6 +34,20 @@ Roborudolf.prototype.hent_element = function() {
         this.laser_element.hide();
         $("#spillvindu").append(this.laser_element);
     }
+    if (!this.bomber) {
+        this.bomber = [];
+        for (var i = 0; i < 8; ++i) {
+            this.bomber[i] = {
+                "element": $('<div class="enhet-tillegg bombe">'),
+                "momentum": 0,
+                "x": 100*i,
+                "y": 75,
+                "nedtelling": 0
+            }
+            this.bomber[i].element.css('background-image', 'url("bilder/plattform1.png")').width(100).height(20).css('left', this.bomber[i].x).css('top', this.bomber[i].y).hide();
+            $("#spillvindu").append(this.bomber[i].element);
+        }
+    }
     return elmt;
 }
 
@@ -55,6 +69,20 @@ Roborudolf.prototype.tick = function() {
     //if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
     //    Lyd.Effekt.spill("lyd/slag1.mp3");
     //}
+    if (this.handling == "bombe") {
+        for (var i=0; i<8; ++i) {
+            if (this.bomber[i].nedtelling > 0) {
+                --this.bomber[i].nedtelling;
+            } else {
+                this.bomber[i].y -= this.bomber[i].momentum;
+                this.bomber[i].element.css('top', this.bomber[i].y);
+                this.bomber[i].momentum -= Spill.gravitasjon;
+                if (Spill.brett.skad(this, this.bomber[i].x, this.bomber[i].y, this.bomber[i].x+100, this.bomber[i].y+20, 1, 0, 1.5)) {
+                    console.log(this.bomber[i].x, this.bomber[i].y);
+                }
+            }
+        }
+    }
 }
 
 Roborudolf.prototype.angrep_tick = function() {
@@ -74,7 +102,12 @@ Roborudolf.prototype.aktiver = function() {
 
 Roborudolf.prototype.deaktiver = function() {
     Enhet.prototype.deaktiver.call(this);
+    this.hent_element();
     $("#bosshp").hide();
+    this.laser_element.hide();
+    for (var i=0; i<8; ++i) {
+        this.bomber[i].element.hide();
+    }
 }
 
 Roborudolf.prototype.angrip = function() {
@@ -101,6 +134,20 @@ Roborudolf.prototype.skade = function(skade, retning, kraft) {
         this.momentum_x = retning * kraft * 10;
     } else if (this.hp % 20 == 0) {
         this.immunitet += this.handlingteller + 50;
+    }
+}
+
+Roborudolf.prototype.vis_bomber = function() {
+    for (var i=0; i<8; ++i) {
+        this.bomber[i].y = 75;
+        this.bomber[i].momentum = 0;
+        this.bomber[i].element.css('top', 75).show();
+    }
+}
+
+Roborudolf.prototype.start_bomber = function() {
+    for (var i=0; i<8; ++i) {
+        this.bomber[i].nedtelling = Math.floor(Math.random()*60)+30;
     }
 }
 

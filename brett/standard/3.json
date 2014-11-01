@@ -8,7 +8,7 @@
             "templat": true,
             "navn": "standard",
             "type": "vanlig",
-            "bilde": "bilder/Midlertidig/Platfom1.png",
+            "bilde": "bilder/plattform1.png",
             "bredde": 100,
             "hoyde": 20
         },
@@ -29,8 +29,9 @@
         {
             "arv": "standard",
             "id": "bombeplattform",
-            "bredde": 800,
-            "x": 0,
+            "status": "inaktiv",
+            "bredde": 100,
+            "x": 350,
             "y": 50
         },
         {

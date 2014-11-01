@@ -76,7 +76,6 @@ Spill.spillerhp = function(hp) {
 }
 
 Spill.bosshp = function(prosent, farge) {
-    console.log(farge);
     if (!farge) {
         farge = "#0F0";
     }

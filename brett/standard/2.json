@@ -8,7 +8,7 @@
             "templat": true,
             "navn": "standard",
             "type": "vanlig",
-            "bilde": "bilder/Midlertidig/Platfom1.png",
+            "bilde": "bilder/plattform1.png",
             "bredde": 100,
             "hoyde": 20
         },
