@@ -43,7 +43,16 @@ RoborudolfKontroll.prototype.constructor = RoborudolfKontroll
  *              3. 3 seigeninjaer
  *              4. 3 snømenn, 2 julebruisere
  *              5. 2 snømenn, 2 julebruisere, 2 seigeninjaer
+ *              REVURDERT:
+ *              1. 3 gelebøller
+ *              2. 2 snømenn, 1 gelebølle
+ *              3. 2 seigeninjaer
+ *              4. 2 snømenn, 1 julebruiser
+ *              5. 1 snømenn, 1 julebruisere, 1 seigeninjaer
  */
+
+var fiendefasegrupper = [0, 3, 3, 2, 3, 3];
+var fiendefasetellere = [0, 300, 180];
 
 RoborudolfKontroll.prototype.tilfeldig_handling = function(enhet) {
     switch (Math.floor(Math.random()*3)) { // Skru opp til 2 eller 3 for å tillate laser og bombe
@@ -147,6 +156,8 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     // Start fiendefase
                     Spill.brett.hent_plattform("hengeplattform").vis();
                     enhet.fiendefaseflagg = false;
+                    ++enhet.fiendefaseteller;
+                    enhet.fiendefasegruppe = 0;
                     enhet.fase = "fiendefase";
                     enhet.handling = "hopp";
                     enhet.handlingteller = 2;
@@ -167,18 +178,23 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                         enhet.sett_retning(1);
                         enhet.hopp();
                         enhet.handling = "vent";
-                        enhet.handlingteller = 300;
+                        enhet.handlingteller = 900;
                     }
                     break;
                 case "vent":
                     enhet.sett_retning(-1);
-                    --enhet.handlingteller;
                     if (enhet.handlingteller <= 0) {
                         enhet.handling = "tilbake";
                         enhet.hastighet = 10;
                         enhet.hoppstyrke = 20;
                         enhet.handlingteller = 90;
+                    } else if (enhet.handlingteller % fiendefasetellere[enhet.fiendefaseteller] == 0) {
+                        ++enhet.fiendefasegruppe;
+                        for (var i=1; i<=fiendefasegrupper[enhet.fiendefasegruppe]; ++i) {
+                            Spill.brett.hent_fiende("fiende-"+enhet.fiendefasegruppe+"-"+i).aktiver();
+                        }
                     }
+                    --enhet.handlingteller;
                     break;
                 case "tilbake":
                     if (enhet.punkt_x() > 400) {

@@ -48,7 +48,7 @@ Brett = function(data, mappe, filnavn, apnet) {
                     break;
             }
             
-            plattform.status = p.status;
+            plattform.start_aktiv = p.aktiv;
             
             if (p.utgang) {
                 plattform.sett_utgang(p.utgang);
@@ -82,7 +82,7 @@ Brett = function(data, mappe, filnavn, apnet) {
             
             var fiende = Enhet.ny(f.type, f.x, f.y);
             
-            this.fiender.push(fiende);
+            fiende.start_aktiv = f.aktiv;
             
             if (f.id) {
                 this.fiender_id[f.id] = fiende;
@@ -91,6 +91,8 @@ Brett = function(data, mappe, filnavn, apnet) {
             if (f.utgang) {
                 fiende.utgang = f.utgang;
             }
+            
+            this.fiender.push(fiende);
         }
     }
     
@@ -109,21 +111,24 @@ Brett.prototype.vis_bakgrunn = function() {
 
 Brett.prototype.last = function() {
     for (p_id in this.plattformer) {
-        if (this.plattformer[p_id].status == "inaktiv") {
+        if (this.plattformer[p_id].start_aktiv === false) {
             this.plattformer[p_id].deaktiver();
         } else {
             this.plattformer[p_id].aktiver();
         }
     }
     for (f_id in this.fiender) {
-        this.fiender[f_id].aktiver();
+        if (this.fiender[f_id].start_aktiv === false) {
+            this.fiender[f_id].deaktiver();
+        } else {
+            this.fiender[f_id].aktiver();
+        }
     }
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();
     Spill.spiller.fokus();
     Spill.spiller.sett_posisjon(this.x, this.y);
     Lyd.BGM.sett(this.musikk).spill();
-    console.log(this.musikk);
     this.vis_bakgrunn();
 }
 
@@ -162,6 +167,10 @@ Brett.prototype.land = function(x1, y1, x2, y2, ticks) {
 
 Brett.prototype.hent_plattform = function(p_id) {
     return this.plattformer_id[p_id];
+}
+
+Brett.prototype.hent_fiende = function (f_id) {
+    return this.fiender_id[f_id];
 }
 
 Brett.prototype.skadFiender = function(x1, y1, x2, y2, skade, retning, kraft) {

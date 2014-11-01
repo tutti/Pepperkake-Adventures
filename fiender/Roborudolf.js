@@ -6,13 +6,15 @@ Roborudolf = function(x, y) {
     this.hoyde = 64;
     this.hastighet = 10;
     this.hoppstyrke = 20;
-    this.original_retning = 1;
+    this.original_retning = -1;
     this.maxhp = 60;
     
     this.fase = "start";
     this.handling = "";
     this.handlingteller = 0;
     this.fiendefaseflagg = false;
+    this.fiendefaseteller = 0;
+    this.fiendefasegruppe = 0;
     
     this.sett_bilde("venstre", "venstre.png");
     this.sett_bilde("høyre", "hoyre.png");
@@ -66,9 +68,9 @@ Roborudolf.prototype.sett_retning = function(retning) {
 Roborudolf.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
-    //if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
-    //    Lyd.Effekt.spill("lyd/slag1.mp3");
-    //}
+    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
+        Lyd.Effekt.spill("lyd/slag1.mp3");
+    }
     if (this.handling == "bombe") {
         for (var i=0; i<8; ++i) {
             if (this.bomber[i].nedtelling > 0) {
@@ -92,9 +94,12 @@ Roborudolf.prototype.angrep_tick = function() {
 
 Roborudolf.prototype.aktiver = function() {
     Enhet.prototype.aktiver.call(this);
+    this.hastighet = 10;
+    this.hoppstyrke = 20;
     this.fase = "";
     this.handling = "";
     this.handlingteller = 0;
+    this.fiendefaseteller = 0;
     this.fiendefaseflagg = false;
     $("#bosshp").show();
     Spill.bosshp(100);
