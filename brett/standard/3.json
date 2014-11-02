@@ -1,7 +1,7 @@
 {
     "navn": "Testbrett boss 1",
     "bakgrunn": "bilder/bakgrunn1.jpg",
-    "musikk": "musikk/rudolf.mid",
+    "musikk": "musikk/rudolf.mp3",
     "bredde": 800,
     "plattformer": [
         {

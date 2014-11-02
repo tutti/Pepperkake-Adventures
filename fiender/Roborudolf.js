@@ -68,7 +68,7 @@ Roborudolf.prototype.sett_retning = function(retning) {
 Roborudolf.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
-    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, this.retning, 1.5)) {
+    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, (this.punkt_x() < 400 ? 1 : -1), 1.5)) {
         Lyd.Effekt.spill("lyd/slag1.mp3");
     }
     if (this.handling == "bombe") {
@@ -151,8 +151,14 @@ Roborudolf.prototype.vis_bomber = function() {
 }
 
 Roborudolf.prototype.start_bomber = function() {
+    var etterhenger = Math.floor(Math.random()*8);
     for (var i=0; i<8; ++i) {
-        this.bomber[i].nedtelling = Math.floor(Math.random()*60)+30;
+        if (i == etterhenger) {
+            this.bomber[i].nedtelling = Math.floor(Math.random()*60)+60;
+        } else {
+            this.bomber[i].nedtelling = Math.floor(Math.random()*60)+30;
+        }
+        
     }
 }
 

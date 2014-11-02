@@ -178,7 +178,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                         enhet.sett_retning(1);
                         enhet.hopp();
                         enhet.handling = "vent";
-                        enhet.handlingteller = 900;
+                        enhet.handlingteller = 1000;
                     }
                     break;
                 case "vent":
