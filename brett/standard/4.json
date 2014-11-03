@@ -1,5 +1,5 @@
 {
-    "navn": "Testbrett boss 2",
+    "navn": "Testbrett julenisse",
     "bakgrunn": "bilder/bakgrunn1.jpg",
     "musikk": "musikk/rudolf.mp3",
     "bredde": 800,
@@ -22,8 +22,8 @@
             "y": 550,
             "dx": 0,
             "dy": 5,
-            "ticktall": 30,
-            "stopp": false
+            "ticktall": 20,
+            "stopp": true
         },
         {
             "arv": "hovedplattform",

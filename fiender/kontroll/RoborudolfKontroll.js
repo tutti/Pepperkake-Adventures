@@ -81,6 +81,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
     //console.log(enhet.fase, enhet.handling, enhet.handlingteller);
     switch (enhet.fase) {
         case "":
+            enhet.sta_stille();
             enhet.fase = "start";
             enhet.handling = "vent";
             enhet.handlingteller = 150;
@@ -104,6 +105,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                             enhet.fase = "hovedfase";
                             this.tilfeldig_handling(enhet);
                         }
+                        enhet.sta_stille();
                     }
                     break;
             }
@@ -119,18 +121,22 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                         enhet.beveg(this.retning)
                     } else if (enhet.handlingteller > 90) {
                         enhet.beveg(-this.retning)
+                    } else {
+                        enhet.sta_stille();
                     }
                     break;
                 case "laser":
                     if (enhet.handlingteller > 190) {
                         enhet.beveg(this.retning);
                     } else if (enhet.handlingteller > 131) {
+                        enhet.sta_stille();
                         enhet.sett_retning (-this.retning);
                     } else if (enhet.handlingteller == 131) {
                         enhet.angrip();
                     } else if (enhet.handlingteller > 90) {
                         enhet.beveg(-this.retning);
                     } else if (enhet.handlingteller == 90) {
+                        enhet.sta_stille();
                         Spill.brett.hent_plattform("blink-1").deaktiver();
                         Spill.brett.hent_plattform("blink-2").deaktiver();
                         Spill.brett.hent_plattform("blink-3").deaktiver();
@@ -147,6 +153,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     } else if (enhet.handlingteller == 179) {
                     } else if (enhet.handlingteller == 90) {
                         Spill.brett.hent_plattform("bombeplattform").deaktiver();
+                        enhet.sta_stille();
                     }
                     break;
             }

@@ -18,6 +18,8 @@ Roborudolf = function(x, y) {
     
     this.sett_bilde("venstre", "venstre.png");
     this.sett_bilde("høyre", "hoyre.png");
+    this.sett_bilde("gå-venstre", "gv.gif");
+    this.sett_bilde("gå-høyre", "gh.gif");
     
     this.sett_kontroll(Kontroll.hent("roborudolf"));
 }
@@ -53,9 +55,32 @@ Roborudolf.prototype.hent_element = function() {
     return elmt;
 }
 
-Roborudolf.prototype.sett_retning = function(retning) {
-    Enhet.prototype.sett_retning.call(this, retning);
+//Roborudolf.prototype.sett_retning = function(retning) {
+//    Enhet.prototype.sett_retning.call(this, retning);
+//    switch (retning) {
+//        case -1:
+//            this.velg_bilde("venstre");
+//            break;
+//        case 1:
+//            this.velg_bilde("høyre");
+//            break;
+//    }
+//}
+
+Roborudolf.prototype.beveg = function(retning) {
+    Enhet.prototype.beveg.call(this, retning);
     switch (retning) {
+        case -1:
+            this.velg_bilde("gå-venstre");
+            break;
+        case 1:
+            this.velg_bilde("gå-høyre");
+            break;
+    }
+}
+
+Roborudolf.prototype.sta_stille = function() {
+    switch (this.retning) {
         case -1:
             this.velg_bilde("venstre");
             break;

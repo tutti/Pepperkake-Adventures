@@ -5,50 +5,8 @@ JulenisseKontroll.prototype.constructor = JulenisseKontroll
 
 /*
  * Faser (med handlinger):
- *      "start": Rudolf starter på hengeplattformen
- *          "vent": Rudolf venter i 5 sekunder før kampen.
- *              1. Vent 5 sekunder (150)
- *          "start": Rudolf går til midten av plattformen
- *              1. Gå til midten av hovedplattformen
- *              2. Vent 3 sekunder
- *      "hovedfase": Rudolf angriper spilleren direkte (330)
- *          "plattform": Rudolf løper over plattformen
- *              1. Løp til en side (40: >290)
- *              2. Løp over plattformen 2 ganger (160: >130)
- *              3. Løp til midten igjen (40: >90)
- *              4. Vent 3 sekunder (90: >0)
- *          "laser": Rudolf skyter en laser (230 + laser)
- *              1. Løp til en ende av plattformen (40: >190)
- *              2. Snu og vent 2 sekunder (60: >130)
- *              3. Skyt laser (0: >130)
- *              4. Løp til midten av plattformen (40: >90)
- *              5. Vent 3 sekunder (90: >0)
- *          "bombe": Rudolf hopper opp på plattformen øverst, og knuser den så bitene faller ned.
- *              1. Hopp opp til øverste plattform
- *              2. Slipp bomber (90)
- *              3. Hopp ned igjen
- *              4. Vent 3 sekunder (90)
- *      "fiendefase": Rudolf står på hengeplattformen og tilkaller fiender
- *          "hopp": Rudolf skal hoppe til hengeplattformen
- *              1. Hoppstyrke 35, hastighet 15: Hopp til høyre
- *          "vent": Rudolf gjør ingenting selv i denne fasen.
- *              1. Vent i 30 sekunder (900)
- *          "tilbake": Rudolf er på vei tilbake
- *              1. Gå til midten av hovedplattformen
- *          - Første gang: Tilkall fiender hvert 10. sekund
- *          - Andre gang: Tilkall fiender hvert 6. sekund
- *          - Fiendegrupper:
- *              1. 5 gelebøller
- *              2. 2 snømenn, 2 gelebøller
- *              3. 3 seigeninjaer
- *              4. 3 snømenn, 2 julebruisere
- *              5. 2 snømenn, 2 julebruisere, 2 seigeninjaer
- *              REVURDERT:
- *              1. 3 gelebøller
- *              2. 2 snømenn, 1 gelebølle
- *              3. 2 seigeninjaer
- *              4. 2 snømenn, 1 julebruiser
- *              5. 1 snømenn, 1 julebruisere, 1 seigeninjaer
+ *      "start": Nissen sitter på sleden sin i 5 sekunder
+ *          "vent": 
  */
 
 var fiendefasegrupper = [0, 3, 3, 2, 3, 3];

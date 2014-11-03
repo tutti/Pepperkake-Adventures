@@ -78,6 +78,7 @@
         font-size: 1.2em;
         text-transform: uppercase;
         cursor: pointer;
+        border-radius: 10px;
     }
     .brettknapper {
         position: relative;
