@@ -20,6 +20,34 @@ li {
     margin-left: 20px;
 }
 
+#fixed-linker {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 180px;
+    background-color: #E09662;
+    padding: 10px;
+    text-align: center;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    border-radius: 0 0 0 10px;
+}
+    #fixed-linker a {
+        display: block;
+        width: 150px;
+        margin: 10px auto;
+        background-color: white;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+    }
+        #fixed-linker a:hover {
+            background-color: #FFA;
+            font-weight: bold;
+        }
+
 div#overskrift {
     width: 1040px;
     margin: auto;
