@@ -11,6 +11,8 @@ HeisPlattform = function(bilde, x, y, bredde, hoyde, dx, dy, ticktall) {
     this.dx = dx;
     this.dy = dy;
     
+    this.stoppet = false;
+    
     this.type = "heis";
 }
 
@@ -18,7 +20,7 @@ HeisPlattform.prototype = Object.create(Plattform.prototype);
 HeisPlattform.prototype.constructor = HeisPlattform
 
 HeisPlattform.prototype.tick = function() {
-    if (this.aktiv) {
+    if (this.aktiv && !this.stoppet) {
         this.x += this.dx * this.retning;
         this.y += this.dy * this.retning;
         var elmt = this.hent_element();

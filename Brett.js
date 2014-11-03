@@ -49,6 +49,7 @@ Brett = function(data, mappe, filnavn, apnet) {
             }
             
             plattform.start_aktiv = p.aktiv;
+            plattform.start_stoppet = p.stopp;
             
             if (p.utgang) {
                 plattform.sett_utgang(p.utgang);

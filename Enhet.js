@@ -207,6 +207,9 @@ Enhet.prototype.beveg = function(retning) {
             this.momentum = 0;
             this.momentum_x = this.retning * this.hastighet;
             this.status = "luft";
+            this.gamle_punkt_x = this.punkt_x();
+            this.gamle_punkt_y = this.punkt_y() - 1;
+            this.land();
         }
     }
 }

@@ -91,7 +91,7 @@
             "type": "roborudolf",
             "x": 750,
             "y": 300,
-            "utgang": "standard2/1.json"
+            "utgang": "standard/4.json"
         },
         {
             "arv": "gelebølle",

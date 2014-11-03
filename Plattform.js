@@ -60,6 +60,7 @@ Plattform.prototype.skjul = function() {
 }
 
 Plattform.prototype.aktiver = function() {
+    this.stoppet = this.start_stoppet;
     this.aktiv = true;
     this.vis();
 }

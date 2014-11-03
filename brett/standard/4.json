@@ -1,0 +1,78 @@
+{
+    "navn": "Testbrett boss 2",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "musikk": "musikk/rudolf.mp3",
+    "bredde": 800,
+    "plattformer": [
+        {
+            "templat": true,
+            "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/plattform1.png",
+            "bredde": 100,
+            "hoyde": 20
+        },
+        {
+            "templat": true,
+            "navn": "hovedplattform",
+            "type": "heis",
+            "bilde": "bilder/plattform1.png",
+            "bredde": 100,
+            "hoyde": 20,
+            "y": 550,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 30,
+            "stopp": false
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform1",
+            "x": 0
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform2",
+            "x": 100
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform3",
+            "x": 200
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform4",
+            "x": 300
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform5",
+            "x": 400
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform6",
+            "x": 500
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform7",
+            "x": 600
+        },
+        {
+            "arv": "hovedplattform",
+            "id": "hovedplattform8",
+            "x": 700
+        }
+    ],
+    "fiender": [
+        {
+            "type": "julenisse",
+            "x": 750,
+            "y": 300,
+            "utgang": "standard/1.json"
+        }
+    ],
+    "spiller": [350, 550]
+}
