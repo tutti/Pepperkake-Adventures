@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('bilder/bg.jpg');
+    margin-top: 10px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+    margin-bottom: 10px;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+}
+
+.clearfloat {
+    clear: both;
+}
+
+p {
+    margin-bottom: 10px;
+    color: #220903;
+}
+
+li {
+    margin-left: 20px;
+}
+
+li:hover {
+    margin-left: 20px;
+}
+
+div#overskrift {
+    border: 1px solid black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 970px;
+    margin-top: 10px;
+    margin: auto;
+    height: 150px;
+    line-height: 80px;
+    background-image: url('bilder/header.jpg');
+    text-align: center;
+}
+    div#overskrift h1 {
+        color: white;
+    }
+
+
+div#wrapper {
+    width: 950px;
+    padding: 10px;
+    background-color: #3f5b47;
+    margin: auto;
+    border: 1px solid black;
+    border-top: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    opacity: 0.95;
+}
+
+div#meny {
+    width: 970px;
+    margin: auto;
+    border: 1px solid black;
+    border-top: 0px;
+    height: 50px;
+    background-color: #2d683e;
+}
+    div#meny ul li {
+        display: block;
+        color: white;
+        width: 150px;
+    }
+
+      div#meny ul li:hover {
+        display: block;
+        color: white;
+        background: #204b2c;
+    }
+
+        div#meny ul li a {
+            display: block;
+            height: 50px;
+            min-width: 130px;
+            text-decoration: none;
+        }
+    div#meny > ul > li {
+        line-height: 50px;
+        font-size: 1.2em;
+        float: left;
+    }
+        div#meny > ul > li > a {
+            text-align: center;
+            color: white;
+        }
+    div#meny > ul ul {
+        position: absolute;
+        display: none;
+        margin-left: -20px;
+        z-index: 2;
+    }
+
+        div#meny > ul ul:hover {
+        position: absolute;
+        display: none;
+        margin-left: -20px;
+        z-index: 2;
+    }
+        div#meny > ul ul li {
+            line-height: 30px;
+            background-color: #2d683e;
+            opacity: 0.85;
+        }
+            div#meny > ul ul li a {
+                height: 30px;
+                min-width: 80px;
+                padding-left: 20px;
+                color: black;
+            }
+        div#meny > ul li:hover ul,
+        div#meny > ul ul:hover {
+            display: block;
+        }
+
+/* Om oss */
+.omoss-person {
+    width: 450px;
+    margin: 25px;
+    float: left;
+}
+    .omoss-bilde {
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+        #bilde-pal {
+            background-image: url("bilder/pal/pal.jpg");
+            background-size: 500px;
+            background-position: -150px -30px;
+        }
+        #bilde-martin {
+            background-image: url("bilder/martin/bildet.jpg");
+            background-size: 250px;
+            background-position: -20px -30px;
+        }
+        #bilde-simen {
+            background-image: url("bilder/simen/Simen.jpg");
+            background-size: 800px;
+            background-position: -320px -170px;
+        }
+        #bilde-stig {
+            background-image: url("bilder/stig/stig.jpg");
+            background-size: 250px;
+            background-position: 0 0;
+        }
+    .omoss-info {
+        width: 240px;
+        height: 200px;
+        margin-left: 10px;
+        float: left;
+    }
+        .omoss-infotable td {
+            width: 70px;
+            font-weight: bold;
+        }
+            .omoss-link {
+                color: black;
+                text-decoration: none;
+            }
+        .omoss-infotable td + td {
+            width: 160px;
+            font-weight: normal;
+        }
+
+/* Om en */
+h2 {
+    padding: 10px 0 20px 0;
+    text-align: center;
+}
+
+#bildeslide {
+    text-align: center;
+    position: relative;
+}
+    #bildeslide-indre {
+        display: inline-block;
+        overflow: hidden;
+    }
+        #bildeslide .slidebilde-wrapper {
+                position: relative;
+                height: 120px;
+                float: left;
+                z-index: 1;
+        }
+            #bildeslide img {
+                display: block;
+                margin: auto;
+                cursor: pointer;
+                height: 100px;
+                opacity: 0.4;
+            }
+                #bildeslide img.valgt,
+                #bildeslide img:hover {
+                    opacity: 1;
+                }
+
+#person-overskrift {
+    text-align: center;
+    margin: 10px;
+}
+
+#info-venstre {
+    margin-top: 20px;
+    width: 500px;
+    float: left;
+}
+    #bilde {
+        width: 480px;
+        display: block;
+        margin: auto;
+    }
+
+#info-hoyre {
+    margin-top: 20px;
+    width: 500px;
+    float: left;
+}
+    #infotekst {
+        width: 480px;
+    }

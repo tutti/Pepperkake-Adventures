@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PERSON>
+    <NAVN>Simen Østensen</NAVN>
+    <BILDE src="Simen.jpg" alt="Bilde av Simen">
+        <OVERSKRIFT>Om meg</OVERSKRIFT>
+        <TEKST type="html">
+            <![CDATA[
+            <h3 style="color: white">Info</h3>
+            <ul>
+                    <li> 19 år </li>
+                    <li> Bergen </li>
+                    <li> Data ved høgskolen i Bergen </li>
+            </ul>
+            ]]>
+        </TEKST>
+    </BILDE>
+    <BILDE src="Trening.gif" alt="Mann som trener">
+        <OVERSKRIFT>Trening</OVERSKRIFT>
+        <TEKST type="tekst">
+            Jeg liker å leve sunt og trene mye. Dette gjør jeg hovedsaklig for å
+            se bra ut, men det medfølger også at jeg har mer energi til andre
+            til.
+        </TEKST>
+    </BILDE>
+    <BILDE src="Data.jpg" alt="Bilde av en laptop">
+        <OVERSKRIFT>Data</OVERSKRIFT>
+        <TEKST type="tekst">
+            Ellers på fritiden liker jeg å bruke dataen til evt spilling,
+            redigering av filer og skolearbeid
+        </TEKST>
+    </BILDE>
+    <BILDE src="Handball.jpg" alt="Folk som spiller håndball">
+        <OVERSKRIFT>Håndball</OVERSKRIFT>
+        <TEKST type="tekst">
+            Jeg har også spilt håndball helt fra 7 års alderen frem til jeg
+            fylte 19. Da klarte jeg å ryke leddbåndet i ankelen noe som medførte
+            en bråstopp. Etter dette bestemmte jeg meg for å ta det litt
+            roligere med håndballen og konsentrere meg mer om generell trening.
+        </TEKST>
+    </BILDE>
+</PERSON>
