@@ -78,7 +78,6 @@ RoborudolfKontroll.prototype.tilfeldig_handling = function(enhet) {
 }
 
 RoborudolfKontroll.prototype.styr = function(enhet) {
-    //console.log(enhet.fase, enhet.handling, enhet.handlingteller);
     switch (enhet.fase) {
         case "":
             enhet.sta_stille();

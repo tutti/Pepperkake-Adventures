@@ -6,14 +6,6 @@
     "plattformer": [
         {
             "templat": true,
-            "navn": "standard",
-            "type": "vanlig",
-            "bilde": "bilder/plattform1.png",
-            "bredde": 100,
-            "hoyde": 20
-        },
-        {
-            "templat": true,
             "navn": "hovedplattform",
             "type": "heis",
             "bilde": "bilder/plattform1.png",
@@ -64,13 +56,25 @@
             "arv": "hovedplattform",
             "id": "hovedplattform8",
             "x": 700
+        },
+        {
+            "id": "slede",
+            "type": "heis",
+            "bilde": "bilder/slede.png",
+            "bredde": 150,
+            "hoyde": 20,
+            "x": 325,
+            "y": -50,
+            "dx": 0,
+            "dy": 1,
+            "ticktall": 150
         }
     ],
     "fiender": [
         {
             "type": "julenisse",
-            "x": 750,
-            "y": 300,
+            "x": 400,
+            "y": -50,
             "utgang": "standard/1.json"
         }
     ],
