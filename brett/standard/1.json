@@ -1,102 +1,118 @@
 {
-    "navn": "Testbrett",
+    "navn": "Første brett",
     "bakgrunn": "bilder/bakgrunn1.jpg",
     "musikk": "musikk/bells.mp3",
-    "bredde": 2100,
+    "bredde": 1900,
     "plattformer": [
         {
             "templat": true,
             "navn": "standard",
             "type": "vanlig",
             "bilde": "bilder/plattform1.png",
-            "bredde": 100,
             "hoyde": 20
         },
         {
             "arv": "standard",
-            "bredde": 800,
-            "x": 100,
-            "y": 550
+            "bredde": 200,
+            "x": 0,
+            "y": 500
         },
         {
             "arv": "standard",
-            "x": 300,
-            "y": 450,
-            "bredde": 400
+            "bredde": 100,
+            "x": 350,
+            "y": 500
         },
         {
             "arv": "standard",
-            "x": 100,
+            "type": "heis",
+            "bredde": 100,
+            "x": 450,
+            "y": 350,
+            "dx": 0,
+            "dy": 2,
+            "ticktall": 100
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 700,
             "y": 350
         },
         {
             "arv": "standard",
             "type": "heis",
-            "x": 250,
-            "y": 180,
-            "bredde": 60,
+            "bredde": 100,
+            "x": 800,
+            "y": 350,
             "dx": 0,
-            "dy": 5,
-            "ticktall": 30
+            "dy": 2,
+            "ticktall": 50
         },
         {
             "arv": "standard",
-            "x": 100,
-            "y": 150
+            "bredde": 100,
+            "x": 900,
+            "y": 450
         },
         {
             "arv": "standard",
             "type": "blink",
-            "x": 350,
-            "y": 150,
-            "ticktall": 15
-        },
-        {
-            "arv": "standard",
-            "x": 500,
-            "y": 50,
-            "utgang": "standard/2.json"
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "x": 2000,
+            "bredde": 50,
+            "x": 1150,
             "y": 450,
-            "dx": 0,
-            "dy": 5,
             "ticktall": 30
         },
         {
             "arv": "standard",
-            "type": "heis",
-            "x": 200,
-            "y": 420,
-            "dx": 10,
-            "dy": 0,
-            "ticktall": 180
-        }
-    ],
-    "fiender": [
-        {
-            "templat": true,
-            "navn": "standard",
-            "type": "snømann"
-        },
-        {
-            "arv": "standard",
-            "x": 200,
-            "y": 550
-        },
-        {
-            "arv": "standard",
-            "x": 400,
-            "y": 550
-        },
-        {
-            "type": "pepperkake",
-            "x": 2020,
+            "bredde": 150,
+            "x": 1200,
             "y": 450
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 50,
+            "x": 1350,
+            "y": 450,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1550,
+            "y": 450
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1800,
+            "y": 450,
+            "utgang": "standard/2.json"
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 50,
+            "x": 800,
+            "y": 250,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 800,
+            "y": 200,
+            "ticktall": 45
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 850,
+            "y": 100
         }
     ],
-    "spiller": [350, 450]
+    "fiender": [],
+    "spiller": [50, 500]
 }

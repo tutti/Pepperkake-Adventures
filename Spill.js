@@ -36,8 +36,10 @@ Spill.brett_ferdig = function(utgang) {
     $("#spillerhp").hide();
     var temp = utgang.split("/");
     if (brett[temp[0]]) {
-        if (!brett[temp[0]][temp[1]].apnet) {
-            brett[temp[0]][temp[1]].apne();
+        if (brett[temp[0]][temp[1]]) {
+            if (!brett[temp[0]][temp[1]].apnet) {
+                brett[temp[0]][temp[1]].apne();
+            }
         }
         $(".meny").hide();
         $("#brettferdigmeny").show();
