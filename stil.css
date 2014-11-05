@@ -165,6 +165,6 @@
     width: 64px;
     height: 64px;
     position: absolute;
-    background-image: url("bilder/utgang.png");
+    background-image: url("bilder/portal.gif");
     z-index: 1;
 }

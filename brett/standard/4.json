@@ -1,0 +1,132 @@
+{
+    "navn": "Fjerde brett",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "musikk": "musikk/bells.mp3",
+    "bredde": 2500,
+    "plattformer": [
+        {
+            "templat": true,
+            "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/plattform1.png",
+            "hoyde": 20
+        },
+        {
+            "arv": "standard",
+            "bredde": 200,
+            "x": 0,
+            "y": 500
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 300,
+            "y": 300,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 500,
+            "y": 500,
+            "dx": 0,
+            "dy": -5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 700,
+            "y": 400,
+            "dx": 0,
+            "dy": -5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 1050,
+            "y": 150,
+            "dx": -5,
+            "dy": 0,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 1200,
+            "y": 100,
+            "dx": 5,
+            "dy": 0,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 1550,
+            "y": 0,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1550,
+            "y": -50
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1750,
+            "y": 150
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 1850,
+            "y": 150,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 2200,
+            "y": 350,
+            "dx": -5,
+            "dy": -5,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 2400,
+            "y": 550,
+            "dx": 0,
+            "dy": -10,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 2400,
+            "y": 100,
+            "utgang": "test/1.json"
+        }
+    ],
+    "fiender": [],
+    "spiller": [100, 500]
+}
