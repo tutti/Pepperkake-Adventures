@@ -189,6 +189,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     break;
                 case "vent":
                     enhet.sett_retning(-1);
+                    enhet.sta_stille();
                     if (enhet.handlingteller <= 0) {
                         enhet.handling = "tilbake";
                         enhet.hastighet = 10;
@@ -206,6 +207,7 @@ RoborudolfKontroll.prototype.styr = function(enhet) {
                     if (enhet.punkt_x() > 400) {
                         enhet.beveg(-1);
                     } else {
+                        enhet.sta_stille();
                         Spill.brett.hent_plattform("hengeplattform").skjul();
                         --enhet.handlingteller;
                         if (enhet.handlingteller <= 0) {
