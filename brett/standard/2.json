@@ -45,11 +45,11 @@
             "arv": "standard",
             "type": "heis",
             "bredde": 100,
-            "x": 900,
+            "x": 800,
             "y": 200,
-            "dx": 0,
-            "dy": 5,
-            "ticktall": 60
+            "dx": 5,
+            "dy": 0,
+            "ticktall": 80
         },
         {
             "arv": "standard",
@@ -78,9 +78,20 @@
             "bredde": 100,
             "x": 0,
             "y": 300,
-            "utgang": "test/1.json"
+            "utgang": "standard/3.json"
         }
     ],
-    "fiender": [],
+    "fiender": [
+        {
+            "type": "gelebølle",
+            "x": 400,
+            "y": 500
+        },
+        {
+            "type": "gelebølle",
+            "x": 450,
+            "y": 200
+        }
+    ],
     "spiller": [100, 500]
 }

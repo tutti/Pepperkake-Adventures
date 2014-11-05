@@ -1,0 +1,180 @@
+{
+    "navn": "Tredje brett",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "musikk": "musikk/bells.mp3",
+    "bredde": 1850,
+    "plattformer": [
+        {
+            "templat": true,
+            "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/plattform1.png",
+            "hoyde": 20
+        },
+        {
+            "arv": "standard",
+            "bredde": 200,
+            "x": 0,
+            "y": 500
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 300,
+            "y": 450
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 500,
+            "y": 400
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 500,
+            "y": 300
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 300,
+            "y": 250
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 300,
+            "y": 150
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 500,
+            "y": 100
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 700,
+            "y": 100
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 900,
+            "y": 100,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1100,
+            "y": 100
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 1300,
+            "y": 100,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 1450,
+            "y": 100,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1650,
+            "y": 100
+        },
+        {
+            "arv": "standard",
+            "bredde": 200,
+            "x": 900,
+            "y": 400
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 100,
+            "x": 1200,
+            "y": 350,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 20
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 1400,
+            "y": 400,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1600,
+            "y": 400
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1600,
+            "y": 400
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 1750,
+            "y": 550,
+            "utgang": "standard/4.json"
+        }
+    ],
+    "fiender": [
+        {
+            "type": "gelebølle",
+            "x": 350,
+            "y": 450
+        },
+        {
+            "type": "gelebølle",
+            "x": 550,
+            "y": 400
+        },
+        {
+            "type": "gelebølle",
+            "x": 550,
+            "y": 300
+        },
+        {
+            "type": "gelebølle",
+            "x": 350,
+            "y": 250
+        },
+        {
+            "type": "gelebølle",
+            "x": 350,
+            "y": 150
+        },
+        {
+            "type": "gelebølle",
+            "x": 550,
+            "y": 100
+        },
+        {
+            "type": "gelebølle",
+            "x": 1250,
+            "y": 350
+        }
+    ],
+    "spiller": [100, 500]
+}
