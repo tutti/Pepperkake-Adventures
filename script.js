@@ -35,8 +35,12 @@
         })
         
         $("#registrerknapp").click(function() {
-            $("#brukernavn, #passord").prop("disabled", true);
-            Server.registrer($("#brukernavn").val(), $("#passord").val());
+            if ($("#brukernavn").val() != "" && $("#passord").val() != "") {
+                $("#brukernavn, #passord").prop("disabled", true);
+                Server.registrer($("#brukernavn").val(), $("#passord").val());
+            } else {
+                $("#feilmelding").text("Du må skrive inn brukernavn og passord.");
+            }
         })
         
         setInterval(function() { Spill.tick() }, 1000/30);
