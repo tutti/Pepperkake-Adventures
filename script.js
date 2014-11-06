@@ -34,6 +34,15 @@
             Server.loggut();
         })
         
+        $("#endrepassordknapp").click(function() {
+            $(".meny").hide();
+            $("#passordmeny").show();
+        })
+        
+        $("#send_endrepassordknapp").click(function() {
+            Server.endre_passord($("#gammeltpassord").val(), $("#nyttpassord1").val(), $("#nyttpassord2").val());
+        })
+        
         $("#registrerknapp").click(function() {
             if ($("#brukernavn").val() != "" && $("#passord").val() != "") {
                 $("#brukernavn, #passord").prop("disabled", true);

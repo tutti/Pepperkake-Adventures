@@ -11,17 +11,12 @@ $r = array(
 /*
  * Status:
  * 0: Alt OK
- * 1: Ikke logget inn
  */
 
 $bruker = User::get_current();
 
-if (!$bruker) {
-    $r['error'][] = "Ikke logget inn";
-    $r['status'] = 1;
-    die(json_encode($r));
+if ($bruker) {
+    $bruker->log_out();
 }
-
-$bruker->log_out();
 
 die(json_encode($r));

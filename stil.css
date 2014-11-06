@@ -91,10 +91,17 @@
         background: lightgreen;
         top: 150px;
     }
-    #loggutknapp {
+    #loggutknapp,
+    #endrepassordknapp {
         border: 3px solid grey;
         background: lightgreen;
         top: 180px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 0.8em;
+    }
+    #endrepassordknapp {
+        top: 190px;
     }
     .brettknapp {
         width: 94px;
@@ -124,27 +131,36 @@
         background: lightgreen;
         top: 250px;
     }
-    #brukermeny {
+    #brukermeny,
+    #passordmeny table {
         position: relative;
         width: 600px;
         top: 150px;
         margin: auto;
     }
-        #brukermeny input {
+        #brukermeny input,
+        #passordmeny table input {
             display: block;
             width: 252px;
             margin: auto;
         }
-        #brukermeny .knapp {
+        #brukermeny .knapp,
+        #passordmeny table .knapp {
             border: 3px solid grey;
             background: lightgreen;
             width: 250px;
             margin-top: 10px;
         }
-        #brukermeny #feilmelding {
+        #brukermeny .feilmelding,
+        #passordmeny table .feilmelding {
             text-align: center;
             color: red;
         }
+    #send_endrepassordknapp {
+        border: 3px solid grey;
+        background: lightgreen;
+        top: 50px;
+    }
 
 .plattform {
     position: absolute;

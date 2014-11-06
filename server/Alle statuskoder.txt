@@ -1,0 +1,5 @@
+0: Alt OK
+1: Ikke logget inn
+2: Feil brukernavn eller passord
+3: Brukernavnet er allerede i bruk
+4: Nytt passord ble ikke skrevet inn likt

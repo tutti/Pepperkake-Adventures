@@ -11,12 +11,12 @@ $r = array(
 /*
  * Status:
  * 0: Alt OK
- * 1: Brukernavnet er allerede i bruk
+ * 3: Brukernavnet er allerede i bruk
  */
 
 if (User::user_exists($_POST['brukernavn'])) {
     $r['error'][] = "Brukernavnet er allerede i bruk";
-    $r['status'] = 1;
+    $r['status'] = 3;
     die(json_encode($r));
 }
 

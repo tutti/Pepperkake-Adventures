@@ -30,15 +30,6 @@ if ($bruker) {
         }
         echo "},\n";
     }
-    //define('ANTALL_BRETT', 10);
-    
-    //for ($i = 1; is_file("brett/standard/$i.json"); ++$i) {
-    //    
-    //    $contents = file_get_contents("brett/standard/$i.json");
-    //    echo "'";
-    //    echo str_replace(array("    ", "\n", "\r"), "", $contents);
-    //    echo "',\n";
-    //}
     
     define('ANTALL_BRETT', $i);
 }

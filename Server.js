@@ -5,7 +5,7 @@ var callback = {
             location.reload();
             $("#laster").show();
         } else {
-            $("#feilmelding").text(data.error[0]);
+            $(".feilmelding").text(data.error[0]);
         }
     },
     
@@ -15,23 +15,31 @@ var callback = {
             location.reload();
             $("#laster").show();
         } else {
-            $("#feilmelding").text(data.error[0]);
+            $(".feilmelding").text(data.error[0]);
         }
     },
     
     registrer: function(json_data) {
         var data = JSON.parse(json_data);
         if (data.status == 0) {
-            //$.post("server/logginn.php", {'brukernavn': $("#brukernavn").val(), 'passord': $("#passord").val()}, logginn_callback);
             Server.logginn($("#brukernavn").val(), $("#passord").val());
         } else {
             $("#brukernavn, #passord").prop("disabled", false);
-            $("#feilmelding").text(data.error[0]);
+            $(".feilmelding").text(data.error[0]);
+        }
+    },
+    
+    endre_passord: function(json_data) {
+        var data = JSON.parse(json_data);
+        if (data.status == 0) {
+            location.reload();
+            $("#laster").show();
+        } else {
+            $(".feilmelding").text(data.error[0]);
         }
     },
     
     brett_apnet: function(json_data) {
-        console.log(json_data);
         var data = JSON.parse(json_data);
         if (data.ny_mappe) {
             location.reload();
@@ -42,6 +50,9 @@ var callback = {
 var comQueue = [];
 var communicating = false;
 var current_callback = null;
+
+var username = "";
+var password = "";
 
 var add_to_queue = function(method, url, data, callback) {
     var o = {
@@ -58,7 +69,22 @@ var success = function(data, textstatus, jqXHR) {
     current_callback(data);
     communicating = false;
     // Success; remove the call we just completed and do the next
-    comQueue.shift();
+    // Except: If the status code returned indicates that the user is not logged in, push a login to the beginning of the queue,
+    // and do the previous call again
+    var d = JSON.parse(data);
+    if (d.status == 1) {
+        comQueue.unshift({
+            method: "post",
+            url: "server/logginn.php",
+            data: {
+                brukernavn: username,
+                passord: password
+            },
+            callback: callback.login
+        });
+    } else {
+        comQueue.shift();
+    }
     next();
 }
 
@@ -87,6 +113,8 @@ var next = function() {
 
 Server = {
     'logginn': function(brukernavn, passord) {
+        username = brukernavn;
+        password = passord;
         add_to_queue("post", "server/logginn.php", {brukernavn: brukernavn, passord: passord}, callback.logginn);
         next();
     },
@@ -98,6 +126,11 @@ Server = {
     
     'registrer': function(brukernavn, passord) {
         add_to_queue("post", "server/registrer.php", {brukernavn: brukernavn, passord: passord}, callback.registrer);
+        next();
+    },
+    
+    'endre_passord': function(gammeltpassord, nyttpassord1, nyttpassord2) {
+        add_to_queue("post", "server/endre_passord.php", {gammeltpassord: gammeltpassord, nyttpassord1: nyttpassord1, nyttpassord2: nyttpassord2}, callback.endre_passord);
         next();
     },
     

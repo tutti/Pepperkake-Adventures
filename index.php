@@ -65,6 +65,7 @@ $bruker = User::get_current();
                 <?php if ($bruker) { ?>
                 <span id="startknapp" class="knapp">Start spill</span>
                 <span id="loggutknapp" class="knapp">Logg ut</span>
+                <span id="endrepassordknapp" class="knapp">Endre passord</span>
                 <?php } else { ?>
                 <table id="brukermeny">
                     <tr>
@@ -80,7 +81,7 @@ $bruker = User::get_current();
                         <td><span id="registrerknapp" class="knapp">Registrer</span></td>
                     </tr>
                     <tr>
-                        <td colspan="2" id="feilmelding"></td>
+                        <td colspan="2" class="feilmelding"></td>
                     </tr>
                 </table>
                 <?php } ?>
@@ -102,7 +103,31 @@ $bruker = User::get_current();
             </div>
             <div id="brettferdigmeny" class="meny" style="display: none;">
                 <h1 id="brettferdigoverskrift" class="menyoverskrift">Brett ferdig</h1>
+                <span id="brettferdigtekst"></span>
                 <span class="knapp okknapp" id="brettferdigokknapp">OK</span>
+            </div>
+            <div id="passordmeny" style="display: none;">
+                <h1 id="passordoverskrift" class="menyoverskrift">Endre passord</h1>
+                <table>
+                    <tr>
+                        <td><label for="gammeltpassord">Gammelt passord:</label></td>
+                        <td><input type="password" id="gammeltpassord" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nyttpassord1">Nytt passord:</label></td>
+                        <td><input type="password" id="nyttpassord1" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nyttpassord2">Nytt passord (igjen):</label></td>
+                        <td><input type="password" id="nyttpassord2" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="feilmelding"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span id="send_endrepassordknapp" class="knapp">Endre passord</span></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>
