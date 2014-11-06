@@ -65,8 +65,9 @@ Plattform.prototype.skjul = function() {
     elmt.hide();
     if (this.utgang) this.utgang_element.hide();
     this.vises = false;
-    for (e_id in this.enheter) {
-        this.enheter[e_id].fall();
+    var temp_enheter = this.enheter.slice();
+    for (var e_id in temp_enheter) {
+        temp_enheter[e_id].fall();
     }
 }
 

@@ -54,6 +54,12 @@ Julebruiser.prototype.angrep_tick = function() {
     }
 }
 
+Julebruiser.prototype.aktiver = function() {
+    Enhet.prototype.aktiver.call(this);
+    this.hent_element();
+    this.velg_bilde("stopp");
+}
+
 Julebruiser.prototype.angrip = function() {
     Enhet.prototype.angrip.call(this);
     this.angrep_teller = 25;

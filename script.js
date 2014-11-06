@@ -52,7 +52,7 @@
             }
         })
         
-        setInterval(function() { Spill.tick() }, 1000/30);
+        interv = setInterval(function() { Spill.tick() }, 1000/30);
     })
 
 })();

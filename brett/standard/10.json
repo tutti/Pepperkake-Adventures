@@ -1,6 +1,6 @@
 {
     "navn": "Roborudolf",
-    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "bakgrunn": "bilder/bakgrunn2.jpg",
     "musikk": "musikk/rudolf.mp3",
     "bredde": 800,
     "plattformer": [
@@ -91,7 +91,7 @@
             "type": "roborudolf",
             "x": 750,
             "y": 300,
-            "utgang": "test/4.json"
+            "utgang": "standard/1.json"
         },
         {
             "arv": "gelebølle",

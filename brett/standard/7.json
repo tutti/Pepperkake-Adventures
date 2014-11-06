@@ -1,13 +1,333 @@
 {
     "navn": "Syvende brett",
     "bakgrunn": "bilder/bakgrunn1.jpg",
-    "musikk": "musikk/bells.mp3",
-    "bredde": 800,
+    "musikk": "musikk/coventry.mp3",
+    "bredde": 5100,
     "plattformer": [
-        
+        {
+            "templat": true,
+            "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/plattform1.png",
+            "hoyde": 20
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 150,
+            "x": 3400,
+            "y": 350,
+            "dx": 5,
+            "dy": 0,
+            "ticktall": 980
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 600,
+            "y": 200,
+            "ticktall": 120
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 100,
+            "x": 900,
+            "y": 200,
+            "ticktall": 155
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 10,
+            "x": 1320,
+            "y": 200,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 10,
+            "x": 1470,
+            "y": 200,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 10,
+            "x": 1570,
+            "y": 200,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 10,
+            "x": 1720,
+            "y": 200,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 30
+        },
+        {
+            "arv": "standard",
+            "bredde": 50,
+            "x": 2350,
+            "y": 300
+        },
+        {
+            "arv": "standard",
+            "bredde": 50,
+            "x": 2800,
+            "y": 300
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 3200,
+            "y": 200
+        },
+        {
+            "arv": "standard",
+            "bredde": 100,
+            "x": 3400,
+            "y": 400
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 50,
+            "x": 3700,
+            "y": 150,
+            "ticktall": 740
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 50,
+            "x": 3800,
+            "y": 150,
+            "ticktall": 760
+        },
+        {
+            "arv": "standard",
+            "type": "blink",
+            "bredde": 50,
+            "x": 3900,
+            "y": 150,
+            "ticktall": 780
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4050,
+            "y": 150,
+            "dx": 5,
+            "dy": 0,
+            "ticktall": 60
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4400,
+            "y": 100,
+            "dx": 0,
+            "dy": 5,
+            "ticktall": 20
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4550,
+            "y": 150,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4650,
+            "y": 350,
+            "dx": 0,
+            "dy": -10,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4750,
+            "y": 150,
+            "dx": 0,
+            "dy": 10,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "type": "heis",
+            "bredde": 50,
+            "x": 4800,
+            "y": 350,
+            "dx": 0,
+            "dy": -10,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "bredde": 200,
+            "x": 4900,
+            "y": 300
+        }
     ],
     "fiender": [
-        
+        {
+            "type": "gelebølle",
+            "x": 625,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 650,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 675,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 920,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 940,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 960,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 980,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 1325,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 1475,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 1575,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 1725,
+            "y": 200
+        },
+        {
+            "type": "snømann",
+            "x": 2375,
+            "y": 300
+        },
+        {
+            "type": "snømann",
+            "x": 2825,
+            "y": 300
+        },
+        {
+            "type": "seigeninja",
+            "x": 3225,
+            "y": 200
+        },
+        {
+            "type": "seigeninja",
+            "x": 3250,
+            "y": 200
+        },
+        {
+            "type": "seigeninja",
+            "x": 3275,
+            "y": 200
+        },
+        {
+            "type": "gelebølle",
+            "x": 3425,
+            "y": 400
+        },
+        {
+            "type": "gelebølle",
+            "x": 3475,
+            "y": 400
+        },
+        {
+            "type": "julebruiser",
+            "x": 3725,
+            "y": 150
+        },
+        {
+            "type": "julebruiser",
+            "x": 3825,
+            "y": 150
+        },
+        {
+            "type": "julebruiser",
+            "x": 3925,
+            "y": 150
+        },
+        {
+            "type": "snømann",
+            "x": 4075,
+            "y": 150
+        },
+        {
+            "type": "snømann",
+            "x": 4425,
+            "y": 100
+        },
+        {
+            "type": "gelebølle",
+            "x": 4575,
+            "y": 150
+        },
+        {
+            "type": "gelebølle",
+            "x": 4675,
+            "y": 350
+        },
+        {
+            "type": "gelebølle",
+            "x": 4775,
+            "y": 150
+        },
+        {
+            "type": "gelebølle",
+            "x": 4825,
+            "y": 350
+        }
     ],
-    "spiller": [100, 500]
+    "spiller": [3450, 350]
 }

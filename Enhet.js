@@ -421,7 +421,6 @@ Enhet.prototype.velg_bilde = function(navn) {
     } else if (this.bilder[""]) {
         var bilde = this.bilder[""];
     } else return;
-    if (bilde == this.bilde) return;
     this.bilde = bilde;
     var elmt = this.hent_element();
     elmt.prop("src", "bilder/"+this.type+"/"+this.farge+"/"+bilde);

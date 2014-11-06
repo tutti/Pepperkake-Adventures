@@ -30,7 +30,7 @@ BlinkPlattform.prototype.aktiver = function() {
     this.tickteller = this.ticktall;
 }
 
-Plattform.prototype.lander = function(x1, y1, x2, y2, ticks) {
+BlinkPlattform.prototype.lander = function(x1, y1, x2, y2, ticks) {
     // Sjekker om et fallende objekt kan lande på plattformen
     // Enkel sjekk; objektet må gå fra over plattformen til under,
     // og x2 må lande på plattformen (en ordentlig sjekk ville ha

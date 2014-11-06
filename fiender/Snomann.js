@@ -105,6 +105,11 @@ Snomann.prototype.vis = function() {
     this.snoball_element.show();
 }
 
+Snomann.prototype.aktiver = function() {
+    Enhet.prototype.aktiver.call(this);
+    this.angrep = false;
+}
+
 Snomann.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     this.fall();
