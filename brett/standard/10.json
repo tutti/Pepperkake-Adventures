@@ -1,0 +1,182 @@
+{
+    "navn": "Roborudolf",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "musikk": "musikk/rudolf.mp3",
+    "bredde": 800,
+    "plattformer": [
+        {
+            "templat": true,
+            "navn": "standard",
+            "type": "vanlig",
+            "bilde": "bilder/plattform1.png",
+            "bredde": 100,
+            "hoyde": 20
+        },
+        {
+            "arv": "standard",
+            "id": "hovedplattform",
+            "bredde": 800,
+            "x": 0,
+            "y": 550
+        },
+        {
+            "arv": "standard",
+            "id": "hengeplattform",
+            "bredde": 100,
+            "x": 700,
+            "y": 300
+        },
+        {
+            "arv": "standard",
+            "id": "bombeplattform",
+            "aktiv": false,
+            "bredde": 100,
+            "x": 350,
+            "y": 50
+        },
+        {
+            "arv": "standard",
+            "id": "blink-1",
+            "type": "blink",
+            "aktiv": false,
+            "x": 150,
+            "y": 450,
+            "ticktall": 40
+        },
+        {
+            "arv": "standard",
+            "id": "blink-2",
+            "type": "blink",
+            "aktiv": false,
+            "x": 350,
+            "y": 450,
+            "ticktall": 20
+        },
+        {
+            "arv": "standard",
+            "id": "blink-3",
+            "type": "blink",
+            "aktiv": false,
+            "x": 550,
+            "y": 450,
+            "ticktall": 40
+        }
+    ],
+    "fiender": [
+        {
+            "templat": true,
+            "navn": "gelebølle",
+            "type": "gelebølle",
+            "aktiv": false
+        },
+        {
+            "templat": true,
+            "navn": "snømann",
+            "type": "snømann",
+            "aktiv": false
+        },
+        {
+            "templat": true,
+            "navn": "seigeninja",
+            "type": "seigeninja",
+            "aktiv": false
+        },
+        {
+            "templat": true,
+            "navn": "julebruiser",
+            "type": "julebruiser",
+            "aktiv": false
+        },
+        {
+            "type": "roborudolf",
+            "x": 750,
+            "y": 300,
+            "utgang": "test/4.json"
+        },
+        {
+            "arv": "gelebølle",
+            "id": "fiende-1-1",
+            "x": 200,
+            "y": 550
+        },
+        {
+            "arv": "gelebølle",
+            "id": "fiende-1-2",
+            "x": 400,
+            "y": 550
+        },
+        {
+            "arv": "gelebølle",
+            "id": "fiende-1-3",
+            "x": 600,
+            "y": 550
+        },
+        {
+            "arv": "gelebølle",
+            "id": "fiende-2-1",
+            "x": 400,
+            "y": 550
+        },
+        {
+            "arv": "snømann",
+            "id": "fiende-2-2",
+            "x": 100,
+            "y": 550
+        },
+        {
+            "arv": "snømann",
+            "id": "fiende-2-3",
+            "x": 700,
+            "y": 550
+        },
+        {
+            "arv": "seigeninja",
+            "id": "fiende-3-1",
+            "x": 250,
+            "y": 550
+        },
+        {
+            "arv": "seigeninja",
+            "id": "fiende-3-2",
+            "x": 750,
+            "y": 550
+        },
+        {
+            "arv": "snømann",
+            "id": "fiende-4-1",
+            "x": 100,
+            "y": 550
+        },
+        {
+            "arv": "snømann",
+            "id": "fiende-4-2",
+            "x": 700,
+            "y": 550
+        },
+        {
+            "arv": "julebruiser",
+            "id": "fiende-4-3",
+            "x": 400,
+            "y": 550
+        },
+        {
+            "arv": "snømann",
+            "id": "fiende-5-1",
+            "x": 150,
+            "y": 550
+        },
+        {
+            "arv": "julebruiser",
+            "id": "fiende-5-2",
+            "x": 750,
+            "y": 550
+        },
+        {
+            "arv": "seigeninja",
+            "id": "fiende-5-3",
+            "x": 550,
+            "y": 550
+        }
+    ],
+    "spiller": [350, 550]
+}

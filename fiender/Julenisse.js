@@ -66,6 +66,22 @@ Julenisse.prototype.hent_element = function() {
     return elmt;
 }
 
+Julenisse.prototype.slett_element = function() {
+    Enhet.prototype.slett_element.call(this)
+    if (this.snoballer) {
+        for (var i = 0; i < 3; ++i) {
+            this.snoballer[i].element.remove();
+        }
+        delete this.snoballer;
+    }
+    if (this.sukkerstenger) {
+        for (var i = 0; i < 8; ++i) {
+            this.sukkerstenger[i].element.remove();
+        }
+        delete this.sukkerstenger;
+    }
+}
+
 Julenisse.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {
@@ -84,20 +100,6 @@ Julenisse.prototype.tick = function() {
     if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, (this.punkt_x() < 400 ? 1 : -1), 1.5)) {
         Lyd.Effekt.spill("lyd/slag1.mp3");
     }
-    //if (this.handling == "bombe") {
-    //    for (var i=0; i<8; ++i) {
-    //        if (this.bomber[i].nedtelling > 0) {
-    //            --this.bomber[i].nedtelling;
-    //        } else {
-    //            this.bomber[i].y -= this.bomber[i].momentum;
-    //            this.bomber[i].element.css('top', this.bomber[i].y);
-    //            this.bomber[i].momentum -= Spill.gravitasjon;
-    //            if (Spill.brett.skad(this, this.bomber[i].x, this.bomber[i].y, this.bomber[i].x+100, this.bomber[i].y+20, 1, 0, 1.5)) {
-    //                console.log(this.bomber[i].x, this.bomber[i].y);
-    //            }
-    //        }
-    //    }
-    //}
     this.hent_element();
     for (var i=0; i<3; ++i) {
         if (this.snoballer[i].aktiv) {

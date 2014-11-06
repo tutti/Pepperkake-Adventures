@@ -34,6 +34,14 @@ Snomann.prototype.hent_element = function() {
     return elmt;
 }
 
+Snomann.prototype.slett_element = function() {
+    Enhet.prototype.slett_element.call(this);
+    if (this.snoball_element) {
+        this.snoball_element.remove();
+        delete this.snoball_element;
+    }
+}
+
 Snomann.prototype.sett_retning = function(retning) {
     Enhet.prototype.sett_retning.call(this, retning);
     switch (retning) {

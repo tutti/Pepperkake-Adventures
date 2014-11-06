@@ -55,17 +55,19 @@ Roborudolf.prototype.hent_element = function() {
     return elmt;
 }
 
-//Roborudolf.prototype.sett_retning = function(retning) {
-//    Enhet.prototype.sett_retning.call(this, retning);
-//    switch (retning) {
-//        case -1:
-//            this.velg_bilde("venstre");
-//            break;
-//        case 1:
-//            this.velg_bilde("høyre");
-//            break;
-//    }
-//}
+Roborudolf.prototype.slett_element = function() {
+    Enhet.prototype.slett_element.call(this);
+    if (this.laser_element) {
+        this.laser_element.remove();
+        delete this.laser_element;
+    }
+    if (this.bomber) {
+        for (var i = 0; i < 8; ++i) {
+            this.bomber[i].element.remove();
+        }
+        delete this.bomber;
+    }
+}
 
 Roborudolf.prototype.beveg = function(retning) {
     Enhet.prototype.beveg.call(this, retning);

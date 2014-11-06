@@ -124,7 +124,7 @@
             "bredde": 100,
             "x": 2400,
             "y": 100,
-            "utgang": "test/1.json"
+            "utgang": "standard/5.json"
         }
     ],
     "fiender": [],

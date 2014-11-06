@@ -36,6 +36,17 @@ Plattform.prototype.hent_element = function() {
     return this.element;
 }
 
+Plattform.prototype.slett_element = function() {
+    if (this.element !== undefined) {
+        this.element.remove();
+        delete this.element;
+    }
+    if (this.utgang_element !== undefined) {
+        this.utgang_element.remove();
+        delete this.utgang_element;
+    }
+}
+
 Plattform.prototype.sett_bilde = function(bilde) {
     this.bilde = bilde;
     var elmt = this.hent_element();

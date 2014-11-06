@@ -1,0 +1,13 @@
+{
+    "navn": "Niende brett",
+    "bakgrunn": "bilder/bakgrunn1.jpg",
+    "musikk": "musikk/bells.mp3",
+    "bredde": 800,
+    "plattformer": [
+        
+    ],
+    "fiender": [
+        
+    ],
+    "spiller": [100, 500]
+}

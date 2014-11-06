@@ -51,9 +51,6 @@ var comQueue = [];
 var communicating = false;
 var current_callback = null;
 
-var username = "";
-var password = "";
-
 var add_to_queue = function(method, url, data, callback) {
     var o = {
         method: method,
@@ -69,22 +66,7 @@ var success = function(data, textstatus, jqXHR) {
     current_callback(data);
     communicating = false;
     // Success; remove the call we just completed and do the next
-    // Except: If the status code returned indicates that the user is not logged in, push a login to the beginning of the queue,
-    // and do the previous call again
-    var d = JSON.parse(data);
-    if (d.status == 1) {
-        comQueue.unshift({
-            method: "post",
-            url: "server/logginn.php",
-            data: {
-                brukernavn: username,
-                passord: password
-            },
-            callback: callback.login
-        });
-    } else {
-        comQueue.shift();
-    }
+    comQueue.shift();
     next();
 }
 
@@ -113,8 +95,6 @@ var next = function() {
 
 Server = {
     'logginn': function(brukernavn, passord) {
-        username = brukernavn;
-        password = passord;
         add_to_queue("post", "server/logginn.php", {brukernavn: brukernavn, passord: passord}, callback.logginn);
         next();
     },

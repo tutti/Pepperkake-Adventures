@@ -136,9 +136,11 @@ Brett.prototype.last = function() {
 Brett.prototype.last_ut = function() {
     for (p_id in this.plattformer) {
         this.plattformer[p_id].deaktiver();
+        this.plattformer[p_id].slett_element();
     }
     for (f_id in this.fiender) {
         this.fiender[f_id].deaktiver();
+        this.fiender[f_id].slett_element();
     }
     Lyd.BGM.pause();
     Spill.spiller.deaktiver();

@@ -62,6 +62,13 @@ Enhet.prototype.hent_element = function() {
     return this.element;
 }
 
+Enhet.prototype.slett_element = function() {
+    if (this.element !== undefined) {
+        this.element.remove();
+        delete this.element;
+    }
+}
+
 Enhet.prototype.sett_kontroll = function(kontroll) {
     this.kontroll = kontroll;
 }
