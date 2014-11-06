@@ -15,7 +15,7 @@
             "arv": "standard",
             "type": "heis",
             "bredde": 150,
-            "x": 3400,
+            "x": 0,
             "y": 350,
             "dx": 5,
             "dy": 0,
@@ -107,7 +107,7 @@
             "bredde": 50,
             "x": 3700,
             "y": 150,
-            "ticktall": 740
+            "ticktall": 710
         },
         {
             "arv": "standard",
@@ -115,7 +115,7 @@
             "bredde": 50,
             "x": 3800,
             "y": 150,
-            "ticktall": 760
+            "ticktall": 730
         },
         {
             "arv": "standard",
@@ -123,37 +123,19 @@
             "bredde": 50,
             "x": 3900,
             "y": 150,
-            "ticktall": 780
+            "ticktall": 750
         },
         {
             "arv": "standard",
-            "type": "heis",
             "bredde": 50,
             "x": 4050,
-            "y": 150,
-            "dx": 5,
-            "dy": 0,
-            "ticktall": 60
+            "y": 150
         },
         {
             "arv": "standard",
-            "type": "heis",
             "bredde": 50,
             "x": 4400,
-            "y": 100,
-            "dx": 0,
-            "dy": 5,
-            "ticktall": 20
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "bredde": 50,
-            "x": 4550,
-            "y": 150,
-            "dx": 0,
-            "dy": 10,
-            "ticktall": 40
+            "y": 100
         },
         {
             "arv": "standard",
@@ -163,16 +145,6 @@
             "y": 350,
             "dx": 0,
             "dy": -10,
-            "ticktall": 40
-        },
-        {
-            "arv": "standard",
-            "type": "heis",
-            "bredde": 50,
-            "x": 4750,
-            "y": 150,
-            "dx": 0,
-            "dy": 10,
             "ticktall": 40
         },
         {
@@ -189,7 +161,8 @@
             "arv": "standard",
             "bredde": 200,
             "x": 4900,
-            "y": 300
+            "y": 300,
+            "utgang": "standard/8.json"
         }
     ],
     "fiender": [
@@ -310,18 +283,8 @@
         },
         {
             "type": "gelebølle",
-            "x": 4575,
-            "y": 150
-        },
-        {
-            "type": "gelebølle",
             "x": 4675,
             "y": 350
-        },
-        {
-            "type": "gelebølle",
-            "x": 4775,
-            "y": 150
         },
         {
             "type": "gelebølle",
@@ -329,5 +292,5 @@
             "y": 350
         }
     ],
-    "spiller": [3450, 350]
+    "spiller": [50, 350]
 }
