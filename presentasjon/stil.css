@@ -113,6 +113,12 @@ div#wrapper {
     margin: auto;
 }
 
+/* Forside */
+#video iframe {
+    display: block;
+    margin: auto;
+}
+
 /* Om oss */
 .omoss-person {
     width: 450px;
