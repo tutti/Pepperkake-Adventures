@@ -242,14 +242,14 @@
         {
             "arv": "standard",
             "bredde": 50,
-            "x": 1900,
+            "x": 1950,
             "y": 500
         },
         {
             "arv": "standard",
             "type": "blink",
             "bredde": 50,
-            "x": 2050,
+            "x": 2150,
             "y": 500,
             "ticktall": 30
         },
@@ -272,7 +272,7 @@
             "x": 2500,
             "y": 550,
             "dx": 5,
-            "dy": 5,
+            "dy": -5,
             "ticktall": 50
         },
         {
