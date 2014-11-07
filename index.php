@@ -130,5 +130,6 @@ $bruker = User::get_current();
                 </table>
             </div>
         </div>
+        <a href="mailto:beta@pepperkake.net" style="display: block; width: 100%; text-align: center;">Tilbakemeldinger?</a>
     </body>
 </html>
