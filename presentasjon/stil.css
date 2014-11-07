@@ -117,6 +117,7 @@ div#wrapper {
 #video iframe {
     display: block;
     margin: auto;
+    border: none;
 }
 
 /* Om oss */
