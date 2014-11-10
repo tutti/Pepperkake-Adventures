@@ -21,6 +21,11 @@
             $("#hovedmeny").show();
         })
         
+        $("#tapprovigjenknapp").click(function() {
+            $(".meny").hide();
+            Spill.prov_igjen();
+        })
+        
         $("#brettferdigokknapp").click(function() {
             $(".meny").hide();
             $("#brettmeny").show();

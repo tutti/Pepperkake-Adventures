@@ -121,6 +121,11 @@
             background: lightgrey;
             cursor: auto;
         }
+    #tapprovigjenknapp {
+        border: 3px solid grey;
+        background: lightgreen;
+        top: 150px;
+    }
     #tapokknapp {
         border: 3px solid grey;
         background: lightgreen;

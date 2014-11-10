@@ -67,6 +67,12 @@ Spill.spiller_dod = function() {
     $("#spillerhp").hide();
 }
 
+Spill.prov_igjen = function() {
+    this.brett.last();
+    Spill.spillerhp(3);
+    $("#spillerhp").show();
+}
+
 Spill.spillerhp = function(hp) {
     for (var i=1; i<=3; ++i) {
         if (hp >= i) {

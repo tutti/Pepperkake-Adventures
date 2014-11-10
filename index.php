@@ -96,7 +96,8 @@ $bruker = User::get_current();
             </div>
             <div id="tapmeny" class="meny" style="display: none;">
                 <h1 id="tapoverskrift" class="menyoverskrift">Spillet er over</h1>
-                <span class="knapp okknapp" id="tapokknapp">Tilbake</span>
+                <span class="knapp" id="tapprovigjenknapp">Prøv igjen</span>
+                <span class="knapp okknapp" id="tapokknapp">Meny</span>
             </div>
             <div id="lastermeny" class="meny" style="display: none;">
                 <h1 id="lasteroverskrift" class="menyoverskrift">Laster inn nye brett...</h1>
