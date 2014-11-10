@@ -78,5 +78,6 @@
             "utgang": "standard/1.json"
         }
     ],
-    "spiller": [350, 550]
+    "spiller": [350, 550],
+    "tekst": ""
 }

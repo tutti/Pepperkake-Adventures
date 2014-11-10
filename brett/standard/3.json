@@ -176,5 +176,6 @@
             "y": 350
         }
     ],
-    "spiller": [100, 500]
+    "spiller": [100, 500],
+    "tekst": "<p>Fortsatt ingen tegn til julenissen, og... hvor er Rudolf?</p>"
 }

@@ -94,5 +94,6 @@
             "y": 450
         }
     ],
-    "spiller": [350, 450]
+    "spiller": [350, 450],
+    "tekst": "Tekst for dette brettet"
 }

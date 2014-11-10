@@ -178,5 +178,6 @@
             "y": 550
         }
     ],
-    "spiller": [350, 550]
+    "spiller": [350, 550],
+    "tekst": "<p>Rudolf er slått. Dessverre er betaen over nå. Takk for at du prøvde :)</p>"
 }

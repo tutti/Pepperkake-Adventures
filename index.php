@@ -81,7 +81,7 @@ $bruker = User::get_current();
                         <td><span id="registrerknapp" class="knapp">Registrer</span></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="feilmelding"></td>
+                        <td colspan="2" class="feilmelding">&nbsp;</td>
                     </tr>
                 </table>
                 <?php } ?>
@@ -123,7 +123,7 @@ $bruker = User::get_current();
                         <td><input type="password" id="nyttpassord2" /></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="feilmelding"></td>
+                        <td colspan="2" class="feilmelding">&nbsp;</td>
                     </tr>
                     <tr>
                         <td colspan="2"><span id="send_endrepassordknapp" class="knapp">Endre passord</span></td>

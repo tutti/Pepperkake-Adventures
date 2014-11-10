@@ -67,10 +67,12 @@
         top: 100px;
     }
     .knapp {
-        position: relative;
+        position: absolute;
         display: block;
         width: 180px;
         height: 80px;
+        left: 0;
+        right: 0;
         margin: auto;
         line-height: 80px;
         text-align: center;
@@ -89,21 +91,22 @@
     #startknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 150px;
+        top: 180px;
     }
     #loggutknapp,
     #endrepassordknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 180px;
+        top: 350px;
         height: 40px;
         line-height: 40px;
         font-size: 0.8em;
     }
     #endrepassordknapp {
-        top: 190px;
+        top: 295px;
     }
     .brettknapp {
+        position: relative;
         width: 94px;
         margin: 10px;
         border: 3px solid grey;
@@ -124,17 +127,17 @@
     #tapprovigjenknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 150px;
+        top: 180px;
     }
     #tapokknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 250px;
+        top: 320px;
     }
     #brettferdigokknapp {
         border: 3px solid grey;
         background: lightgreen;
-        top: 250px;
+        top: 450px;
     }
     #brukermeny,
     #passordmeny table {
@@ -151,6 +154,7 @@
         }
         #brukermeny .knapp,
         #passordmeny table .knapp {
+            position: relative;
             border: 3px solid grey;
             background: lightgreen;
             width: 250px;
@@ -166,6 +170,22 @@
         background: lightgreen;
         top: 50px;
     }
+    
+    #brettferdigtekst {
+        position: absolute;
+        display: block;
+        width: 500px;
+        height: 400px;
+        left: 0;
+        right: 0;
+        top: 180px;
+        margin: auto;
+        font-family: sans-serif;
+    }
+        #brettferdigtekst p {
+            line-height: 1.5em;
+            margin-bottom: 10px;
+        }
 
 .plattform {
     position: absolute;

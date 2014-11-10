@@ -340,5 +340,6 @@
             "y": 400
         }
     ],
-    "spiller": [50, 300]
+    "spiller": [50, 300],
+    "tekst": "<p>Rudolf er rett der borte. RUDOLF!</p>"
 }

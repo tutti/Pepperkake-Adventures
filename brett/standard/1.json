@@ -114,5 +114,6 @@
         }
     ],
     "fiender": [],
-    "spiller": [50, 500]
+    "spiller": [50, 500],
+    "tekst": "<p>Noe har gått alvorlig galt. Julenissen har begynt å dele ut gaver til de slemme barna istedenfor de snille!</p><p>Det er nå opp til en pepperkakemann å redde julen!</p>"
 }

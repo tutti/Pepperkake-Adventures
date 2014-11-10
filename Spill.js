@@ -32,8 +32,9 @@ Spill.last_brett = function(mappenavn, brettnavn) {
 
 Spill.brett_ferdig = function(utgang) {
     this.brett.last_ut();
-    $("#spillvindu").scrollLeft(0);
     $("#spillerhp").hide();
+    $("#brettferdigtekst").html(this.brett.tekst);
+    $("#spillvindu").scrollLeft(0);
     var temp = utgang.split("/");
     if (brett[temp[0]]) {
         if (brett[temp[0]][temp[1]]) {
@@ -51,7 +52,7 @@ Spill.brett_ferdig = function(utgang) {
 }
 
 Spill.tick = function() {
-    if (this.brett) {
+    if (this.brett.lastet) {
         this.spiller.tick();
         if (this.brett) {
             this.brett.tick();

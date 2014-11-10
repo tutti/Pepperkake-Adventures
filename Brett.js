@@ -1,10 +1,12 @@
 Brett = function(data, mappe, filnavn, apnet) {
     this.navn = data.navn;
     this.mappe = mappe;
+    this.lastet = false;
     this.filnavn = filnavn;
     this.bredde = data.bredde;
     this.bakgrunn = data.bakgrunn;
     this.musikk = data.musikk;
+    this.tekst = data.tekst;
     this.apnet = apnet;
     this.plattformer = [];
     this.t_plattformer = {};
@@ -125,6 +127,7 @@ Brett.prototype.last = function() {
             this.fiender[f_id].aktiver();
         }
     }
+    this.lastet = true;
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();
     Spill.spiller.fokus();
@@ -142,6 +145,7 @@ Brett.prototype.last_ut = function() {
         this.fiender[f_id].deaktiver();
         this.fiender[f_id].slett_element();
     }
+    this.lastet = false;
     Lyd.BGM.pause();
     Spill.spiller.deaktiver();
     $("#spillvindu").css('background', '');
