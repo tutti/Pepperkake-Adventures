@@ -2,7 +2,7 @@ Julenisse = function(x, y) {
     this.type = "julenisse";
     Enhet.call(this, x, y);
     
-    this.bredde = 64;
+    this.bredde = 52;
     this.hoyde = 64;
     this.hastighet = 10;
     this.hoppstyrke = 20;
@@ -155,6 +155,7 @@ Julenisse.prototype.aktiver = function() {
     this.handlingteller = 0;
     this.angrep = false;
     this.angrep_teller = 0;
+    this.velg_bilde("sitte");
     $("#bosshp").show();
     Spill.bosshp(100);
 }

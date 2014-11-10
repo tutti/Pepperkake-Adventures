@@ -59,7 +59,7 @@ JulenisseKontroll.prototype.constructor = JulenisseKontroll
 
 JulenisseKontroll.prototype.tilfeldig_hovedfase_handling = function(enhet) {
     //switch (Math.floor(Math.random()*2)) {
-    switch (0) {
+    switch (1) {
         case 0:
             enhet.handling = "snøballer";
             enhet.handlingteller = -1; // Sørg for å løpe til en side først
