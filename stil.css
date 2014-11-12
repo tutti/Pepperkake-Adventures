@@ -209,3 +209,49 @@
     background-image: url("bilder/portal.gif");
     z-index: 1;
 }
+
+#instruksjoner {
+    width: 800px;
+    position: absolute;
+    bottom: 50px;
+}
+    #instruksjoner #pil-venstre {
+        position: absolute;
+        left: 50px;
+        bottom: 0;
+    }
+    #instruksjoner #pil-opp {
+        position: absolute;
+        left: 100px;
+        bottom: 0;
+    }
+    #instruksjoner #pil-hoyre {
+        position: absolute;
+        left: 150px;
+        bottom: 0;
+    }
+    #instruksjoner #instr-gv {
+        position: absolute;
+        left: 58px;
+        bottom: 50px;
+    }
+    #instruksjoner #instr-n {
+        position: absolute;
+        left: 108px;
+        bottom: 50px;
+    }
+    #instruksjoner #instr-gh {
+        position: absolute;
+        left: 158px;
+        bottom: 50px;
+    }
+    #instruksjoner #spacetast {
+        position: absolute;
+        right: 50px;
+        bottom: 0;
+    }
+    #instruksjoner #instr-a {
+        position: absolute;
+        right: 154px;
+        bottom: 50px;
+    }

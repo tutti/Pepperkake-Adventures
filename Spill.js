@@ -25,9 +25,13 @@ $(document).ready(function() {
 
 Spill.last_brett = function(mappenavn, brettnavn) {
     this.brett = brett[mappenavn][brettnavn];
-    this.brett.last();
-    this.spillerhp(3);
-    $("#spillerhp").show();
+    if (this.brett.apnet) {
+        this.brett.last();
+        this.spillerhp(3);
+        $("#spillerhp").show();
+    } else {
+        console.error("Du har ikke åpnet dette brettet!");
+    }
 }
 
 Spill.brett_ferdig = function(utgang) {
@@ -52,7 +56,7 @@ Spill.brett_ferdig = function(utgang) {
 }
 
 Spill.tick = function() {
-    if (this.brett.lastet) {
+    if (this.brett && this.brett.lastet) {
         this.spiller.tick();
         if (this.brett) {
             this.brett.tick();

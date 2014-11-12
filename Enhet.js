@@ -156,8 +156,6 @@ Enhet.prototype.fokus = function() {
     
     $("#spillvindu").scrollLeft(punkt);
     $("#spillvindu").css('background-position', -punkt/5);
-    
-    console.log("moo");
 }
 
 Enhet.prototype.sett_posisjon = function(punkt_x, punkt_y, oppdater) {

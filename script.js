@@ -1,4 +1,7 @@
 (function() {
+    
+    var interv;
+    var interv2;
 
     $(document).ready(function() {
         
@@ -57,7 +60,22 @@
             }
         })
         
+        function instr_hopp() {
+            if (pos == btm1) {
+                momentum = 15;
+            }
+            pos += momentum;
+            momentum -= Spill.gravitasjon;
+            $("#instr-n").css("bottom", pos);
+        }
+        
         interv = setInterval(function() { Spill.tick() }, 1000/30);
+        
+        var btm1 = $("#instr-n").css("bottom");
+        btm1 = Number(btm1.substr(0, btm1.length - 2));
+        var pos = btm1
+        var momentum = 0;
+        interv2 = setInterval(instr_hopp, 1000/30);
     })
 
 })();

@@ -5,13 +5,14 @@ Julenisse = function(x, y) {
     this.bredde = 52;
     this.hoyde = 64;
     this.hastighet = 10;
-    this.hoppstyrke = 20;
+    this.hoppstyrke = 19;
     this.original_retning = 0;
     this.maxhp = 100;
     
     this.fase = "start";
     this.handling = "";
     this.handlingteller = 0;
+    this.luftfaseteller = 0;
     this.luftfaseflagg = false;
     
     this.sett_bilde("venstre", "venstre.png");
@@ -124,7 +125,7 @@ Julenisse.prototype.tick = function() {
                 this.sukkerstenger[i].y += 3;
             }
             this.sukkerstenger[i].element.css('left', this.sukkerstenger[i].x).css('top', this.sukkerstenger[i].y);
-            if (Spill.brett.skad(this, this.sukkerstenger[i].x, this.sukkerstenger[i].y, this.sukkerstenger[i].x+20, this.sukkerstenger[i].y+60, 1, 0, 1)) {
+            if (Spill.brett.skad(this, this.sukkerstenger[i].x, this.sukkerstenger[i].y, this.sukkerstenger[i].x+20, this.sukkerstenger[i].y+60, 1, 0, 2)) {
                 // Sukkerstang-lydeffekt
             }
             --this.sukkerstenger[i].teller;
@@ -149,12 +150,14 @@ Julenisse.prototype.angrep_tick = function() {
 Julenisse.prototype.aktiver = function() {
     Enhet.prototype.aktiver.call(this);
     this.hastighet = 10;
-    this.hoppstyrke = 20;
+    this.hoppstyrke = 19; // 19 er akkurat riktig for 4 hopp over plattformen
     this.fase = "";
     this.handling = "";
     this.handlingteller = 0;
     this.angrep = false;
     this.angrep_teller = 0;
+    this.luftfaseteller = 0;
+    this.luftfaseflagg = false;
     this.velg_bilde("sitte");
     $("#bosshp").show();
     Spill.bosshp(100);
@@ -194,16 +197,17 @@ Julenisse.prototype.skade = function(skade, retning, kraft) {
     if (this.immunitet > 0) return;
     Enhet.prototype.skade.call(this, skade, retning, kraft);
     var farge = "#0F0";
-    if (this.hp <= 40) farge = "#F80";
-    if (this.hp <= 20) farge = "#F00";
-    Spill.bosshp(100 * this.hp / this.maxhp, farge);
-    this.fiendefaseflagg = true;
+    if (this.hp <= 75) farge = "#FF0";
+    if (this.hp <= 50) farge = "#F80";
+    if (this.hp <= 25) farge = "#F00";
+    Spill.bosshp(this.hp, farge);
+    this.luftfaseflagg = true;
     if (this.hp == 0) {
         this.fall();
         this.momentum = (20 * kraft) / 1.5;
         this.momentum_x = retning * kraft * 10;
-    } else if (this.hp % 20 == 0) {
-        this.immunitet += this.handlingteller + 50;
+    } else if (this.hp % 25 == 0) {
+        this.immunitet += this.handlingteller + 150;
     }
 }
 

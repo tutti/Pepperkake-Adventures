@@ -14,8 +14,8 @@ JulenisseKontroll.prototype.constructor = JulenisseKontroll
  *              3. Kast 3 snøballer, løp til andre kant
  *              4. Kast 3 snøballer, løp til andre kant
  *          "sukkerstenger": Sukkerstenger kommer opp fra under brettet.
- *          "vind": Nissen blåser en sterk vind som fører med seg ting ("fiender") spilleren må hoppe over
- *      "sledefase": Nissen flyr over banen i en slede i 1 minutt - snøballer i 10 sekunder, fly lavt i 5 sekunder
+ *          "hopp": Nissen hopper over brettet, fra en ende til en annen
+ *      "luftfase": Nissen flyr over banen i en slede i 1 minutt - snøballer i 10 sekunder, fly lavt i 5 sekunder
  *          "snøballer": Nissen kaster snøballer fra luften
  *              1. Sitt i ro på sleden, slipp en snøball hvert sekund (300)
  *          "lavt": Nissen flyr lavt over plattformen for å skade spilleren
@@ -33,33 +33,37 @@ JulenisseKontroll.prototype.constructor = JulenisseKontroll
  *              3. Slå til siden
  */
 
+JulenisseKontroll.prototype.slede = {
+    start_kamp: function() {
+        var slede = Spill.brett.hent_plattform("slede");
+        slede.dx = 0;
+        slede.dy = 1;
+        slede.ticktall = 150;
+        slede.stoppet = false;
+    },
+    
+    stopp: function() {
+        var slede = Spill.brett.hent_plattform("slede");
+        slede.stoppet = true;
+    },
+    
+    start_luft: function() {
+        var slede = Spill.brett.hent_plattform("slede");
+        slede.dx = 10;
+        slede.dy = 0;
+        slede.ticktall = 60;
+        slede.tickteller = 30;
+        slede.retning = 1;
+        slede.stoppet = false;
+    }
+}
 
-//JulenisseKontroll.prototype.tilfeldig_handling = function(enhet) {
-//    switch (Math.floor(Math.random()*3)) { // Skru opp til 2 eller 3 for å tillate laser og bombe
-//    //switch (2) {
-//        case 0:
-//            enhet.handling = "plattform";
-//            enhet.handlingteller = 330;
-//            this.retning = Math.floor(Math.random()*2)*2-1
-//            break;
-//        case 1:
-//            enhet.handling = "laser";
-//            enhet.handlingteller = 230;
-//            this.retning = Math.floor(Math.random()*2)*2-1
-//            Spill.brett.hent_plattform("blink-1").aktiver();
-//            Spill.brett.hent_plattform("blink-2").aktiver();
-//            Spill.brett.hent_plattform("blink-3").aktiver();
-//            break;
-//        case 2:
-//            enhet.handling = "bombe";
-//            enhet.handlingteller = 180;
-//            break;
-//    }
-//}
+var forsteHandling = 0;
+var startLuft = true;
 
 JulenisseKontroll.prototype.tilfeldig_hovedfase_handling = function(enhet) {
-    //switch (Math.floor(Math.random()*2)) {
-    switch (1) {
+    switch (Math.floor(Math.random()*3) * forsteHandling) {
+    //switch (2*forsteHandling) {
         case 0:
             enhet.handling = "snøballer";
             enhet.handlingteller = -1; // Sørg for å løpe til en side først
@@ -70,8 +74,11 @@ JulenisseKontroll.prototype.tilfeldig_hovedfase_handling = function(enhet) {
             enhet.handlingteller = 150;
             break;
         case 2:
+            enhet.handling = "hopp";
+            enhet.handlingteller = 240;
             break;
     }
+    forsteHandling = 1;
 }
 
 JulenisseKontroll.prototype.tilfeldig_sluttfase_handling = function(enhet) {
@@ -81,15 +88,17 @@ JulenisseKontroll.prototype.tilfeldig_sluttfase_handling = function(enhet) {
 JulenisseKontroll.prototype.styr = function(enhet) {
     switch (enhet.fase) {
         case "":
+            this.slede.start_kamp();
             enhet.fase = "start";
             enhet.handling = "vent";
             enhet.handlingteller = 147; // Stopper sleden akkurat på bunnen
+            forsteHandling = 0;
             break;
         case "start":
             --enhet.handlingteller;
             if (enhet.handlingteller == 0) {
                 enhet.fall();
-                Spill.brett.hent_plattform("slede").stoppet = true;
+                this.slede.stopp();
                 enhet.fase = "hovedfase";
                 this.tilfeldig_hovedfase_handling(enhet);
             }
@@ -108,9 +117,11 @@ JulenisseKontroll.prototype.styr = function(enhet) {
                             this.retning *= -1;
                             enhet.sett_retning(this.retning);
                             enhet.angrip();
-                        } else if (enhet.handlingteller > 0) {
+                        } else if (enhet.handlingteller > 1) {
                             enhet.beveg(this.retning);
                             --enhet.handlingteller;
+                        } else {
+                            enhet.handlingteller = 0;
                         }
                     }
                     break;
@@ -120,15 +131,73 @@ JulenisseKontroll.prototype.styr = function(enhet) {
                     }
                     --enhet.handlingteller;
                     break;
-                case "vind":
+                case "hopp":
+                    //if (enhet.handlingteller % 80 == 0 && enhet.handlingteller < 240) {
+                    //    enhet.sett_retning(-enhet.retning);
+                    //}
+                    if (enhet.punkt_x() == 400 + 400 * enhet.retning) {
+                        enhet.sett_retning(-enhet.retning);
+                    }
+                    if (enhet.handlingteller % 20 == 0 && enhet.handlingteller > 0) {
+                        console.log(enhet.punkt_x());
+                        enhet.hopp();
+                    }
+                    console.log(enhet.handlingteller);
+                    --enhet.handlingteller;
                     break;
             }
             if (enhet.handlingteller == 0) {
                 // Enten gå til neste fase, eller velg ny handling
-                this.tilfeldig_hovedfase_handling(enhet);
+                if (enhet.hp == 25) {
+                    //code
+                } else if (enhet.hp % 25 == 0 && enhet.luftfaseflagg) {
+                    enhet.fase = "luftfase";
+                    enhet.handling = "hopp";
+                    enhet.handlingteller = 300;
+                    enhet.luftfaseteller = 8;
+                    startLuft = true;
+                } else {
+                    this.tilfeldig_hovedfase_handling(enhet);
+                }
             }
             break;
-        case "sledefase":
+        case "luftfase":
+            switch (enhet.handling) {
+                case "hopp":
+                    if (enhet.punkt_x() < 400) {
+                        enhet.beveg(1);
+                    } else if (enhet.punkt_x() > 400) {
+                        enhet.beveg(-1);
+                    } else {
+                        enhet.hopp();
+                        enhet.handling = "snøballer";
+                    }
+                    break;
+                case "snøballer":
+                    // TODO
+                    --enhet.handlingteller;
+                    break;
+                case "lavt":
+                    --enhet.handlingteller;
+                    break;
+            }
+            if (enhet.handling != "hopp" && startLuft) {
+                startLuft = false;
+                this.slede.start_luft();
+            }
+            --enhet.handlingteller;
+            if (enhet.handlingteller == 0) {
+                --enhet.luftfaseteller;
+                if (luftfaseteller == 0) {
+                    // Tilbake til hovedfasen
+                    this.slede.stopp();
+                    enhet.fall();
+                } else if (luftfaseteller % 2 == 0) {
+                    
+                } else {
+                    
+                }
+            }
             break;
         case "sluttfase":
             break;
