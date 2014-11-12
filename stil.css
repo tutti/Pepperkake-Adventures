@@ -218,40 +218,59 @@
     #instruksjoner #pil-venstre {
         position: absolute;
         left: 50px;
-        bottom: 0;
+        bottom: 50px;
     }
     #instruksjoner #pil-opp {
         position: absolute;
         left: 100px;
-        bottom: 0;
+        bottom: 100px;
+    }
+    #instruksjoner #pil-ned {
+        position: absolute;
+        left: 100px;
+        bottom: 50px;
     }
     #instruksjoner #pil-hoyre {
         position: absolute;
         left: 150px;
-        bottom: 0;
+        bottom: 50px;
     }
     #instruksjoner #instr-gv {
         position: absolute;
         left: 58px;
-        bottom: 50px;
+        bottom: 100px;
     }
-    #instruksjoner #instr-n {
+    #instruksjoner #instr-no {
         position: absolute;
         left: 108px;
-        bottom: 50px;
+        bottom: 150px;
+    }
+    #instruksjoner #instr-nn {
+        position: absolute;
+        left: 108px;
+        bottom: 0;
+        z-index: 1;
     }
     #instruksjoner #instr-gh {
         position: absolute;
         left: 158px;
-        bottom: 50px;
+        bottom: 100px;
     }
     #instruksjoner #spacetast {
         position: absolute;
         right: 50px;
-        bottom: 0;
+        bottom: 50px;
     }
     #instruksjoner #instr-a {
         position: absolute;
         right: 154px;
-        bottom: 50px;
+        bottom: 100px;
+    }
+    #instruksjoner #instr-plattform {
+        position: absolute;
+        left: 100px;
+        bottom: -20px;
+        width: 48px;
+        height: 20px;
+        background: url("bilder/plattform1.png");
     }

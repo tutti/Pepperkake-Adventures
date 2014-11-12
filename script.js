@@ -61,20 +61,30 @@
         })
         
         function instr_hopp() {
-            if (pos == btm1) {
-                momentum = 15;
+            if (pos1 == btm) {
+                momentum1 = 15;
+                pos2 = 0;
+                momentum2 = 0;
+                //$("#instr-nn").css("bottom", 0)
             }
-            pos += momentum;
-            momentum -= Spill.gravitasjon;
-            $("#instr-n").css("bottom", pos);
+            pos1 += momentum1;
+            pos2 += momentum2;
+            momentum1 -= Spill.gravitasjon;
+            momentum2 -= Spill.gravitasjon;
+            $("#instr-no").css("bottom", pos1);
+            $("#instr-nn").css("bottom", pos2);
         }
         
         interv = setInterval(function() { Spill.tick() }, 1000/30);
         
-        var btm1 = $("#instr-n").css("bottom");
-        btm1 = Number(btm1.substr(0, btm1.length - 2));
-        var pos = btm1
-        var momentum = 0;
+        var btm = $("#instr-no").css("bottom");
+        btm = Number(btm.substr(0, btm.length - 2));
+        var pos1 = btm;
+        var momentum1 = 0;
+        var top = $("#instr-nn").css("bottom");
+        top = Number(top.substr(0, top.length - 2));
+        var pos2 = top;
+        var momentum2 = 0;
         interv2 = setInterval(instr_hopp, 1000/30);
     })
 

@@ -69,12 +69,15 @@ $bruker = User::get_current();
                 <div id="instruksjoner">
                     <img src="bilder/pil-v.png" id="pil-venstre" />
                     <img src="bilder/pil-o.png" id="pil-opp" />
+                    <img src="bilder/pil-n.png" id="pil-ned" />
                     <img src="bilder/pil-h.png" id="pil-hoyre" />
                     <img src="bilder/spacetast.png" id="spacetast" />
                     <img src="bilder/pepperkake/0/gv.gif" id="instr-gv" />
-                    <img src="bilder/pepperkake/0/n.png" id="instr-n" />
+                    <img src="bilder/pepperkake/0/n.png" id="instr-no" />
+                    <img src="bilder/pepperkake/0/n.png" id="instr-nn" />
                     <img src="bilder/pepperkake/0/gh.gif" id="instr-gh" />
                     <img src="bilder/pepperkake/0/a.gif" id="instr-a" />
+                    <div id="instr-plattform"></div>
                 </div>
                 <?php } else { ?>
                 <table id="brukermeny">
