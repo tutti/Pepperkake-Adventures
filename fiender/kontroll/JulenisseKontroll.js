@@ -39,6 +39,8 @@ JulenisseKontroll.prototype.constructor = JulenisseKontroll
 JulenisseKontroll.prototype.slede = {
     start_kamp: function() {
         var slede = Spill.brett.hent_plattform("slede");
+        slede.x = 325;
+        slede.y = -50;
         slede.dx = 0;
         slede.dy = 1;
         slede.ticktall = 150;
@@ -65,7 +67,7 @@ JulenisseKontroll.prototype.slede = {
         function() { // Første kall
             var slede = Spill.brett.hent_plattform("slede");
             slede.dx = 0;
-            slede.dy = 5;
+            slede.dy = -5;
             slede.ticktall = 60;
             slede.tickteller = 60;
             slede.retning = 1;
@@ -77,7 +79,7 @@ JulenisseKontroll.prototype.slede = {
             slede.y = 550;
             enhet.x = 849;
             enhet.y = 486;
-            slede.dx = 30;
+            slede.dx = -30;
             slede.dy = 0;
             slede.ticktall = 30;
             slede.tickteller = 30;
@@ -91,7 +93,7 @@ JulenisseKontroll.prototype.slede = {
             enhet.x = 374;
             enhet.y = -264;
             slede.dx = 0;
-            slede.dy = -5;
+            slede.dy = 5;
             slede.ticktall = 60
             slede.tickteller = 60;
             slede.retning = 1;
@@ -103,6 +105,7 @@ JulenisseKontroll.prototype.slede = {
         var slede = Spill.brett.hent_plattform("slede");
         slede.dx = 0;
         slede.dy = 1;
+        slede.x = 325;
         slede.ticktall = 150;
         slede.tickteller = 150;
         slede.stoppet = false;
@@ -304,7 +307,6 @@ JulenisseKontroll.prototype.styr = function(enhet) {
                         this.slede.start_sluttfase();
                     } else if (enhet.handlingteller == 1) {
                         this.slede.stopp();
-                        //this.tilfeldig_sluttfase_handling(enhet);
                     }
                     break;
                 case "snøballer":

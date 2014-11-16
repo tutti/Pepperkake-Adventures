@@ -1,0 +1,2 @@
+- Pepperkaken kan ikke droppe ned gjennom en plattform som beveger seg nedover
+- Julenissen vil starte litt ved siden av midten på sleden hvis spilleren tapte mens sleden var i bevegelse sidelengs

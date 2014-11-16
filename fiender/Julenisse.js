@@ -15,6 +15,8 @@ Julenisse = function(x, y) {
     this.luftfaseteller = 0;
     this.luftfaseflagg = false;
     this.snoball_num = 0;
+    this.shenanigans_teller = 0;
+    this.shenanigans_plattform = 0;
     
     this.sett_bilde("venstre", "venstre.png");
     this.sett_bilde("høyre", "hoyre.png");
@@ -102,8 +104,10 @@ Julenisse.prototype.sett_retning = function(retning) {
 Julenisse.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
-    if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, (this.punkt_x() < 400 ? 1 : -1), 1.5)) {
-        Lyd.Effekt.spill("lyd/slag1.mp3");
+    if (this.fase != "sluttfase" || (this.handling == "slå" && this.handlingteller <= 28)) {
+        if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, (this.punkt_x() < 400 ? 1 : -1), 1.5)) {
+            Lyd.Effekt.spill("lyd/seigeninja-slag.mp3");
+        }
     }
     this.hent_element();
     for (var i=0; i<3; ++i) {
@@ -113,7 +117,7 @@ Julenisse.prototype.tick = function() {
             this.snoballer[i].momentum -= Spill.gravitasjon;
             this.snoballer[i].element.css('left', this.snoballer[i].x).css('top', this.snoballer[i].y);
             if (Spill.brett.skad(this, this.snoballer[i].x, this.snoballer[i].y, this.snoballer[i].x+16, this.snoballer[i].y+16, 1, this.retning, 1)) {
-                // Snøball-lydeffekt
+                Lyd.Effekt.spill("lyd/snoball_treff.mp3");
             }
             if (this.snoballer[i].y >= Spill.brett.taplinje) {
                 this.snoballer[i].aktiv = false;
@@ -135,6 +139,9 @@ Julenisse.prototype.tick = function() {
             --this.sukkerstenger[i].teller;
         }
     }
+    if (this.fase == "sluttfase") {
+        this.plattform_shenanigans();
+    }
 }
 
 Julenisse.prototype.slipp_snoball = function() {
@@ -145,6 +152,7 @@ Julenisse.prototype.slipp_snoball = function() {
     this.snoballer[this.snoball_num].momentum_x = 0;
     this.snoballer[this.snoball_num].element.show();
     this.snoball_num = (this.snoball_num + 1) % 3;
+    Lyd.Effekt.spill("lyd/snoball.mp3");
 }
 
 Julenisse.prototype.angrep_tick = function() {
@@ -157,6 +165,7 @@ Julenisse.prototype.angrep_tick = function() {
         this.snoballer[i].momentum = 15;
         this.snoballer[i].momentum_x = 10*(i+1)*this.retning;
         this.snoballer[i].element.show();
+        Lyd.Effekt.spill("lyd/snoball.mp3");
     }
 }
 
@@ -171,11 +180,15 @@ Julenisse.prototype.aktiver = function() {
     this.angrep_teller = 0;
     this.luftfaseteller = 0;
     this.luftfaseflagg = false;
+    this.shenanigans_teller = 0;
+    this.shenanigans_plattform = 7;
     this.velg_bilde("sitte");
     $("#bosshp").show();
-    this.hp = 26;
+    this.hp = 100;
     Spill.bosshp(100);
-    
+    for (var i=0; i<8; ++i) {
+        Spill.brett.hent_plattform("hovedplattform"+i).aktiver();
+    }
 }
 
 Julenisse.prototype.deaktiver = function() {
@@ -205,6 +218,17 @@ Julenisse.prototype.start_sukkerstenger = function() {
     for (var i=0; i<8; ++i) {
         this.sukkerstenger[i].teller = 60 + Math.floor(Math.random()*90);
         this.sukkerstenger[i].element.show();
+    }
+}
+
+Julenisse.prototype.plattform_shenanigans = function() {
+    ++this.shenanigans_teller;
+    if (this.shenanigans_teller >= 40) {
+        Spill.brett.hent_plattform("hovedplattform"+this.shenanigans_plattform).stoppet = true;
+        this.shenanigans_plattform = (this.shenanigans_plattform+1)%8;
+        var ny_plattform = Spill.brett.hent_plattform("hovedplattform"+this.shenanigans_plattform);
+        ny_plattform.stoppet = false;
+        this.shenanigans_teller = 0;
     }
 }
 

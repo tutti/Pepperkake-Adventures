@@ -13,48 +13,48 @@
             "hoyde": 20,
             "y": 550,
             "dx": 0,
-            "dy": 5,
+            "dy": -10,
             "ticktall": 20,
             "stopp": true
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform1",
+            "id": "hovedplattform0",
             "x": 0
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform2",
+            "id": "hovedplattform1",
             "x": 100
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform3",
+            "id": "hovedplattform2",
             "x": 200
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform4",
+            "id": "hovedplattform3",
             "x": 300
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform5",
+            "id": "hovedplattform4",
             "x": 400
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform6",
+            "id": "hovedplattform5",
             "x": 500
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform7",
+            "id": "hovedplattform6",
             "x": 600
         },
         {
             "arv": "hovedplattform",
-            "id": "hovedplattform8",
+            "id": "hovedplattform7",
             "x": 700
         },
         {

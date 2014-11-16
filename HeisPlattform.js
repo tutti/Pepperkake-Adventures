@@ -51,6 +51,8 @@ HeisPlattform.prototype.aktiver = function() {
     Plattform.prototype.aktiver.call(this);
     this.x = this.original_x;
     this.y = this.original_y;
+    var elmt = this.hent_element();
+    elmt.css('left', this.x).css('top', this.y);
     this.retning = 1;
     this.tickteller = this.ticktall;
 }
