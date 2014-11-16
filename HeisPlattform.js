@@ -39,6 +39,12 @@ HeisPlattform.prototype.tick = function() {
             this.tickteller = this.ticktall;
         }
     }
+    if (this.stoppet) {
+        for (e_id in this.enheter) {
+            this.enheter[e_id].momentum = 0;
+            this.enheter[e_id].momentum_x = 0;
+        }
+    }
 }
 
 HeisPlattform.prototype.aktiver = function() {
@@ -57,6 +63,7 @@ HeisPlattform.prototype.lander = function(x1, y1, x2, y2, ticks) {
     // ticks bestemmer hvor mange ticks inn i fremtiden plattformens
     // posisjon skal sjekkes.
     if (!this.vises) return false;
+    if (this.stoppet || ticks == 0) return Plattform.prototype.lander.call(this, x1, y1, x2, y2, ticks);
     var ticks_fra_start = this.ticktall - this.tickteller + ticks;
     if (this.retning == -1) ticks_fra_start += this.ticktall;
     var posisjon = Math.abs(this.ticktall - ((ticks_fra_start + this.ticktall) % (this.ticktall * 2)));

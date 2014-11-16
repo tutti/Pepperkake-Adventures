@@ -14,10 +14,11 @@ Julenisse = function(x, y) {
     this.handlingteller = 0;
     this.luftfaseteller = 0;
     this.luftfaseflagg = false;
+    this.snoball_num = 0;
     
     this.sett_bilde("venstre", "venstre.png");
     this.sett_bilde("høyre", "hoyre.png");
-    this.sett_bilde("sitte", "sitte.png");
+    this.sett_bilde("stopp", "sitte.png");
     
     this.sett_kontroll(Kontroll.hent("julenisse"));
 }
@@ -92,6 +93,9 @@ Julenisse.prototype.sett_retning = function(retning) {
         case 1:
             this.velg_bilde("høyre");
             break;
+        case 0:
+            this.velg_bilde("stopp");
+            break;
     }
 }
 
@@ -133,11 +137,20 @@ Julenisse.prototype.tick = function() {
     }
 }
 
+Julenisse.prototype.slipp_snoball = function() {
+    this.snoballer[this.snoball_num].aktiv = true;
+    this.snoballer[this.snoball_num].x = this.punkt_x();
+    this.snoballer[this.snoball_num].y = this.punkt_y();
+    this.snoballer[this.snoball_num].momentum = 0;
+    this.snoballer[this.snoball_num].momentum_x = 0;
+    this.snoballer[this.snoball_num].element.show();
+    this.snoball_num = (this.snoball_num + 1) % 3;
+}
+
 Julenisse.prototype.angrep_tick = function() {
     Enhet.prototype.angrep_tick.call(this);
     var i = Math.floor((100-this.angrep_teller) / 20) - 1;
     if (i<3 && this.angrep_teller % 20 == 0) {
-        console.log(i);
         this.snoballer[i].aktiv = true;
         this.snoballer[i].x = 400 - this.retning * 380;
         this.snoballer[i].y = 502;
@@ -160,7 +173,9 @@ Julenisse.prototype.aktiver = function() {
     this.luftfaseflagg = false;
     this.velg_bilde("sitte");
     $("#bosshp").show();
+    this.hp = 26;
     Spill.bosshp(100);
+    
 }
 
 Julenisse.prototype.deaktiver = function() {
@@ -207,7 +222,7 @@ Julenisse.prototype.skade = function(skade, retning, kraft) {
         this.momentum = (20 * kraft) / 1.5;
         this.momentum_x = retning * kraft * 10;
     } else if (this.hp % 25 == 0) {
-        this.immunitet += this.handlingteller + 150;
+        this.immunitet = 1800;
     }
 }
 
