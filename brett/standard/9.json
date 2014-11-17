@@ -1,5 +1,5 @@
 {
-    "navn": "Niende brett",
+    "navn": "Den verste så langt",
     "bakgrunn": "bilder/bakgrunn1.jpg",
     "musikk": "musikk/coventry.mp3",
     "bredde": 3750,
@@ -341,5 +341,5 @@
         }
     ],
     "spiller": [50, 300],
-    "tekst": "<p>Rudolf er rett der borte. RUDOLF!</p>"
+    "tekst": "<p>Du ser nissen... men det der er ikke nissen! Det er en falsk nisse!</p>"
 }

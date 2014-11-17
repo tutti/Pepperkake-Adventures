@@ -1,5 +1,5 @@
 {
-    "navn": "Fjerde brett",
+    "navn": "Svevende plattformer",
     "bakgrunn": "bilder/bakgrunn3.jpg",
     "musikk": "musikk/comfort.mp3",
     "bredde": 2500,
@@ -129,5 +129,5 @@
     ],
     "fiender": [],
     "spiller": [100, 500],
-    "tekst": "<p>Hvor enn nissen er, vil han tydeligvis ikke bli funnet. Forsvarsmekanismene hans blir mer og mer sofistikerte.</p><p>Litt lenger fremme er det tydeligvis vakthold.</p>"
+    "tekst": "<p>Hvor enn nissen er, vil han tydeligvis ikke bli funnet. Forsvarsmekanismene hans blir mer og mer sofistikerte.</p><p>Der er Rudolf. Kanskje han vet noe?</p>"
 }

@@ -1,5 +1,5 @@
 {
-    "navn": "Åttende brett",
+    "navn": "Litt bakover",
     "bakgrunn": "bilder/bakgrunn1.jpg",
     "musikk": "musikk/coventry.mp3",
     "bredde": 4600,
@@ -359,5 +359,5 @@
     ],
     "fiender": [],
     "spiller": [2000, 250],
-    "tekst": "<p>Du kan se Rudolf i avstanden! ...men det er et stykke igjen. Og det ser ut som om vaktholdet er styrket.</p>"
+    "tekst": "<p>Du kan se nissen i avstanden! ...men det er et stykke igjen. Og det ser ut som om vaktholdet er styrket.</p>"
 }
