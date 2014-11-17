@@ -18,9 +18,11 @@ Julenisse = function(x, y) {
     this.shenanigans_teller = 0;
     this.shenanigans_plattform = 0;
     
-    this.sett_bilde("venstre", "venstre.png");
-    this.sett_bilde("høyre", "hoyre.png");
+    this.sett_bilde("venstre", "gv.gif");
+    this.sett_bilde("høyre", "gh.gif");
     this.sett_bilde("stopp", "sitte.png");
+    this.sett_bilde("stopp-venstre", "venstre.png");
+    this.sett_bilde("stopp-høyre", "hoyre.png");
     
     this.sett_kontroll(Kontroll.hent("julenisse"));
 }
@@ -94,6 +96,22 @@ Julenisse.prototype.sett_retning = function(retning) {
             break;
         case 1:
             this.velg_bilde("høyre");
+            break;
+        case 0:
+            this.velg_bilde("stopp");
+            break;
+    }
+}
+
+Julenisse.prototype.stopp = function(retning) {
+    if (!retning) retning = 0;
+    Enhet.prototype.sett_retning.call(this, retning);
+    switch (retning) {
+        case -1:
+            this.velg_bilde("stopp-venstre");
+            break;
+        case 1:
+            this.velg_bilde("stopp-høyre");
             break;
         case 0:
             this.velg_bilde("stopp");
