@@ -113,8 +113,24 @@ Brett = function(data, mappe, filnavn, apnet, bestetid, bestesamlet) {
     this.x = data.spiller[0];
     this.y = data.spiller[1];
     
+    var knapp = $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]');
     if (apnet) {
-        $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]').removeClass("disabled");
+        knapp.removeClass("disabled");
+    }
+    if (this.samleobjekter.length > 0) {
+        knapp.closest(".brettknapp-container").find(".samlingteller").text(this.bestesamlet + "/" + this.samleobjekter.length);
+    } else {
+        knapp.closest(".brettknapp-container").find(".samlingteller").hide();
+    }
+    
+    if (this.bestetid > -1) {
+        var sekunder = Math.floor(this.bestetid/30) % 60;
+        var minutter = Math.floor(this.bestetid/1800);
+        knapp.closest(".brettknapp-container").find(".bestetid").text(
+            (minutter < 10 ? "0" : "") + minutter
+            + ":" +
+            (sekunder < 10 ? "0" : "") + sekunder
+        )
     }
 }
 
@@ -306,4 +322,15 @@ Brett.prototype.oppdater_rekorder = function() {
     if (this.bestetid == -1) this.bestetid = this.ticks;
     else this.bestetid = Math.min(this.ticks, this.bestetid);
     this.bestesamlet = Math.max(this.antall_samlet(), this.bestesamlet);
+    var knapp = $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]');
+    knapp.closest(".brettknapp-container").find(".samlingteller").text(this.bestesamlet + "/" + this.samleobjekter.length);
+    if (this.bestetid > -1) {
+        var sekunder = Math.floor(this.bestetid/30) % 60;
+        var minutter = Math.floor(this.bestetid/1800);
+        knapp.closest(".brettknapp-container").find(".bestetid").text(
+            (minutter < 10 ? "0" : "") + minutter
+            + ":" +
+            (sekunder < 10 ? "0" : "") + sekunder
+        )
+    }
 }
