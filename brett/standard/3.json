@@ -176,7 +176,16 @@
             "y": 350
         }
     ],
-    "samle": [],
+    "samle": [
+        {
+            "x": 1150,
+            "y": 75
+        },
+        {
+            "x": 1700,
+            "y": 75
+        }
+    ],
     "spiller": [100, 500],
     "tekst": "<p>Fortsatt ingen tegn til julenissen, og... hvor er Rudolf?</p>"
 }

@@ -380,7 +380,16 @@
         }
     ],
     "fiender": [],
-    "samle": [],
+    "samle": [
+        {
+            "x": 2425,
+            "y": -25
+        },
+        {
+            "x": 3075,
+            "y": 75
+        }
+    ],
     "spiller": [50, 300],
     "tekst": "<p>Så mange plattformer, så mange hopp...</p><p>Å nei, det kommer mer!</p>"
 }

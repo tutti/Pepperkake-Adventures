@@ -31,6 +31,7 @@ Spill.last_brett = function(mappenavn, brettnavn) {
         this.brett.last();
         this.spillerhp(3);
         $("#spillerhp").show();
+        $("#samlerui, #tidui").show();
     } else {
         console.error("Du har ikke åpnet dette brettet!");
     }
@@ -39,6 +40,7 @@ Spill.last_brett = function(mappenavn, brettnavn) {
 Spill.brett_ferdig = function(utgang) {
     this.brett.last_ut();
     $("#spillerhp").hide();
+    $("#samlerui, #tidui").hide();
     $("#brettferdigtekst").html(this.brett.tekst);
     $("#spillvindu").scrollLeft(0);
     var temp = utgang.split("/");
@@ -72,12 +74,14 @@ Spill.spiller_dod = function() {
     $("#spillvindu").scrollLeft(0);
     $("#tapmeny").show();
     $("#spillerhp").hide();
+    $("#samlerui, #tidui").hide();
 }
 
 Spill.prov_igjen = function() {
     this.brett.last();
     Spill.spillerhp(3);
     $("#spillerhp").show();
+    $("#samlerui, #tidui").show();
 }
 
 Spill.spillerhp = function(hp) {

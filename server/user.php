@@ -213,4 +213,8 @@ class User {
         }
         return $r;
     }
+    
+    public function brett_ferdig($brett, $tid, $samlet) {
+    
+    }
 }

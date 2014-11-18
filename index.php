@@ -16,6 +16,7 @@ $bruker = User::get_current();
         <script src="Lyd.js"></script>
         <script src="Kontroll.js"></script>
         <script src="Enhet.js"></script>
+        <script src="Samleobjekt.js"></script>
         <script src="fiender/kontroll/GelebolleKontroll.js"></script>
         <script src="fiender/kontroll/SeigeninjaKontroll.js"></script>
         <script src="fiender/kontroll/JulebruiserKontroll.js"></script>
@@ -57,6 +58,14 @@ $bruker = User::get_current();
                 <div id="bosshp-indre"></div>
             </div>
             <img id="laster" src="bilder/laster.gif" style="display: none;" />
+            <div id="samlerui" style="display: none;">
+                <img src="bilder/smule.png" />
+                <span id="samlerui-teller">0</span> / <span id="samlerui-nevner">0</span>
+            </div>
+            <div id="tidui" style="display: none;">
+                <img src="bilder/litenklokke.png" />
+                <span id="tidui-minutt">00</span> : <span id="tidui-sekund">00</span>
+            </div>
         </div>
         <div id="spillvindu">
             <div id="testblokk"></div>

@@ -93,7 +93,12 @@
             "y": 200
         }
     ],
-    "samle": [],
+    "samle": [
+        {
+            "x": 1500,
+            "y": 175
+        }
+    ],
     "spiller": [100, 500],
     "tekst": "<p>Dette blir verre enn det så ut som. Julenissen er ingen steder å finne, og gelébøllene har sluppet fri.</p><p>Hva nå?</p>"
 }

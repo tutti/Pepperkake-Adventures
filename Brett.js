@@ -1,4 +1,4 @@
-Brett = function(data, mappe, filnavn, apnet, tid, samlet) {
+Brett = function(data, mappe, filnavn, apnet, bestetid, bestesamlet) {
     this.navn = data.navn;
     this.mappe = mappe;
     this.lastet = false;
@@ -8,7 +8,10 @@ Brett = function(data, mappe, filnavn, apnet, tid, samlet) {
     this.musikk = data.musikk;
     this.tekst = data.tekst;
     this.apnet = apnet;
+    this.bestetid = bestetid;
     this.ticks = 0;
+    this.bestesamlet = bestesamlet;
+    this.samleobjekter = [];
     this.plattformer = [];
     this.t_plattformer = {};
     this.plattformer_id = {};
@@ -100,11 +103,17 @@ Brett = function(data, mappe, filnavn, apnet, tid, samlet) {
         }
     }
     
+    for (s_id in data.samle) {
+        var s = data.samle[s_id];
+        var samleobjekt = new Samleobjekt();
+        samleobjekt.sett_posisjon(s.x, s.y);
+        this.samleobjekter.push(samleobjekt);
+    }
+    
     this.x = data.spiller[0];
     this.y = data.spiller[1];
     
     if (apnet) {
-        //console.log($('[data-mappe="'+this.mappe+'"][data-brett="'+this.navn+'"]'));
         $('[data-mappe="'+this.mappe+'"][data-brett="'+this.filnavn+'"]').removeClass("disabled");
     }
 }
@@ -128,6 +137,13 @@ Brett.prototype.last = function() {
             this.fiender[f_id].aktiver();
         }
     }
+    for (s_id in this.samleobjekter) {
+        if (this.samleobjekter[s_id].start_aktiv === false) {
+            this.samleobjekter[s_id].deaktiver();
+        } else {
+            this.samleobjekter[s_id].aktiver();
+        }
+    }
     this.lastet = true;
     this.ticks = 0;
     Spill.spiller.status = "luft";
@@ -136,6 +152,8 @@ Brett.prototype.last = function() {
     Spill.spiller.sett_posisjon(this.x, this.y);
     Lyd.BGM.sett(this.musikk).spill();
     this.vis_bakgrunn();
+    $("#samlerui-teller").text(0);
+    $("#samlerui-nevner").text(this.samleobjekter.length);
 }
 
 Brett.prototype.last_ut = function() {
@@ -146,6 +164,10 @@ Brett.prototype.last_ut = function() {
     for (f_id in this.fiender) {
         this.fiender[f_id].deaktiver();
         this.fiender[f_id].slett_element();
+    }
+    for (s_id in this.samleobjekter) {
+        this.samleobjekter[s_id].deaktiver();
+        this.samleobjekter[s_id].slett_element();
     }
     this.lastet = false;
     Lyd.BGM.pause();
@@ -255,5 +277,28 @@ Brett.prototype.tick = function() {
     for (f_id in this.fiender) {
         this.fiender[f_id].tick();
     }
+    for (s_id in this.samleobjekter) {
+        this.samleobjekter[s_id].sjekk_kollisjon(Spill.spiller);
+    }
     ++this.ticks;
+    var sekunder = Math.floor(this.ticks/30) % 60;
+    var minutter = Math.floor(this.ticks/1800);
+    //console.log(sekunder, minutter);
+    $("#tidui-minutt").text((minutter < 10 ? "0" : "") + minutter);
+    $("#tidui-sekund").text((sekunder < 10 ? "0" : "") + sekunder);
+}
+
+Brett.prototype.antall_samlet = function() {
+    var antall = 0;
+    for (s_id in this.samleobjekter) {
+        if (this.samleobjekter[s_id].samlet) {
+            ++antall;
+        }
+    }
+    return antall;
+}
+
+Brett.prototype.samlet = function() {
+    // Gjør ingen endringer, men brukes til å notifisere brettet om at et objekt har blitt samlet
+    $("#samlerui-teller").text(this.antall_samlet());
 }

@@ -50,6 +50,29 @@
         right: 0px;
         z-index: 100;
     }
+    
+    #samlerui,
+    #tidui {
+        position: absolute;
+        width: 80px;
+        height: 20px;
+        top: 16px;
+        right: 16px;
+        padding-left: 5px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.6);
+        line-height: 20px;
+        border-radius: 5px 5px 0 0;
+    }
+        #samlerui img,
+        #tidui img {
+            position: relative;
+            top: 2px;
+        }
+    #tidui {
+        top: 36px;
+        border-radius: 0 0 5px 5px;
+    }
 
 #spillvindu {
     border: 1px solid black;
@@ -209,29 +232,6 @@
             margin-bottom: 10px;
         }
 
-.plattform {
-    position: absolute;
-    z-index: 1;
-}
-
-.enhet {
-    position: absolute;
-    z-index: 2;
-}
-
-.enhet-tillegg {
-    position: absolute;
-    z-index: 3;
-}
-
-.utgang {
-    width: 64px;
-    height: 64px;
-    position: absolute;
-    background-image: url("bilder/portal.gif");
-    z-index: 1;
-}
-
 #instruksjoner {
     width: 800px;
     position: absolute;
@@ -296,3 +296,31 @@
         height: 20px;
         background: url("bilder/plattform1.png");
     }
+
+.plattform {
+    position: absolute;
+    z-index: 1;
+}
+
+.enhet {
+    position: absolute;
+    z-index: 2;
+}
+
+.enhet-tillegg {
+    position: absolute;
+    z-index: 3;
+}
+
+.samleobjekt {
+    position: absolute;
+    z-index: 3;
+}
+
+.utgang {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background-image: url("bilder/portal.gif");
+    z-index: 1;
+}
