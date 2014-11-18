@@ -38,7 +38,9 @@ Spill.last_brett = function(mappenavn, brettnavn) {
 }
 
 Spill.brett_ferdig = function(utgang) {
-    this.brett.last_ut();
+    this.brett.oppdater_rekorder();
+    var tid = this.brett.bestetid;
+    var samlet = this.brett.bestesamlet;
     $("#spillerhp").hide();
     $("#samlerui, #tidui").hide();
     $("#brettferdigtekst").html(this.brett.tekst);
@@ -57,6 +59,8 @@ Spill.brett_ferdig = function(utgang) {
         $(".meny").hide();
         $("#lastermeny").show();
     }
+    Server.lagre_rekorder(this.brett.mappe, this.brett.filnavn, tid, samlet);
+    this.brett.last_ut();
 }
 
 Spill.tick = function() {

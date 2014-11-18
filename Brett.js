@@ -1,8 +1,8 @@
 Brett = function(data, mappe, filnavn, apnet, bestetid, bestesamlet) {
     this.navn = data.navn;
     this.mappe = mappe;
-    this.lastet = false;
     this.filnavn = filnavn;
+    this.lastet = false;
     this.bredde = data.bredde;
     this.bakgrunn = data.bakgrunn;
     this.musikk = data.musikk;
@@ -283,7 +283,6 @@ Brett.prototype.tick = function() {
     ++this.ticks;
     var sekunder = Math.floor(this.ticks/30) % 60;
     var minutter = Math.floor(this.ticks/1800);
-    //console.log(sekunder, minutter);
     $("#tidui-minutt").text((minutter < 10 ? "0" : "") + minutter);
     $("#tidui-sekund").text((sekunder < 10 ? "0" : "") + sekunder);
 }
@@ -301,4 +300,10 @@ Brett.prototype.antall_samlet = function() {
 Brett.prototype.samlet = function() {
     // Gjør ingen endringer, men brukes til å notifisere brettet om at et objekt har blitt samlet
     $("#samlerui-teller").text(this.antall_samlet());
+}
+
+Brett.prototype.oppdater_rekorder = function() {
+    if (this.bestetid == -1) this.bestetid = this.ticks;
+    else this.bestetid = Math.min(this.ticks, this.bestetid);
+    this.bestesamlet = Math.max(this.antall_samlet(), this.bestesamlet);
 }

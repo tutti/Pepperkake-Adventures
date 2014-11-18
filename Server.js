@@ -44,7 +44,7 @@ var callback = {
         if (data.ny_mappe) {
             location.reload();
         }
-    },
+    }
 }
 
 var comQueue = [];
@@ -63,7 +63,9 @@ var add_to_queue = function(method, url, data, callback) {
 
 var success = function(data, textstatus, jqXHR) {
     $("#laster").hide();
-    current_callback(data);
+    if (typeof current_callback == "function") {
+        current_callback(data);
+    }
     communicating = false;
     // Success; remove the call we just completed and do the next
     comQueue.shift();
@@ -118,4 +120,10 @@ Server = {
         add_to_queue("post", "server/apne_brett.php", {mappenavn: mappenavn, filnavn: filnavn}, callback.brett_apnet);
         next();
     },
+    
+    'lagre_rekorder': function(mappenavn, filnavn, tid, samlet) {
+        console.log(mappenavn, filnavn, tid, samlet);
+        add_to_queue("post", "server/brett_ferdig.php", {mappenavn: mappenavn, filnavn: filnavn, tid: tid, samlet: samlet});
+        next();
+    }
 }
