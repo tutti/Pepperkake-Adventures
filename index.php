@@ -103,7 +103,11 @@ $bruker = User::get_current();
                 <h1 id="brettoverskrift" class="menyoverskrift">Velg et brett</h1>
                 <div id="brettknapper-standard" class="brettknapper">
                     <?php for ($i = 0; $i < ANTALL_BRETT; ++$i) { ?>
-                    <div id="brettknapp-<?= $i; ?>" class="brettknapp knapp disabled" data-mappe="" data-brett=""><span><?= $i+1; ?></span></div>
+                    <div id="brettknapp-container-<?= $i; ?>" class="brettknapp-container">
+                        <div id="brettknapp-<?= $i; ?>" class="brettknapp knapp disabled" data-mappe="" data-brett=""><span><?= $i+1; ?></span></div>
+                        <span class="samlingteller">0/3</span>
+                        <span class="bestetid">--:--</span>
+                    </div>
                     <?php } ?>
                 </div>
             </div>

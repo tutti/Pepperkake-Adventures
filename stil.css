@@ -55,7 +55,8 @@
     border: 1px solid black;
     width: 800px;
     height: 600px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
     position: relative;
     margin: auto;
 }
@@ -105,25 +106,46 @@
     #endrepassordknapp {
         top: 295px;
     }
-    .brettknapp {
-        position: relative;
-        width: 94px;
-        margin: 10px;
-        border: 3px solid grey;
-        background: lightgreen;
+    .brettknapp-container {
         float: left;
-        text-transform: none;
-        font-size: 0.75em;
+        position: relative;
     }
-        .brettknapp span {
-            line-height: 1em;
-            display: inline-block;
-            vertical-align: middle;
+        .brettknapp {
+            position: relative;
+            width: 94px;
+            margin: 10px;
+            border: 3px solid grey;
+            background: lightgreen;
+            text-transform: none;
+            font-size: 0.75em;
         }
-        .brettknapp.disabled {
-            background: lightgrey;
-            cursor: auto;
+            .brettknapp span {
+                line-height: 1em;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .brettknapp.disabled {
+                background: lightgrey;
+                cursor: auto;
+            }
+        .samlingteller {
+            display: block;
+            border: 1px solid grey;
+            position: absolute;
+            width: 94px;
+            top: 74px;
+            left: 12px;
+            background-color: lawngreen;
+            border-radius: 0 0 10px 10px;
+            text-align: center;
         }
+        .bestetid {
+            display: block;
+            text-align: center;
+            position: relative;
+            top: -10px;
+        }
+    
     #tapprovigjenknapp {
         border: 3px solid grey;
         background: lightgreen;

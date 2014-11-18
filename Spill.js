@@ -15,9 +15,11 @@ $(document).ready(function() {
         brett[mappenavn] = [];
         for (brettjson in mappe) {
             var apnet = mappe[brettjson][0];
+            var tid = mappe[brettjson][2];
+            var samlet = mappe[brettjson][3];
             var data = JSON.parse(brettjson);
             $("#brettknapp-"+i).attr("data-mappe", mappenavn).attr("data-brett", mappe[brettjson][1]).find("span").text(data.navn);
-            brett[mappenavn][mappe[brettjson][1]] = new Brett(data, mappenavn, mappe[brettjson][1], apnet);
+            brett[mappenavn][mappe[brettjson][1]] = new Brett(data, mappenavn, mappe[brettjson][1], apnet, tid, samlet);
             ++i;
         }
     }

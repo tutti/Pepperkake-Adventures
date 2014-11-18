@@ -78,6 +78,7 @@
             "utgang": "standard/1.json"
         }
     ],
+    "samle": [],
     "spiller": [350, 550],
     "tekst": "Den falske nissen er død. Den ekte nissen er fri. Julen er reddet!"
 }

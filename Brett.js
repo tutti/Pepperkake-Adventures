@@ -1,4 +1,4 @@
-Brett = function(data, mappe, filnavn, apnet) {
+Brett = function(data, mappe, filnavn, apnet, tid, samlet) {
     this.navn = data.navn;
     this.mappe = mappe;
     this.lastet = false;
@@ -8,6 +8,7 @@ Brett = function(data, mappe, filnavn, apnet) {
     this.musikk = data.musikk;
     this.tekst = data.tekst;
     this.apnet = apnet;
+    this.ticks = 0;
     this.plattformer = [];
     this.t_plattformer = {};
     this.plattformer_id = {};
@@ -128,6 +129,7 @@ Brett.prototype.last = function() {
         }
     }
     this.lastet = true;
+    this.ticks = 0;
     Spill.spiller.status = "luft";
     Spill.spiller.aktiver();
     Spill.spiller.fokus();
@@ -253,4 +255,5 @@ Brett.prototype.tick = function() {
     for (f_id in this.fiender) {
         this.fiender[f_id].tick();
     }
+    ++this.ticks;
 }

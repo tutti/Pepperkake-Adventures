@@ -8,11 +8,13 @@
         $("#startknapp").click(function() {
             $(".meny").hide();
             $("#brettmeny").show();
+            $("#spillvindu").css("overflow-y", "scroll");
         });
         
         $(".brettknapp").click(function() {
             if ($(this).hasClass("disabled")) return;
             $(".meny").hide();
+            $("#spillvindu").css("overflow-y", "hidden");
             //var b_id = $(this).attr("brett");
             var mappenavn = $(this).attr("data-mappe");
             var brettnavn = $(this).attr("data-brett");

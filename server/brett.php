@@ -10,7 +10,6 @@ $bruker = User::get_current();
 
 if ($bruker) {
     $brettliste = $bruker->brettliste();
-    //print_r($brettliste);
     
     $i = 0;
     
@@ -24,7 +23,12 @@ if ($bruker) {
                 echo "': ";
                 if ($brett[1]) echo "[true";
                 else echo "[false";
-                echo ", '{$brett[0]}'],\n";
+                echo ", '{$brett[0]}'";
+                if ($brett[2]) echo ", {$brett[2]}";
+                else echo ", -1";
+                if ($brett[3]) echo ", {$brett[3]}";
+                else echo ", 0";
+                echo "],\n";
                 ++$i;
             }
         }
