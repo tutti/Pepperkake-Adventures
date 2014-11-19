@@ -115,7 +115,7 @@
             "y": 250
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -126,7 +126,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -137,7 +137,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -148,7 +148,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -159,7 +159,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -170,7 +170,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -181,7 +181,7 @@
             "ticktall": 20
         },
         {
-            "aktiv": false,
+            "aktiv": true,
             "arv": "standard",
             "type": "heis",
             "bredde": 50,
@@ -354,11 +354,20 @@
             "bredde": 100,
             "x": 4500,
             "y": 250,
-            "utgang": "standard/9.json"
+            "utgang": "bonus/1.json"
         }
     ],
     "fiender": [],
-    "samle": [],
+    "samle": [
+        {
+            "x": 650,
+            "y": 225
+        },
+        {
+            "x": 4375,
+            "y": 225
+        }
+    ],
     "spiller": [2000, 250],
     "tekst": "<p>Du kan se nissen i avstanden! ...men det er et stykke igjen. Og det ser ut som om vaktholdet er styrket.</p>"
 }

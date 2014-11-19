@@ -39,15 +39,15 @@
             "y": 550,
             "dx": 0,
             "dy": -5,
-            "ticktall": 70
+            "ticktall": 80
         },
         {
             "arv": "standard",
             "type": "heis",
             "bredde": 100,
-            "x": 800,
+            "x": 1280,
             "y": 200,
-            "dx": 5,
+            "dx": -6,
             "dy": 0,
             "ticktall": 80
         },

@@ -340,7 +340,20 @@
             "y": 400
         }
     ],
-    "samle": [],
+    "samle": [
+        {
+            "x": 625,
+            "y": 275
+        },
+        {
+            "x": 1475,
+            "y": 175
+        },
+        {
+            "x": 2450,
+            "y": 375
+        }
+    ],
     "spiller": [50, 300],
     "tekst": "<p>Du ser nissen... men det der er ikke nissen! Det er en falsk nisse!</p>"
 }

@@ -161,6 +161,7 @@
             background-color: lawngreen;
             border-radius: 0 0 10px 10px;
             text-align: center;
+            pointer-events: none;
         }
         .bestetid {
             display: block;
