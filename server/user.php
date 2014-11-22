@@ -24,7 +24,7 @@ class User {
             self::$db->prepare("has_level", "SELECT id FROM bruker_brett WHERE bruker=:bruker, brett=(SELECT id FROM brett WHERE mappe=:mappe, fil=:fil)");
             self::$db->prepare("unlock_folder", "INSERT IGNORE INTO bruker_mappe (bruker, mappe) VALUES (:bruker, :mappe)");
             self::$db->prepare("unlock_level", "INSERT IGNORE INTO bruker_brett (bruker, brett) VALUES (:bruker, (SELECT id FROM brett WHERE mappe=:mappe AND fil=:fil))");
-            self::$db->prepare("level_list", "SELECT DISTINCT(brett.id), brett.mappe, brett.fil, bruker_brett.id AS apnet, bruker_rekorder.tid, bruker_rekorder.samlet FROM brett LEFT JOIN bruker_brett ON brett.id = bruker_brett.brett AND bruker_brett.bruker=:bruker LEFT JOIN bruker_rekorder ON brett.id = bruker_rekorder.brett WHERE (mappe IN (SELECT mappe FROM bruker_mappe WHERE bruker=:bruker) OR mappe='standard') GROUP BY brett.id");
+            self::$db->prepare("level_list", "SELECT DISTINCT(brett.id), brett.mappe, brett.fil, bruker_brett.id AS apnet, bruker_rekorder.tid, bruker_rekorder.samlet FROM brett LEFT JOIN bruker_brett ON brett.id = bruker_brett.brett AND bruker_brett.bruker=:bruker LEFT JOIN bruker_rekorder ON brett.id = bruker_rekorder.brett AND bruker_rekorder.bruker=:bruker WHERE (mappe IN (SELECT mappe FROM bruker_mappe WHERE bruker=:bruker) OR mappe='standard') GROUP BY brett.id");
             self::$db->prepare("level_complete", "INSERT INTO bruker_rekorder (bruker, brett, tid, samlet) VALUES (:bruker, (SELECT id FROM brett WHERE mappe=:mappe AND fil=:fil), :tid, :samlet) ON DUPLICATE KEY UPDATE tid=VALUES(tid), samlet=VALUES(samlet)");
         }
     }

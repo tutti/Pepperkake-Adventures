@@ -1,5 +1,6 @@
 var callback = {
     logginn: function(json_data) {
+        console.log(json_data);
         var data = JSON.parse(json_data);
         if (data.status == 0) {
             location.reload();
