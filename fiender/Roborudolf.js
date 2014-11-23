@@ -96,7 +96,7 @@ Roborudolf.prototype.tick = function() {
     if (!this.aktiv) return;
     Enhet.prototype.tick.call(this);
     if (Spill.brett.skad(this, this.x, this.y, this.x+this.bredde, this.y+this.hoyde, 1, (this.punkt_x() < 400 ? 1 : -1), 1.5)) {
-        Lyd.Effekt.spill("lyd/slag1.mp3");
+        Lyd.Effekt.spill("lyd/gelebolle-slag.mp3");
     }
     if (this.handling == "bombe") {
         for (var i=0; i<8; ++i) {

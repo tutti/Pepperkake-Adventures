@@ -79,6 +79,7 @@ Snomann.prototype.angrip = function() {
     this.snoball_y = this.y - 8;
     this.snoball_momentum = 10;
     this.snoball_momentum_x = 20 * this.retning;
+    Lyd.Effekt.spill("lyd/snoball.mp3");
 }
 
 Snomann.prototype.angrep_tick = function() {
@@ -87,7 +88,9 @@ Snomann.prototype.angrep_tick = function() {
     this.snoball_y -= this.snoball_momentum;
     this.snoball_momentum -= Spill.gravitasjon;
     this.snoball_element.show().css('top', this.snoball_y).css('left', this.snoball_x);
-    Spill.brett.skad(this, this.snoball_x, this.snoball_y, this.snoball_x + 16, this.snoball_y + 16, 1, this.retning, 1.5)
+    if (Spill.brett.skad(this, this.snoball_x, this.snoball_y, this.snoball_x + 16, this.snoball_y + 16, 1, this.retning, 1.5)) {
+        Lyd.Effekt.spill("lyd/snoball_treff.mp3");
+    }
     if (this.snoball_y >= Spill.brett.taplinje) {
         this.snoball_element.hide();
         this.angrep = false;
