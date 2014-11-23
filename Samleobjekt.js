@@ -40,6 +40,7 @@ Samleobjekt.prototype.sjekk_kollisjon = function(enhet) {
     this.samlet = true;
     this.deaktiver();
     Spill.brett.samlet();
+    Lyd.Effekt.spill("lyd/samle.mp3");
 }
 
 Samleobjekt.prototype.aktiver = function() {
