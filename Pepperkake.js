@@ -56,8 +56,11 @@ Pepperkake.prototype.angrep_tick = function() {
             break;
         case 0:
         default:
-            skade = Spill.brett.skad(this, this.x - this.rekkevidde / 2, this.y, this.x + this.rekkevidde / 2, this.y + this.hoyde, 1, -1, 1);
-            skade = Spill.brett.skad(this, this.x + this.rekkevidde / 2, this.y, this.x + this.rekkevidde * 1.5, this.y + this.hoyde, 1, 1, 1);
+            //skade = Spill.brett.skad(this, this.x - this.rekkevidde / 2, this.y, this.x + this.rekkevidde / 2, this.y + this.hoyde, 1, -1, 1);
+            //skade = Spill.brett.skad(this, this.x + this.rekkevidde / 2, this.y, this.x + this.rekkevidde * 1.5, this.y + this.hoyde, 1, 1, 1);
+            
+            skade = Spill.brett.skad(this, this.x - this.rekkevidde, this.y, this.x, this.y + this.hoyde, 1, -1, 1);
+            skade |= Spill.brett.skad(this, this.x + this.rekkevidde, this.y, this.x + 2 * this.rekkevidde, this.y + this.hoyde, 1, 1, 1);
             break;
     }
 }

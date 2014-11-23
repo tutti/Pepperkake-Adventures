@@ -240,6 +240,7 @@ Enhet.prototype.hopp = function() {
         this.momentum += this.hoppstyrke;
         this.momentum_x += this.retning * this.hastighet;
         this.status = "luft";
+        this.tick();
     }
 }
 
